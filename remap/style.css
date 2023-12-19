@@ -1,0 +1,26 @@
+/* おまじない */
+@charset "UTF-8";
+/* フォントを借りてくる */
+@import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500&display=swap');
+/* 各HTML要素を修飾する */
+body{
+   padding: 0;
+   margin: 0;
+   display: flex;
+   flex-flow: column;
+   justify-content: center;
+   align-items: center;
+   width: 100vw;
+   min-height: 100vh;
+   background-color: #78b2bb;
+   color: #ffffff;
+   text-align: center;
+   font-size: 1.5rem;
+   font-weight: 400;
+   font-family: 'Zen Maru Gothic', sans-serif;
+}
+
+#example{
+   display: flex;
+   flex-flow: column;
+}
