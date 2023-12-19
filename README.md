@@ -14,4 +14,4 @@
 `git commit -m "[変更の内容をひとことで]"`   
 `git pull origin main`  
 `git push origin main`  
-うまくいけば、このリポジトリの内容が変わっているのが確認できる。  
+首尾よくいけば、このリポジトリが更新されているのが確認できる  
