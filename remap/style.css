@@ -24,3 +24,211 @@ body{
    display: flex;
    flex-flow: column;
 }
+
+#upper{
+   width: 40em;
+   height: 20rem;
+   display: flex;
+   flex-flow: row; /* 横並びにする */
+   flex-wrap: wrap; /* 折り返しする */
+   background-color: #0002;
+   position: relative;
+}
+
+#left0, #left1, #left2, #left3, #left4, #right0, #right1, #right2, #right3, #right4{
+   position: absolute;
+   display: flex;
+   flex-flow: column;
+   gap: .2rem;
+   height: 20rem;
+   align-items: center;
+   justify-content: center;
+}
+
+#k00, #k44{
+   position: absolute;
+}
+
+#left5, #right5{
+   position: absolute;
+   display: flex;
+   flex-flow: row;
+   gap: .2rem;
+   width: 10rem;
+   align-items: center;
+   justify-content: center;
+}
+
+.key{
+   width: 3.6rem;
+   height: 3.5rem;
+   background-color: white;
+   border-radius: .4rem;
+   color: black;
+}
+
+/* 回転 */
+
+#left1, #right1{
+   transform: translate(-50%,-50%) rotate(-2deg);
+}
+
+#left3, #right3{
+   transform: translate(-50%,-50%) rotate(2deg);
+}
+
+#left0, #right0{
+   transform: translate(-50%,-50%) rotate(-4deg);
+}
+
+#left4, #right4{
+   transform: translate(-50%,-50%) rotate(4deg);
+}
+
+#k00{
+   transform: translate(-50%,-50%) rotate(-6deg);
+}
+
+#k44{
+   transform: translate(-50%,-50%) rotate(6deg);
+}
+
+#left5{
+   transform: translate(-50%,-50%) rotate(15deg);
+}
+
+#right5{
+   transform: translate(-50%,-50%) rotate(-15deg);
+}
+
+#left2{
+   transform: translate(-50%,-50%);
+}
+
+#right2{
+   transform: translate(-50%,-50%);
+}
+
+/* X座標 */
+#left0{
+   left: calc(50% - 20.7rem);
+}
+#right4{
+   left: calc(50% + 20.7rem);
+}
+
+#left1{
+   left: calc(50% - 16.9rem);
+}
+#right3{
+   left: calc(50% + 16.9rem);
+}
+
+#left2{
+   left: calc(50% - 13rem);
+}
+#right2{
+   left: calc(50% + 13rem);
+}
+
+#left3{
+   left: calc(50% - 9.1rem);
+}
+#right1{
+   left: calc(50% + 9.1rem);
+}
+
+#left4{
+   left: calc(50% - 4.9rem);
+}
+#right0{
+   left: calc(50% + 4.9rem);
+}
+
+#left5{
+   left: calc(50% - 8rem);
+}
+#right5{
+   left: calc(50% + 8rem);
+}
+
+#k00{
+   left: calc(50% - 24.7rem);
+}
+#k44{
+   left: calc(50% + 24.7rem);
+}
+
+/* Y座標 */
+#left0, #right4{
+   top: calc(50% - .7rem);
+}
+
+#left1, #right3{
+   top: calc(50% - 3rem);
+}
+
+#left2, #right2{
+   top: calc(50% - 3.5rem);
+}
+
+#left3, #right1{
+   top: calc(50% - 3rem);
+}
+
+#left4, #right0{
+   top: calc(50% - 3.5rem);
+}
+
+#left5, #right5{
+   top: calc(50% + 6.5rem);
+}
+
+#k00, #k44{
+   top: calc(50% - 1.4rem);
+}
+
+/* 大きさ */
+#k00, #k44{
+   height: 5.6rem;
+}
+
+.tall{
+   height: 4.1rem;
+}
+
+.slim{
+   width: 3.5rem;
+}
+
+.wide{
+   width: 3.7rem;
+}
+
+.fat{
+   width: 4.1rem;
+}
+
+#lower{
+   font-size: 20px;
+   background-color: gray;
+   width: 80vw;
+}
+
+#letter, #number, #mods, #edit, #move{
+   display: flex;
+   flex-flow: row; /* 横並びにする */
+   flex-wrap: wrap; /* 折り返しする */
+   gap: .5rem;
+   margin: .25rem 0;
+}
+
+.code{
+   width: 3.5rem;
+   height: 3.5rem;
+   border-radius: .3rem;
+   background-color: rgb(44, 44, 73);
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
