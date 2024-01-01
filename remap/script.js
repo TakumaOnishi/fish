@@ -1,20 +1,10 @@
 // JSの簡単な例（テキストをクリックすると文字色が白↔︎黒にトグルする）
 window.addEventListener('DOMContentLoaded', () => { // 読み込みを待って処理を始める
 
-   const _example = document.getElementById("example"); // HTML要素を取得する
+   const _s10 = document.getElementById("s10"); // HTML要素を取得する
 
-   let textIsWhite = true; // 今のテキストの色をもつ変数
-
-   _example.addEventListener('click', function(){
-      textIsWhite = !textIsWhite; // trueならfalseに、falseならtrueにする
-      updateTextColor(); // 使い回したい処理は関数にまとめる
+   _s10.addEventListener('click', function(){
+      console.log(_s10.getAttribute('fill'));
+      _s10.setAttribute('fill', '#ff0000');
    });
-
-   function updateTextColor(){ // CSSの内容を書き換える
-      if(textIsWhite){
-         _example.style.color = "#ffffff"
-      }else{
-         _example.style.color = "#000000"
-      }
-   }
 });
