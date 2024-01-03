@@ -5,14 +5,15 @@
    <meta charset="UTF-8">
    <title>キーマップジェネレーター｜おさかなキーボード</title>
    <meta name="description" content="おさかなキーボードのキーマップを書き換えよう！">
-   <meta property="og:url" content="https://o24.studio/fish" />
+   <meta property="og:url" content="https://o24.studio/fish"/>
    <meta property="og:type" content="website" />
-   <meta property="og:title" content="キーマップジェネレーター｜おさかなキーボード" />
-   <meta property="og:site_name" content="キーマップジェネレーター｜おさかなキーボード" />
-   <meta property="og:description" content="おさかなキーボードのキーマップを書き換えよう！" />
-   <meta property="og:image" content="https://o24.studio/fish/ogp.png" />
-   <meta name="twitter:card" content="summary" />
-   <meta name="viewport" content="width=device-width,initial-scale=1" />
+   <meta property="og:title" content="キーマップジェネレーター｜おさかなキーボード"/>
+   <meta property="og:site_name" content="キーマップジェネレーター｜おさかなキーボード"/>
+   <meta property="og:description" content="おさかなキーボードのキーマップを書き換えよう！"/>
+   <meta property="og:image" content="https://o24.studio/fish/ogp.png"/>
+   <meta name="twitter:card" content="summary"/>
+   <meta name="viewport" content="width=device-width,initial-scale=1"/>
+   <meta name="google" value="notranslate"/>
    <link rel="icon" type="image/png" href="../favicon.png">
    <link rel="stylesheet" href="style.css?1">
    <script src="script.js?1"></script>
@@ -20,75 +21,106 @@
 
 <body>
    <div id="upper">
-      <div class="bookmark">letter<br>▶︎</div>
-      <div class="code w l a m i" name="A">a</div>
-      <div class="code w l a m i" name="">B</div>
-      <div class="code w l a m i" name="">C</div>
-      <div class="code w l a m i" name="">D</div>
-      <div class="code w l a m i" name="">E</div>
-      <div class="code w l a m i" name="">F</div>
-      <div class="code w l a m i" name="">G</div>
-      <div class="code w l a m i" name="">H</div>
-      <div class="code w l a m i" name="">I</div>
-      <div class="code w l a m i" name="">J</div>
-      <div class="code w l a m i" name="">K</div>
-      <div class="code w l a m i" name="">L</div>
-      <div class="code w l a m i" name="">M</div>
-      <div class="code w l a m i" name="">N</div>
-      <div class="code w l a m i" name="">O</div>
-      <div class="code w l a m i" name="">P</div>
-      <div class="code w l a m i" name="">Q</div>
-      <div class="code w l a m i" name="">R</div>
-      <div class="code w l a m i" name="">S</div>
-      <div class="code w l a m i" name="">T</div>
-      <div class="code w l a m i" name="">U</div>
-      <div class="code w l a m i" name="">V</div>
-      <div class="code w l a m i" name="">W</div>
-      <div class="code w l a m i" name="">X</div>
-      <div class="code w l a m i" name="">Y</div>
-      <div class="code w l a m i" name="">Z</div>
-      <div class="bookmark">number<br>▶︎</div>
-      <div class="code w l a m i" name="">1</div>
-      <div class="code w l a m i" name="">2</div>
-      <div class="code w l a m i" name="">3</div>
-      <div class="code w l a m i" name="">4</div>
-      <div class="code w l a m i" name="">5</div>
-      <div class="code w l a m i" name="">6</div>
-      <div class="code w l a m i" name="">7</div>
-      <div class="code w l a m i" name="">8</div>
-      <div class="code w l a m i" name="">9</div>
-      <div class="code w l a m i" name="">0</div>
-      <div class="bookmark">modifier<br>▶︎</div>
-      <div class="code w l a m i" name="">Ctrl</div>
-      <div class="code w l a m i" name="">Shift</div>
-      <div class="code w l a m i" name="">Alt</div>
-      <div class="code w l a m i" name="">Win</div>
-      <div class="code w l a m i" name="">Ctrl<br>(right)</div>
-      <div class="code w l a m i" name="">Shift<br>(right)</div>
-      <div class="code w l a m i" name="">Alt<br>(right)</div>
-      <div class="code w l a m i" name="">Win<br>(right)</div>
-      <div class="bookmark">edit<br>▶︎</div>
-      <div class="code w l a m i" name="">Space</div>
-      <div class="code w l a m i" name="">Enter</div>
-      <div class="code w l a m i" name="">Esc</div>
-      <div class="code w l a m i" name="">Back<br>Space</div>
-      <div class="code w l a m i" name="">Tab</div>
-      <div class="code w l a m i" name="">Del</div>
-      <div class="code w l a m i" name="">Insert</div>
-      <div class="code w l a m i" name="">Undo</div>
-      <div class="code w l a m i" name="">Cut</div>
-      <div class="code w l a m i" name="">Copy</div>
-      <div class="code w l a m i" name="">Paste</div>
-      <div class="bookmark">move<br>▶︎</div>
-      <div class="code w l a m i" name="">←</div>
-      <div class="code w l a m i" name="">↑</div>
-      <div class="code w l a m i" name="">↓</div>
-      <div class="code w l a m i" name="">→</div>
-      <div class="code w l a m i" name="">Home</div>
-      <div class="code w l a m i" name="">Page<br>Up</div>
-      <div class="code w l a m i" name="">Page<br>Down</div>
-      <div class="code w l a m i" name="">End</div>
-      <div class="bookmark">sample<br>▶︎</div>
+      <div id="filter">
+         <p>compatible with</p>
+         <select>
+            <option value="">any</option>
+            <option value="w">Windows</option>
+            <option value="m">macOS</option>
+            <option value="l">Linux</option>
+            <option value="i">iOS</option>
+            <option value="a">Android</option>
+         </select>
+      </div>
+      <div class="tag">
+         <div>unset</div>
+      </div>
+      <div class="code w l a m i"><div><a href="https://zmk.dev/docs/behaviors/misc#none" target="_blank">&none</a>
+         <p>sends nothing.</p><div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"><img src="img/android.svg"></div></div></div>
+      <div class="code w l a m i" style="box-shadow: .1rem .1rem .2rem #0004, .1rem .1rem .2rem inset #0004;"><div><a href="https://zmk.dev/docs/behaviors/misc#transparent" target="_blank">&trans</a>
+         <p>sends the keycode on the next active layer.</p><div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"><img src="img/android.svg"></div></div></div>
+      <div class="tag">
+         <div>letter</div>
+      </div>
+      <div class="code w l a m i big">A<div><a href="https://zmk.dev/docs/codes#letters" target="_blank">&kp A</a>
+         <p>a and A</p><div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"><img src="img/android.svg"></div></div></div>
+      <div class="code w l a m i big">B</div>
+      <div class="code w l a m i big">C</div>
+      <div class="code w l a m i big">D</div>
+      <div class="code w l a m i big">E</div>
+      <div class="code w l a m i big">F</div>
+      <div class="code w l a m i big">G</div>
+      <div class="code w l a m i big">H</div>
+      <div class="code w l a m i big">I</div>
+      <div class="code w l a m i big">J</div>
+      <div class="code w l a m i big">K</div>
+      <div class="code w l a m i big">L</div>
+      <div class="code w l a m i big">M</div>
+      <div class="code w l a m i big">N</div>
+      <div class="code w l a m i big">O</div>
+      <div class="code w l a m i big">P</div>
+      <div class="code w l a m i big">Q</div>
+      <div class="code w l a m i big">R</div>
+      <div class="code w l a m i big">S</div>
+      <div class="code w l a m i big">T</div>
+      <div class="code w l a m i big">U</div>
+      <div class="code w l a m i big">V</div>
+      <div class="code w l a m i big">W</div>
+      <div class="code w l a m i big">X</div>
+      <div class="code w l a m i big">Y</div>
+      <div class="code w l a m i big">Z</div>
+      <div class="tag">
+         <div>number</div>
+      </div>
+      <div class="code w l a m i big">1</div>
+      <div class="code w l a m i big">2</div>
+      <div class="code w l a m i big">3</div>
+      <div class="code w l a m i big">4</div>
+      <div class="code w l a m i big">5</div>
+      <div class="code w l a m i big">6</div>
+      <div class="code w l a m i big">7</div>
+      <div class="code w l a m i big">8</div>
+      <div class="code w l a m i big">9</div>
+      <div class="code w l a m i big">0</div>
+      <div class="tag">
+         <div>edit</div>
+      </div>
+      <div class="code w l a m i">Space</div>
+      <div class="code w l a m i">Enter</div>
+      <div class="code w l a m i">Esc</div>
+      <div class="code w l a m i">Back<br>Space</div>
+      <div class="code w l a m i">Tab</div>
+      <div class="code w l a m i">Del</div>
+      <div class="code w l a m i">Insert</div>
+      <div class="code w l a m i">Undo</div>
+      <div class="code w l a m i">Cut</div>
+      <div class="code w l a m i">Copy</div>
+      <div class="code w l a m i">Paste</div>
+      <div class="tag">
+         <div>move</div>
+      </div>
+      <div class="code w l a m i big">⬅</div>
+      <div class="code w l a m i big">⬆</div>
+      <div class="code w l a m i big">⬇</div>
+      <div class="code w l a m i big">⮕</div>
+      <div class="code w l a m i">Home</div>
+      <div class="code w l a m i">Page<br>Up</div>
+      <div class="code w l a m i">Page<br>Down</div>
+      <div class="code w l a m i">End</div>
+      <div class="tag">
+         <div>modify</div>
+      </div>
+      <div class="code w l a m i">Ctrl</div>
+      <div class="code w l a m i">Shift</div>
+      <div class="code w l a m i">Alt</div>
+      <div class="code w l a m i">Win</div>
+      <div class="code w l a m i">right<br>Ctrl</div>
+      <div class="code w l a m i">right<br>Shift</div>
+      <div class="code w l a m i">right<br>Alt</div>
+      <div class="code w l a m i">right<br>Win</div>
+      <div class="tag">
+         <div>sample</div>
+      </div>
       <div class="code">←</div>
       <div class="code">↑</div>
       <div class="code">↓</div>
@@ -190,7 +222,7 @@
                <feComposite operator="out" in2="SourceGraphic"/>
                <feOffset dx="4" dy="8"/>
                <feGaussianBlur stdDeviation="3" result="light"/>
-               <feFlood flood-color="#0007"/>
+               <feFlood flood-color="#0006"/>
                <feComposite operator="out" in2="SourceGraphic"/>
                <feGaussianBlur stdDeviation="3"/>
                <feOffset dx="-4" dy="-8" result="dark"/>

@@ -1,11 +1,11 @@
 /* おまじない */
 @charset "UTF-8";
 /* フォントを借りてくる */
-@import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono&family=Zen+Maru+Gothic:wght@400;500&display=swap');
 /* 各HTML要素を修飾する */
 :root{
    --bg: #78b2bb;
-   --bgdark : #006e7c;
+   --bgdark : #26919f;
    --tx: #eeeeee;
 }
 
@@ -39,28 +39,186 @@ body{
    position: relative;
 }
 
-.code, .bookmark{
+#filter{
+   width: 6.3rem;
+   height: 3rem;
+   display: block;
+   text-align: left;
+   position: relative;
+   opacity: .5;
+   transition: opacity .2s ease;
+}
+
+#filter:hover{
+   opacity: 1;
+}
+
+#filter > p{
+   position: absolute;
+   top: 0;
+   left: 0;
+   margin: 0;
+   font-size: .9rem;
+}
+
+#filter > select{
+   width: 100%;
+   height: 100%;
+   padding: .8rem 0 .2rem;
+   appearance: none;
+   font-size: 1.2rem;
+   line-height: 2rem;
+   border: none;
+   background-color: transparent;
+   cursor: pointer;
+   position: relative;
+   color: var(--tx);
+   font-weight: 500;
+   font-family: 'Zen Maru Gothic', sans-serif;
+   outline: none;
+}
+
+#filter::after{
+   content: "▼";
+   font-size: .5rem;
+   font-family: 'DM Mono', monospace;
+   color: var(--tx);
+   position: absolute;
+   right: .5rem;
+   top: 2rem;
+   transform: translate(-50%, -50%) scale(200%, 100%);
+   pointer-events: none;
+}
+
+.tag{
+   width: 3rem;
+   height: 3rem;
+   display: flex;
+   align-items: end;
+   justify-content: end;
+}
+
+.tag > div{
+   width: fit-content;
+   height: 100%;
+   writing-mode: vertical-rl;
+   font-size: .7rem;
+   line-height: .7rem;
+   padding-left: .3rem;
+   padding-right: .1rem;
+   font-weight: 500;
+   color: var(--bg);
+   word-break: break-all;
+   background-color: var(--tx);
+   border-radius: .6rem 0 0 .6rem;
+   cursor: default;
+}
+
+.code{
    width: 3rem;
    height: 3rem;
    font-size: .9rem;
-   line-height: 1.1rem;
+   line-height: 1rem;
    display: flex;
    align-items: center;
    justify-content: center;
    border-radius: .4rem;
-}
-
-.code{
    border: solid .1rem var(--tx);
    background-color: var(--bg);
-   box-shadow: #0004 .1rem .1rem .2rem;
+   box-shadow: .1rem .1rem .2rem #0004;
+   cursor: pointer;
+   position: relative;
+}
+
+.code.big{
+   font-size: 1.1rem;
+}
+
+.code > div{
+   position: absolute;
+   top: 100%;
+   left: 50%;
+   border-radius: .7rem;
+   font-size: .7rem;
+   line-height: .8rem;
+   overflow-wrap: break-word;
+   width: 5rem;
+   padding: .3rem .4rem;
+   text-align: left;
+   font-weight: 500;
+   transform: translate(-50%, .25rem);
+   background-color: var(--tx);
+   color: var(--bgdark);
+   opacity: 1;
+   z-index: 2;
+   box-shadow: .1rem .2rem .3rem #0004;
+   transition: opacity .3s ease;
+   cursor: default;
+}
+
+.code > div::after{
+   content: "▲";
+   font-family: 'DM Mono', monospace;
+   position: absolute;
+   top: 0;
+   left: 50%;
+   color: var(--tx);
+   font-size: 1rem;
+   transform: translate(-50%, -.6rem) scale(200%, 100%);
+}
+
+.code > div > a{
+   display: block;
+   font-family: 'DM Mono', monospace;
+   color: inherit;
+   background-color: #0002;
+   padding: .1rem .2rem;
+   border-radius: .2rem;
+   width: fit-content;
+   text-decoration: none;
    cursor: pointer;
 }
 
-.bookmark{
-   font-size: .7rem;
-   line-height: 1rem;
-   font-weight: 500;
+.code > div > a:hover{
+   color: inherit;
+   background-color: #0004;
+}
+
+.code > div > div{
+   width: 100%;
+   height: .8rem;
+   margin-top: .3rem;
+   display: flex;
+   gap: .15rem;
+}
+
+.code > div > div > img{
+   height: .8rem;
+   opacity: 0;
+}
+
+.code.w > div > div > img:nth-child(1){
+   opacity: 1;
+}
+
+.code.m > div > div > img:nth-child(2){
+   opacity: 1;
+}
+
+.code.l > div > div > img:nth-child(3){
+   opacity: 1;
+}
+
+.code.i > div > div > img:nth-child(4){
+   opacity: 1;
+}
+
+.code.a > div > div > img:nth-child(5){
+   opacity: 1;
+}
+
+.code > div > p{
+   margin: 0;
 }
 
 #fade{
@@ -86,8 +244,8 @@ body{
 #key_svg{
    height: 100%;
    pointer-events: all;
-   -webkit-filter: drop-shadow( .1rem .2rem .3rem #444);
-   filter: drop-shadow( .1rem .2rem .3rem #444);
+   -webkit-filter: drop-shadow( .1rem .1rem .2rem #0008);
+   filter: drop-shadow( .1rem .1rem .2rem #0008);
 }
 
 .key{
@@ -114,8 +272,8 @@ body{
    border-radius: .4rem;
    color: var(--bgdark);
    font-weight: 500;
-   font-size: 1rem;
-   line-height: 1.2rem;
+   font-size: .9rem;
+   line-height: .9rem;
    display: flex;
    align-items: center;
    justify-content: center;
