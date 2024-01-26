@@ -39,14 +39,10 @@
          <p>sends nothing.</p><div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"><img src="img/android.svg"></div></div></div>
       <div class="code w l a m i" style="box-shadow: .1rem .1rem .2rem #0004, .1rem .1rem .2rem inset #0004;"><div><a href="https://zmk.dev/docs/behaviors/misc#transparent" target="_blank">&trans</a>
          <p>sends the keycode on the next active layer.</p><div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"><img src="img/android.svg"></div></div></div>
-      <div class="tag">
+       <div class="tag">
          <div>Letter</div>
-      </div>
-      <!--
-         cout << "<div class=\"code w l a m i big\">" << (char)('A'+i) << "<div><a href=\"https://zmk.dev/docs/codes#letters\" target\"=_blank\">&kp " << (char)('A'+i) << "</a>" << endl;
-         cout << "  <p>" << (char)('a'+i) << " and " << (char)('A'+i) << "<div><img src=\"img/windows.svg\"><img src=\"img/macos.svg\"><img src=\"img/linux.svg\"><img src=\"img/ios.svg\"><img src=\"img/android.svg\"></div></div></div>" << endl;
-      -->
-      <div class="code w l a m i big">A<div><a href="https://zmk.dev/docs/codes#letters" target"=_blank">&kp A</a>
+       </div>
+       <div class="code w l a m i big">A<div><a href="https://zmk.dev/docs/codes#letters" target"=_blank">&kp A</a>
          <p>a and A<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"><img src="img/android.svg"></div></div></div>
        <div class="code w l a m i big">B<div><a href="https://zmk.dev/docs/codes#letters" target"=_blank">&kp B</a>
          <p>b and B<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"><img src="img/android.svg"></div></div></div>
@@ -102,10 +98,6 @@
       <div class="tag">
          <div>Number</div>
       </div>
-      <!--
-         cout << "<div class=\"code w l a m i big\">" << i+1 << "<div><a href=\"https://zmk.dev/docs/codes#numbers\" target\"=_blank\">&kp N" << i+1 << "</a>" << endl;
-         cout << "  <p>" << i+1 << " and " << (char)('!'+i) << "<div><img src=\"img/windows.svg\"><img src=\"img/macos.svg\"><img src=\"img/linux.svg\"><img src=\"img/ios.svg\"><img src=\"img/android.svg\"></div></div></div>" << endl;
-      -->
       <div class="code w l a m i big">1<div><a href="https://zmk.dev/docs/codes#numbers" target"=_blank">&kp N1</a>
          <p>1 and !<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"><img src="img/android.svg"></div></div></div>
       <div class="code w l a m i big">2<div><a href="https://zmk.dev/docs/codes#numbers" target"=_blank">&kp N2</a>
@@ -127,10 +119,10 @@
       <div class="code w l a m i big">0<div><a href="https://zmk.dev/docs/codes#numbers" target"=_blank">&kp N0</a>
          <p>0 and )<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"><img src="img/android.svg"></div></div></div>
        
-      <div class="tag">
+       <div class="tag">
          <div>Symbols / Punctuation</div>
-      </div>
-      <div class="code w l a m i big">!<div><a href="https://zmk.dev/docs/codes#symbols--punctuation" target"=_blank">&kp EXCL</a>
+       </div>
+       <div class="code w l a m i big">!<div><a href="https://zmk.dev/docs/codes#symbols--punctuation" target"=_blank">&kp EXCL</a>
          <p>!<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"><img src="img/android.svg"></div></div></div>
        <div class="code w l a m i big">@<div><a href="https://zmk.dev/docs/codes#symbols--punctuation" target"=_blank">&kp AT</a>
          <p>@<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"><img src="img/android.svg"></div></div></div>
@@ -203,66 +195,145 @@
        <div class="code w l a m i big">~<div><a href="https://zmk.dev/docs/codes#symbols--punctuation" target"=_blank">&kp TILDE2</a>
          <p>~<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"><img src="img/android.svg"></div></div></div>
       
-      <div class="tag">
-         <div>Control & Whitespace</div>
-      </div>
-      <div class="code w l a m i big">Escape<div><a href="https://zmk.dev/docs/codes#control--whitespace" target"=_blank">&kp ESC</a>
-         <p>Escape<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"><img src="img/android.svg"></div></div></div>
-       <div class="code w l a m i big">Return<div><a href="https://zmk.dev/docs/codes#control--whitespace" target"=_blank">&kp RET</a>
-         <p>Return(Enter)<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"><img src="img/android.svg"></div></div></div>
-       <div class="code w l a m i big">Space<div><a href="https://zmk.dev/docs/codes#control--whitespace" target"=_blank">&kp SPACE</a>
-         <p>Space<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"><img src="img/android.svg"></div></div></div>
-       <div class="code w l a m i big">Tab<div><a href="https://zmk.dev/docs/codes#control--whitespace" target"=_blank">&kp TAB</a>
-         <p>Tab<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"><img src="img/android.svg"></div></div></div>
-       <div class="code w l a m i big">Back</br>Space<div><a href="https://zmk.dev/docs/codes#control--whitespace" target"=_blank">&kp BSPC</a>
-         <p>Backspace<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"><img src="img/android.svg"></div></div></div>
-       <div class="code w l a m i big">Delete<div><a href="https://zmk.dev/docs/codes#control--whitespace" target"=_blank">&kp DEL</a>
-         <p>Delete<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"><img src="img/android.svg"></div></div></div>
-       <div class="code w l a m i big">Insert<div><a href="https://zmk.dev/docs/codes#control--whitespace" target"=_blank">&kp INS</a>
-         <p>Insert<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"><img src="img/android.svg"></div></div></div>       
+        <div class="tag">
+           <div>Control & Whitespace</div>
+        </div>
+        <div class="code w l a m i big">Escape<div><a href="https://zmk.dev/docs/codes#control--whitespace" target"=_blank">&kp ESC</a>
+           <p>Escape<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"><img src="img/android.svg"></div></div></div>
+        <div class="code w l a m i big">Return<div><a href="https://zmk.dev/docs/codes#control--whitespace" target"=_blank">&kp RET</a>
+           <p>Return(Enter)<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"><img src="img/android.svg"></div></div></div>
+        <div class="code w l a m i big">Space<div><a href="https://zmk.dev/docs/codes#control--whitespace" target"=_blank">&kp SPACE</a>
+           <p>Space<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"><img src="img/android.svg"></div></div></div>
+        <div class="code w l a m i big">Tab<div><a href="https://zmk.dev/docs/codes#control--whitespace" target"=_blank">&kp TAB</a>
+           <p>Tab<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"><img src="img/android.svg"></div></div></div>
+        <div class="code w l a m i big">Back</br>Space<div><a href="https://zmk.dev/docs/codes#control--whitespace" target"=_blank">&kp BSPC</a>
+           <p>Backspace<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"><img src="img/android.svg"></div></div></div>
+        <div class="code w l a m i big">Delete<div><a href="https://zmk.dev/docs/codes#control--whitespace" target"=_blank">&kp DEL</a>
+           <p>Delete<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"><img src="img/android.svg"></div></div></div>
+        <div class="code w l a m i big">Insert<div><a href="https://zmk.dev/docs/codes#control--whitespace" target"=_blank">&kp INS</a>
+           <p>Insert<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"><img src="img/android.svg"></div></div></div>       
 
-      <div class="tag">
-         <div>Navigation</div>
-      </div>
-      <div class="code w l a m i big">Home<div><a href="https://zmk.dev/docs/codes#navigation" target"=_blank">&kp HOME</a>
-        <p>Home<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"><img src="img/android.svg"></div></div></div>
-      <div class="code w l a m i big">End<div><a href="https://zmk.dev/docs/codes#navigation" target"=_blank">&kp END</a>
-        <p>End<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"><img src="img/android.svg"></div></div></div>
-      <div class="code w l a m i big">Page</br>Up<div><a href="https://zmk.dev/docs/codes#navigation" target"=_blank">&kp PG_UP</a>
-        <p>Page Up<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"><img src="img/android.svg"></div></div></div>
-      <div class="code w l a m i big">Page</br>Down<div><a href="https://zmk.dev/docs/codes#navigation" target"=_blank">&kp PG_DN</a>
-        <p>Page Down<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"><img src="img/android.svg"></div></div></div>
-      <div class="code w l a m i big">⬆<div><a href="https://zmk.dev/docs/codes#navigation" target"=_blank">&kp UP</a>
-        <p>⬆<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"><img src="img/android.svg"></div></div></div>
-      <div class="code w l a m i big">⬇<div><a href="https://zmk.dev/docs/codes#navigation" target"=_blank">&kp DOWN</a>
-        <p>⬇<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"><img src="img/android.svg"></div></div></div>
-      <div class="code w l a m i big">⬅<div><a href="https://zmk.dev/docs/codes#navigation" target"=_blank">&kp LEFT</a>
-        <p>⬅<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"><img src="img/android.svg"></div></div></div>
-      <div class="code w l a m i big">⮕<div><a href="https://zmk.dev/docs/codes#navigation" target"=_blank">&kp RIGHT</a>
-        <p>⮕<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"><img src="img/android.svg"></div></div></div>
-      <div class="code w l a m i big">Application<div><a href="https://zmk.dev/docs/codes#navigation" target"=_blank">&kp K_APP</a>
-        <p>Application(ContextMenu)<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"><img src="img/android.svg"></div></div></div>
+        <div class="tag">
+           <div>Navigation</div>
+        </div>
+        <div class="code w l a m i big">Home<div><a href="https://zmk.dev/docs/codes#navigation" target"=_blank">&kp HOME</a>
+          <p>Home<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"><img src="img/android.svg"></div></div></div>
+        <div class="code w l a m i big">End<div><a href="https://zmk.dev/docs/codes#navigation" target"=_blank">&kp END</a>
+          <p>End<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"><img src="img/android.svg"></div></div></div>
+        <div class="code w l a m i big">Page</br>Up<div><a href="https://zmk.dev/docs/codes#navigation" target"=_blank">&kp PG_UP</a>
+          <p>Page Up<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"><img src="img/android.svg"></div></div></div>
+        <div class="code w l a m i big">Page</br>Down<div><a href="https://zmk.dev/docs/codes#navigation" target"=_blank">&kp PG_DN</a>
+          <p>Page Down<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"><img src="img/android.svg"></div></div></div>
+        <div class="code w l a m i big">⬆<div><a href="https://zmk.dev/docs/codes#navigation" target"=_blank">&kp UP</a>
+          <p>⬆<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"><img src="img/android.svg"></div></div></div>
+        <div class="code w l a m i big">⬇<div><a href="https://zmk.dev/docs/codes#navigation" target"=_blank">&kp DOWN</a>
+          <p>⬇<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"><img src="img/android.svg"></div></div></div>
+        <div class="code w l a m i big">⬅<div><a href="https://zmk.dev/docs/codes#navigation" target"=_blank">&kp LEFT</a>
+          <p>⬅<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"><img src="img/android.svg"></div></div></div>
+        <div class="code w l a m i big">⮕<div><a href="https://zmk.dev/docs/codes#navigation" target"=_blank">&kp RIGHT</a>
+          <p>⮕<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"><img src="img/android.svg"></div></div></div>
+        <div class="code w l a m i big">Application<div><a href="https://zmk.dev/docs/codes#navigation" target"=_blank">&kp K_APP</a>
+          <p>Application(ContextMenu)<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"><img src="img/android.svg"></div></div></div>
       
-      <div class="tag">
-         <div>Modifiers</div>
-      </div>
-      <div class="code w l a m i big">Left</br>Shift⇧<div><a href="https://zmk.dev/docs/codes#modifiers" target"=_blank">&kp LSHFT</a>
-         <p>Left Shift⇧<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"><img src="img/android.svg"></div></div></div>
-       <div class="code w l a m i big">Right</br>Shift⇧<div><a href="https://zmk.dev/docs/codes#modifiers" target"=_blank">&kp RSHFT</a>
-         <p>Right Shift⇧<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"><img src="img/android.svg"></div></div></div>
-       <div class="code w l a m i big">Left</br>Control<div><a href="https://zmk.dev/docs/codes#modifiers" target"=_blank">&kp LCTRL</a>
-         <p>Left Control<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"><img src="img/android.svg"></div></div></div>
-       <div class="code w l a m i big">Right</br>Control<div><a href="https://zmk.dev/docs/codes#modifiers" target"=_blank">&kp RCTRL</a>
-         <p>Right Control<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"><img src="img/android.svg"></div></div></div>
-       <div class="code w l a m i big">Left</br>Alt<div><a href="https://zmk.dev/docs/codes#modifiers" target"=_blank">&kp LALT</a>
-         <p>Left Alt<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"><img src="img/android.svg"></div></div></div>
-       <div class="code w l a m i big">Right</br>Alt<div><a href="https://zmk.dev/docs/codes#modifiers" target"=_blank">&kp RALT</a>
-         <p>Right Alt<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"><img src="img/android.svg"></div></div></div>
-       <div class="code w l a m i big">Left</br>GUI<div><a href="https://zmk.dev/docs/codes#modifiers" target"=_blank">&kp LGUI</a>
-         <p>Left GUI(Windows/Command/Meta)<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"><img src="img/android.svg"></div></div></div>
-       <div class="code w l a m i big">Right</br>GUI<div><a href="https://zmk.dev/docs/codes#modifiers" target"=_blank">&kp RGUI</a>
-         <p>Right GUI(Windows/Command/Meta)<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"><img src="img/android.svg"></div></div></div>       
-
+        <div class="tag">
+          <div>Modifiers</div>
+        </div>
+        <div class="code w l a m i big">Left</br>Shift⇧<div><a href="https://zmk.dev/docs/codes#modifiers" target"=_blank">&kp LSHFT</a>
+          <p>Left Shift⇧<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"><img src="img/android.svg"></div></div></div>
+        <div class="code w l a m i big">Right</br>Shift⇧<div><a href="https://zmk.dev/docs/codes#modifiers" target"=_blank">&kp RSHFT</a>
+          <p>Right Shift⇧<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"><img src="img/android.svg"></div></div></div>
+        <div class="code w l a m i big">Left</br>Control<div><a href="https://zmk.dev/docs/codes#modifiers" target"=_blank">&kp LCTRL</a>
+          <p>Left Control<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"><img src="img/android.svg"></div></div></div>
+        <div class="code w l a m i big">Right</br>Control<div><a href="https://zmk.dev/docs/codes#modifiers" target"=_blank">&kp RCTRL</a>
+          <p>Right Control<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"><img src="img/android.svg"></div></div></div>
+        <div class="code w l a m i big">Left</br>Alt<div><a href="https://zmk.dev/docs/codes#modifiers" target"=_blank">&kp LALT</a>
+          <p>Left Alt<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"><img src="img/android.svg"></div></div></div>
+        <div class="code w l a m i big">Right</br>Alt<div><a href="https://zmk.dev/docs/codes#modifiers" target"=_blank">&kp RALT</a>
+          <p>Right Alt<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"><img src="img/android.svg"></div></div></div>
+        <div class="code w l a m i big">Left</br>GUI<div><a href="https://zmk.dev/docs/codes#modifiers" target"=_blank">&kp LGUI</a>
+          <p>Left GUI(Windows/Command/Meta)<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"><img src="img/android.svg"></div></div></div>
+        <div class="code w l a m i big">Right</br>GUI<div><a href="https://zmk.dev/docs/codes#modifiers" target"=_blank">&kp RGUI</a>
+          <p>Right GUI(Windows/Command/Meta)<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"><img src="img/android.svg"></div></div></div>       
+      
+        <div class="tag">
+          <div>Locks</div>
+        </div>
+        <div class="code w l a m i big">Caps</br>Lock<div><a href="https://zmk.dev/docs/codes#locks" target"=_blank">&kp CAPS</a>
+          <p>Caps Lock<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"><img src="img/android.svg"></div></div></div>
+        <div class="code w l a m i big">Scroll</br>Lock<div><a href="https://zmk.dev/docs/codes#locks" target"=_blank">&kp SLCK</a>
+          <p>Scroll Lock<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"><img src="img/android.svg"></div></div></div>
+        <div class="code w l a m i big">Locking</br></br>ScrollLock<div><a href="https://zmk.dev/docs/codes#locks" target"=_blank">&kp LSLCK</a>
+          <p>Locking Scro llLock<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"><img src="img/android.svg"></div></div></div>
+      
+        <div class="tag">
+          <div>F Keys</div>
+        </div>
+        <div class="code w l a m i big">F1<div><a href="https://zmk.dev/docs/codes#f-keys" target"=_blank">&kp F1</a>
+          <p>F1<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"><img src="img/android.svg"></div></div></div>
+        <div class="code w l a m i big">F2<div><a href="https://zmk.dev/docs/codes#f-keys" target"=_blank">&kp F2</a>
+          <p>F2<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"><img src="img/android.svg"></div></div></div>
+        <div class="code w l a m i big">F3<div><a href="https://zmk.dev/docs/codes#f-keys" target"=_blank">&kp F3</a>
+          <p>F3<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"><img src="img/android.svg"></div></div></div>
+        <div class="code w l a m i big">F4<div><a href="https://zmk.dev/docs/codes#f-keys" target"=_blank">&kp F4</a>
+          <p>F4<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"><img src="img/android.svg"></div></div></div>
+        <div class="code w l a m i big">F5<div><a href="https://zmk.dev/docs/codes#f-keys" target"=_blank">&kp F5</a>
+          <p>F5<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"><img src="img/android.svg"></div></div></div>
+        <div class="code w l a m i big">F6<div><a href="https://zmk.dev/docs/codes#f-keys" target"=_blank">&kp F6</a>
+          <p>F6<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"><img src="img/android.svg"></div></div></div>
+        <div class="code w l a m i big">F7<div><a href="https://zmk.dev/docs/codes#f-keys" target"=_blank">&kp F7</a>
+          <p>F7<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"><img src="img/android.svg"></div></div></div>
+        <div class="code w l a m i big">F8<div><a href="https://zmk.dev/docs/codes#f-keys" target"=_blank">&kp F8</a>
+          <p>F8<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"><img src="img/android.svg"></div></div></div>
+        <div class="code w l a m i big">F9<div><a href="https://zmk.dev/docs/codes#f-keys" target"=_blank">&kp F9</a>
+          <p>F9<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"><img src="img/android.svg"></div></div></div>
+        <div class="code w l a m i big">F10<div><a href="https://zmk.dev/docs/codes#f-keys" target"=_blank">&kp F10</a>
+          <p>F10<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"><img src="img/android.svg"></div></div></div>
+        <div class="code w l a m i big">F11<div><a href="https://zmk.dev/docs/codes#f-keys" target"=_blank">&kp F11</a>
+          <p>F11<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"><img src="img/android.svg"></div></div></div>
+        <div class="code w l a m i big">F12<div><a href="https://zmk.dev/docs/codes#f-keys" target"=_blank">&kp F12</a>
+          <p>F12<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"><img src="img/android.svg"></div></div></div>
+        <div class="code w l m i big">F13<div><a href="https://zmk.dev/docs/codes#f-keys" target"=_blank">&kp F13</a>
+          <p>F13<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"></div></div></div>
+        <div class="code w l m i big">F14<div><a href="https://zmk.dev/docs/codes#f-keys" target"=_blank">&kp F14</a>
+          <p>F14<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"></div></div></div>
+        <div class="code w l m i big">F15<div><a href="https://zmk.dev/docs/codes#f-keys" target"=_blank">&kp F15</a>
+          <p>F15<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"></div></div></div>
+        <div class="code w l m i big">F16<div><a href="https://zmk.dev/docs/codes#f-keys" target"=_blank">&kp F16</a>
+          <p>F16<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"></div></div></div>
+        <div class="code w l m i big">F17<div><a href="https://zmk.dev/docs/codes#f-keys" target"=_blank">&kp F17</a>
+          <p>F17<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"></div></div></div>
+        <div class="code w l m i big">F18<div><a href="https://zmk.dev/docs/codes#f-keys" target"=_blank">&kp F18</a>
+          <p>F18<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"></div></div></div>
+        <div class="code w l m i big">F19<div><a href="https://zmk.dev/docs/codes#f-keys" target"=_blank">&kp F19</a>
+          <p>F19<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"></div></div></div>
+        <div class="code w l m i big">F20<div><a href="https://zmk.dev/docs/codes#f-keys" target"=_blank">&kp F20</a>
+          <p>F20<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"></div></div></div>
+        <div class="code w l m i big">F21<div><a href="https://zmk.dev/docs/codes#f-keys" target"=_blank">&kp F21</a>
+          <p>F21<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"></div></div></div>
+        <div class="code w l m i big">F22<div><a href="https://zmk.dev/docs/codes#f-keys" target"=_blank">&kp F22</a>
+          <p>F22<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"></div></div></div>
+        <div class="code w l m i big">F23<div><a href="https://zmk.dev/docs/codes#f-keys" target"=_blank">&kp F23</a>
+          <p>F23<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"></div></div></div>
+        <div class="code w l m i big">F24<div><a href="https://zmk.dev/docs/codes#f-keys" target"=_blank">&kp F24</a>
+          <p>F24<div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"></div></div></div>
+      
+        <div class="tag">
+          <div>International</div>
+        </div>
+        <div class="code l big">ろ<div><a href="https://zmk.dev/docs/codes#international" target"=_blank">&kp INT1</a>
+          <p>ろ(International 1)<div><img src="img/linux.svg"></div></div></div>
+        <div class="code l big">かな<div><a href="https://zmk.dev/docs/codes#international" target"=_blank">&kp INT2</a>
+          <p>かな(International 2)<div><img src="img/linux.svg"></div></div></div>
+        <div class="code l big">¥<div><a href="https://zmk.dev/docs/codes#international" target"=_blank">&kp INT3</a>
+          <p>¥(International 3)<div><img src="img/linux.svg"></div></div></div>
+        <div class="code l big">変換<div><a href="https://zmk.dev/docs/codes#international" target"=_blank">&kp INT4</a>
+          <p>変換(International 4)<div><img src="img/linux.svg"></div></div></div>
+        <div class="code l big">無変換<div><a href="https://zmk.dev/docs/codes#international" target"=_blank">&kp INT5</a>
+          <p>無変換(International 5)<div><img src="img/linux.svg"></div></div></div>
+        <div class="code l big">,<div><a href="https://zmk.dev/docs/codes#international" target"=_blank">&kp INT6</a>
+          <p>,(International 6)<div><img src="img/linux.svg"></div></div></div>
+                        
+          
       <div id="fade"></div>
    </div>
    <div id="lower">
