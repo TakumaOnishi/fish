@@ -157,7 +157,7 @@ body{
    background-color: var(--tx);
    color: var(--bgdark);
    opacity: 0;
-   z-index: 2;
+   z-index: 1;
    box-shadow: .1rem .2rem .3rem #0004;
    transition: opacity .3s ease;
    cursor: default;
@@ -234,6 +234,11 @@ body{
    margin: 0;
 }
 
+#upper_offset{
+   width: 100%;
+   height: 3rem;
+}
+
 #fade{
    width: 100%;
    height: 2rem;
@@ -242,6 +247,7 @@ body{
    position: sticky;
    bottom: -1rem;
    left: 0;
+   z-index: 2;
 }
 
 #lower{
