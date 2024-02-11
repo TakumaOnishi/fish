@@ -5,22 +5,21 @@
 /* 各HTML要素を修飾する */
 body{
    padding: 0;
-   margin: 0;
+   margin: 0 auto;
    display: flex;
    flex-flow: column;
    justify-content: center;
    align-items: center;
-   width: 100vw;
+   width: max(100vh, 50rem);
    min-height: 100vh;
    background-color: #78b2bb;
    color: #ffffff;
    text-align: center;
-   font-size: 1.5rem;
+   font-size: 1rem;
    font-weight: 400;
    font-family: 'Zen Maru Gothic', sans-serif;
 }
 
-#example{
-   display: flex;
-   flex-flow: column;
+img{
+   width: 100%;
 }

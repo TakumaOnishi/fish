@@ -130,6 +130,7 @@ body{
    box-shadow: .1rem .1rem .2rem #0004;
    cursor: pointer;
    position: relative;
+   word-break: break-word;
 }
 
 .code:hover{
@@ -160,10 +161,12 @@ body{
    box-shadow: .1rem .2rem .3rem #0004;
    transition: opacity .3s ease;
    cursor: default;
+   pointer-events: none;
 }
 
 .code:hover > div{
    opacity: 1;
+   pointer-events: all;
 }
 
 .code > div::after{
