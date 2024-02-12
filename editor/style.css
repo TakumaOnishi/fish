@@ -137,10 +137,6 @@ body{
    background-color: #fff3;
 }
 
-.code.big{
-   font-size: 1.1rem;
-}
-
 .code > div{
    position: absolute;
    top: 100%;
@@ -232,6 +228,10 @@ body{
 
 .code > div > p{
    margin: 0;
+}
+
+.big{
+   font-size: 1.1rem;
 }
 
 #upper_offset{
