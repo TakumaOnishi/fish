@@ -112,7 +112,7 @@ body{
    color: var(--bg);
    word-break: break-all;
    background-color: var(--tx);
-   border-radius: .6rem 0 0 .6rem;
+   border-radius: .5rem 0 0 .5rem;
    cursor: default;
 }
 
@@ -185,7 +185,7 @@ body{
    border-radius: .2rem;
    width: fit-content;
    text-decoration: none;
-   cursor: pointer;
+   cursor: help;
 }
 
 .code > div > a:hover{
@@ -236,7 +236,7 @@ body{
 
 #upper_offset{
    width: 100%;
-   height: 3rem;
+   height: 8rem;
 }
 
 #fade{
