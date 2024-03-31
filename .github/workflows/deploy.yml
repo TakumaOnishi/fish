@@ -1,27 +1,26 @@
-name: deploy to remote
+name: deploy to xserver
 
 on:
   push:
     branches:
       - main
- 
+
 jobs:
   deploy:
- 
     runs-on: ubuntu-latest
- 
     steps:
-      - uses: actions/checkout@v1
- 
-      - name: ssh key generate
-        run: echo "$SSH_PRIVATE_KEY" > key && chmod 600 key
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
- 
-      - name: rsync deploy
-        run: rsync -auzrv --delete ./ $SSH_USER@$SSH_HOST:$DEPLOY_PATH --exclude ".git/" --exclude ".github/"  -e "ssh -i key -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -p ${SSH_PORT}"
-        env:
-          SSH_USER: ${{ secrets.SSH_USER }}
-          SSH_HOST: ${{ secrets.SSH_HOST }}
-          DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
-          SSH_PORT: ${{ secrets.SSH_PORT }}
+        - uses: actions/checkout@v2
+        - name: ssh key generate
+          run: echo "$SSH_PRIVATE_KEY" > key && chmod 600 key
+          env:
+            SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+            
+        - name: rsync deployments
+          uses: burnett01/rsync-deployments@5.1
+          with:
+            switches: -avz --delete
+            remote_path: ${{ secrets.REMOTE_PATH }}
+            remote_host: ${{ secrets.REMOTE_HOST }}
+            remote_user: ${{ secrets.REMOTE_USER }}
+            remote_port: ${{ secrets.REMOTE_PORT }}
+            remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
