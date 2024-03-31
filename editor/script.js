@@ -479,7 +479,7 @@ window.addEventListener("DOMContentLoaded", () => { // 読み込みを待って�
    }
 
    function confClick(){
-      alert("開発中：設定画面が出る。mt/ltキー、コンボなどのフレーヴァーやパラメータが設定できる");
+      alert("開発中：設定画面が出る。mt/ltキー、コンボなどのフレーヴァーやパラメータが設定できる。");
    }
 
    function saveClick(){
