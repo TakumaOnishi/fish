@@ -5,11 +5,13 @@
 
 /* 各HTML要素を修飾する */
 :root{
-   --bg: hsl(188, 33%, 60%);
-   --bgdark: hsl(188, 35%, 50%);
+   --bg: hsl(0, 0%, 20%);
+   --bgdark: hsl(0, 0%, 100%);
    --tx: #eee;
    --txweak: #eee8;
    --glow: #fff2;
+   --l1: hsl(188, 55%, 60%);
+   --l2: hsl(332, 80%, 60%);
 }
 
 *{
@@ -205,7 +207,7 @@ body{
    z-index: 9;
    box-shadow: .1rem .2rem .3rem #0004;
    transition: opacity .2s ease;
-   cursor: pointer;
+   cursor: default;
    pointer-events: none;
 }
 
@@ -222,6 +224,7 @@ body{
 
 .code:hover > div, .hint.hover{
    opacity: 1;
+   pointer-events: none;
 }
 
 .hint::after{
@@ -368,19 +371,18 @@ body{
 #left, #right{
    position: relative;
    height: 100%;
-   pointer-events: none;
 }
 
 #left_keys, #right_keys{
    height: 16rem;
    margin: 1rem 0;
+   pointer-events: all;
    filter: drop-shadow( .1rem .2rem .3rem #0006);
 }
 
 .key{
    cursor: pointer;
    transition: opacity .2s ease;
-   pointer-events: all;
 }
 
 .key:hover{
@@ -563,7 +565,7 @@ body{
    height: 2rem;
 }
 
-button{
+.button{
    position: absolute;
    height: 3rem;
    border-radius: 1.5rem;
@@ -579,21 +581,16 @@ button{
    pointer-events: all;
    cursor: pointer;
    z-index: 3;
-   border: none;
 }
 
-button:hover{
+.button:hover{
    background-color: var(--glow);
 }
 
-button:active{
+.button:active{
    box-shadow: -.1rem -.2rem .3rem #cff1, .1rem .2rem .3rem #0001;
    background-color: var(--bg);
    transition: none;
-}
-
-button input{
-   display: none;
 }
 
 #load{
@@ -731,4 +728,22 @@ button input{
 
 .r0, .r1{
    top: 12.8rem;
+}
+
+.left_layer, .right_layer{
+   opacity: 1;
+}
+
+.left_layer:nth-child(2) .legend, .right_layer:nth-child(2) .legend{
+   transform: translate(0, -.5rem);
+}
+
+.left_layer:nth-child(3) .legend, .right_layer:nth-child(3) .legend{
+   transform: translate(-.8rem, .5rem) scale(80%);
+   color: var(--l1);
+}
+
+.left_layer:nth-child(4) .legend, .right_layer:nth-child(4) .legend{
+   transform: translate(.8rem, .5rem) scale(80%);
+   color: var(--l2);
 }
