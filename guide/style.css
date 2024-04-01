@@ -23,4 +23,6 @@ body{
 #example{
    display: flex;
    flex-flow: column;
+   max-width: 40rem;
+   font-size: 1rem;
 }
