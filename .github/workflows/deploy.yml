@@ -19,7 +19,7 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
  
       - name: rsync deploy
-        run: rsync -auzrv --delete ./ $SSH_USER@$SSH_HOST:$DEPLOY_PATH --exclude ".git/" --exclude ".github/"  -e "ssh -i key -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -p ${SSH_PORT}"
+        run: rsync -auzrv --delete ./ $SSH_USER@$SSH_HOST:$DEPLOY_PATH --exclude ".git/" -e "ssh -i key -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -p ${SSH_PORT}"
         env:
           SSH_USER: ${{ secrets.SSH_USER }}
           SSH_HOST: ${{ secrets.SSH_HOST }}
