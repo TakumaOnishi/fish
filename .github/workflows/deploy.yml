@@ -1,27 +1,22 @@
-name: deploy to remote
-
+name: Release to Main Environment
 on:
   push:
     branches:
       - main
- 
+      
 jobs:
-  deploy:
- 
+  job1:
+    name: Deploy
     runs-on: ubuntu-latest
- 
     steps:
-      - uses: actions/checkout@v1
- 
-      - name: ssh key generate
-        run: echo "$SSH_PRIVATE_KEY" > key && chmod 600 key
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
- 
-      - name: rsync deploy
-        run: rsync -auzrv --delete ./ $SSH_USER@$SSH_HOST:$DEPLOY_PATH --exclude ".git/" -e "ssh -i key -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -p ${SSH_PORT}"
-        env:
-          SSH_USER: ${{ secrets.SSH_USER }}
-          SSH_HOST: ${{ secrets.SSH_HOST }}
-          DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
-          SSH_PORT: ${{ secrets.SSH_PORT }}
+      - name: ssh and deploy
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            cd /home/xs481892/o24.works/public_html/
+            git checkout main
+            git pull origin main
