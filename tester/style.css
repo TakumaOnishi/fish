@@ -1,0 +1,67 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap');
+
+:root{
+    --txColor: hsl(0, 0%, 100%);
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    background-color: #333;
+    overflow: hidden;
+}
+
+#input{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 1rem;
+    background-color: transparent;
+    border: 0;
+    resize: none;
+    text-align: left;
+    font-size: 3rem;
+    line-height: 4rem;
+    outline: none;
+    overflow: hidden;
+    overflow-anchor: none;
+    box-shadow: none;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    font-family: 'Zen Maru Gothic', serif;
+    color: var(--txColor);
+}
+
+#input::placeholder {
+    color: var(--txColor);
+    margin: 0;
+    opacity: 0.5;
+}
+
+#imgbox{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#imgbox img{
+    position: absolute;
+    width: 100%;
+    opacity: .5;
+    bottom: 0;
+    left: 0;
+}

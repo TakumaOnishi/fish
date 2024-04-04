@@ -30,8 +30,11 @@ window.addEventListener("DOMContentLoaded", () => { // 読み込みを待って�
    const _combo_hints = document.getElementById("combo_hints");
    const _combo_hint = _combo_hints.children;
 
-   let _grabbing = null
    let editingLayer = true;
+   let _grabbing = null
+   let _swap = null;
+   let _swap_key = null;
+   let _last_shown = null;
 
    _body.addEventListener("click", bodyClick);
    _body.addEventListener("mousemove", bodyMove);
@@ -39,7 +42,7 @@ window.addEventListener("DOMContentLoaded", () => { // 読み込みを待って�
    for (let i = 0; i < _code.length; i++) {
       _code[i].addEventListener("click", codeClick);
    }
-   _add_custom
+   _add_custom.addEventListener("click", addCustom);
    for (let i = 0; i < _key.length; i++) {
       _key[i].addEventListener("click", keyClick);
       _key[i].addEventListener("mouseenter", keyEnter);
@@ -60,6 +63,12 @@ window.addEventListener("DOMContentLoaded", () => { // 読み込みを待って�
    _load.addEventListener("click", ()=>{_load_input.click();});
    _load_input.addEventListener("change", loadInputChange);
    _save.addEventListener("click", saveClick);
+   window.addEventListener('beforeunload', (e) => {
+      const message = 'Are you sure to discard changes and close this tab?';
+      e.preventDefault();
+      e.returnValue = message;
+      return message;
+   })
 
    const ua = window.navigator.userAgent.toLowerCase();
    if (ua.includes("windows nt")) {
@@ -167,10 +176,23 @@ window.addEventListener("DOMContentLoaded", () => { // 読み込みを待って�
       }
    }
 
+   function addCustom(){
+      alert("開発中：リストされていないカスタムキーコードを入力できる。");
+   }
+
    function keyClick(e) {
       const _legend = document.querySelector(".editing .l" + e.target.id.slice(1));
       if (editingLayer) { // layer編集時
          if(_grabbing){
+            if(_swap){
+               if(_legend.querySelector("p.trans")){
+                  _swap_key.classList.add("weak");
+               }else{
+                  _swap_key.classList.remove("weak");
+               }
+               _swap.innerHTML = _legend.innerHTML;
+               _swap.classList.remove("weak");
+            }
             if(_grabbing.querySelector("p.trans")){
                e.target.classList.add("weak");
             }else{
@@ -180,10 +202,24 @@ window.addEventListener("DOMContentLoaded", () => { // 読み込みを待って�
             _legend.querySelector(".hint").classList.add("hover");
             grabbingEnd();
          }else{
+            _swap = _legend;
+            _swap_key = e.target;
+            _grabbing = document.createElement("div");
+            _grabbing.classList.add("grabbing", "swap");
+            _grabbing.innerHTML = _legend.innerHTML;
+            const box = _legend.getBoundingClientRect();
+            _grabbing.style.top = (box.y - e.clientY) + "px";
+            _grabbing.style.left = (box.x - e.clientX) + "px";
+            _grabbing.style.transform = 'translate(' + e.clientX + 'px, ' + e.clientY + 'px)';
+            _body.append(_grabbing);
+            _legend.querySelector(".hint").classList.remove("hover");
+            _legend.classList.add("weak");
+            grabbingStart();
          }
       }else if(_grabbing){ // combo編集時
          e.target.classList.remove("weak");
-         document.querySelector(".combo.editing input").value = _grabbing.querySelector("span.mono").innerHTML.substring(5).replace(/\s|\(/g, "_").replaceAll(/kp_|bt_|out_|mbp_|\)/g, "").toLowerCase();
+         let name = _grabbing.querySelector("span.mono").innerHTML.substring(5).replace(/\s|\(/g, "_").replaceAll(/kp_|bt_|out_|mkp_|\)/g, "").toLowerCase();
+         document.querySelector(".combo.editing input").value = findNewName(name, 1);
          _legend.classList.add("combo_pos");
          const _hint = document.querySelector(".hint.editing");
          _grabbing.querySelector(".hint").classList.add("editing", "hover");
@@ -210,6 +246,17 @@ window.addEventListener("DOMContentLoaded", () => { // 読み込みを待って�
       }
    }
 
+   function findNewName(name, count){
+      let newName = count==1 ? name : name + "_" + count;
+      for(let i=0; i<_combo.length; i++){
+         if(_combo[i].classList.contains("editing")) continue;
+         if(_combo[i].firstChild.value == newName){
+            return findNewName(name, count+1);
+         }
+      }
+      return newName;
+   }
+
    function makeHoldTap(holdP, holdCode, _tap, _to){
       const tap = _tap.querySelector("p").innerHTML.replace("<br>", "");
       _to.querySelector("p").remove();
@@ -231,7 +278,7 @@ window.addEventListener("DOMContentLoaded", () => { // 読み込みを待って�
       const mark = _mod.querySelector("p").dataset.mark;
       const p = _mod.querySelector("p");
       if(p.dataset.close.length <= 1){
-         mod = _mod.querySelector("p").innerHTML.replace("<br>", "");
+         mod = _mod.querySelector("p").innerHTML;
       }else{
          const hintP = _mod.querySelector(".hint p").innerHTML;
          mod = hintP.substring(hintP.indexOf("</span>") + 7);
@@ -249,12 +296,12 @@ window.addEventListener("DOMContentLoaded", () => { // 読み込みを待って�
       const innerCode = _inner.querySelector("span.mono").innerHTML.substring(8); // 必ず"&amp;kp "なので
       const desc = mod + "+" + inner;
       _to.querySelector(".hint").outerHTML = _inner.querySelector(".hint").outerHTML;
-      _to.querySelector(".hint p").innerHTML = "<span class='mono'>&amp;kp " + open + innerCode + close + "</span>" + desc;
+      _to.querySelector(".hint p").innerHTML = "<span class='mono'>&amp;kp " + open + innerCode + close + "</span>" + desc.replace("<br>", "");
    }
 
    function layerClick(e) {
       if(e.target.closest(".layer").classList.contains("editing")) return; // closest()は自身を含む
-      show(e.target);
+      show(e.target.closest(".layer"));
    }
 
    function comboClick(e) {
@@ -269,7 +316,7 @@ window.addEventListener("DOMContentLoaded", () => { // 読み込みを待って�
       _new_layer.classList.add("layer", "editing");
       _new_left.classList.add("left_layer", "editing");
       _new_right.classList.add("right_layer", "editing");
-      _new_layer.innerHTML = "<input type='text' value='" + String(_layer.length) + "_blank'/>";
+      _new_layer.innerHTML = "<div class='layer_index'>" + _layer.length + ".</div><input type='text' value='blank'/>";
       _new_left.innerHTML = "<div class='col c0'><div class='legend l8'><p class='trans'>　</p><div class='hint w l a m i'><p><span class='mono'>&amp;trans</span>transparent; send the keycode of the next active layer</p><div><img src='img/windows.svg'><img src='img/macos.svg'><img src='img/linux.svg'><img src='img/ios.svg'><img src='img/android.svg'></div></div></div></div><div class='col c1'><div class='legend l9'><p class='trans'>　</p><div class='hint w l a m i'><p><span class='mono'>&amp;trans</span>transparent; send the keycode of the next active layer</p><div><img src='img/windows.svg'><img src='img/macos.svg'><img src='img/linux.svg'><img src='img/ios.svg'><img src='img/android.svg'></div></div></div><div class='legend l20'><p class='trans'>　</p><div class='hint w l a m i'><p><span class='mono'>&amp;trans</span>transparent; send the keycode of the next active layer</p><div><img src='img/windows.svg'><img src='img/macos.svg'><img src='img/linux.svg'><img src='img/ios.svg'><img src='img/android.svg'></div></div></div></div><div class='col c2'><div class='legend l0'><p class='trans'>　</p><div class='hint w l a m i'><p><span class='mono'>&amp;trans</span>transparent; send the keycode of the next active layer</p><div><img src='img/windows.svg'><img src='img/macos.svg'><img src='img/linux.svg'><img src='img/ios.svg'><img src='img/android.svg'></div></div></div><div class='legend l10'><p class='trans'>　</p><div class='hint w l a m i'><p><span class='mono'>&amp;trans</span>transparent; send the keycode of the next active layer</p><div><img src='img/windows.svg'><img src='img/macos.svg'><img src='img/linux.svg'><img src='img/ios.svg'><img src='img/android.svg'></div></div></div><div class='legend l21'><p class='trans'>　</p><div class='hint w l a m i'><p><span class='mono'>&amp;trans</span>transparent; send the keycode of the next active layer</p><div><img src='img/windows.svg'><img src='img/macos.svg'><img src='img/linux.svg'><img src='img/ios.svg'><img src='img/android.svg'></div></div></div></div><div class='col c3'><div class='legend l1'><p class='trans'>　</p><div class='hint w l a m i'><p><span class='mono'>&amp;trans</span>transparent; send the keycode of the next active layer</p><div><img src='img/windows.svg'><img src='img/macos.svg'><img src='img/linux.svg'><img src='img/ios.svg'><img src='img/android.svg'></div></div></div><div class='legend l11'><p class='trans'>　</p><div class='hint w l a m i'><p><span class='mono'>&amp;trans</span>transparent; send the keycode of the next active layer</p><div><img src='img/windows.svg'><img src='img/macos.svg'><img src='img/linux.svg'><img src='img/ios.svg'><img src='img/android.svg'></div></div></div><div class='legend l22'><p class='trans'>　</p><div class='hint w l a m i'><p><span class='mono'>&amp;trans</span>transparent; send the keycode of the next active layer</p><div><img src='img/windows.svg'><img src='img/macos.svg'><img src='img/linux.svg'><img src='img/ios.svg'><img src='img/android.svg'></div></div></div></div><div class='col c4'><div class='legend l2'><p class='trans'>　</p><div class='hint w l a m i'><p><span class='mono'>&amp;trans</span>transparent; send the keycode of the next active layer</p><div><img src='img/windows.svg'><img src='img/macos.svg'><img src='img/linux.svg'><img src='img/ios.svg'><img src='img/android.svg'></div></div></div><div class='legend l12'><p class='trans'>　</p><div class='hint w l a m i'><p><span class='mono'>&amp;trans</span>transparent; send the keycode of the next active layer</p><div><img src='img/windows.svg'><img src='img/macos.svg'><img src='img/linux.svg'><img src='img/ios.svg'><img src='img/android.svg'></div></div></div><div class='legend l23'><p class='trans'>　</p><div class='hint w l a m i'><p><span class='mono'>&amp;trans</span>transparent; send the keycode of the next active layer</p><div><img src='img/windows.svg'><img src='img/macos.svg'><img src='img/linux.svg'><img src='img/ios.svg'><img src='img/android.svg'></div></div></div></div><div class='col c5'><div class='legend l3'><p class='trans'>　</p><div class='hint w l a m i'><p><span class='mono'>&amp;trans</span>transparent; send the keycode of the next active layer</p><div><img src='img/windows.svg'><img src='img/macos.svg'><img src='img/linux.svg'><img src='img/ios.svg'><img src='img/android.svg'></div></div></div><div class='legend l13'><p class='trans'>　</p><div class='hint w l a m i'><p><span class='mono'>&amp;trans</span>transparent; send the keycode of the next active layer</p><div><img src='img/windows.svg'><img src='img/macos.svg'><img src='img/linux.svg'><img src='img/ios.svg'><img src='img/android.svg'></div></div></div></div><div class='row r0'><div class='legend l28'><p class='trans'>　</p><div class='hint w l a m i'><p><span class='mono'>&amp;trans</span>transparent; send the keycode of the next active layer</p><div><img src='img/windows.svg'><img src='img/macos.svg'><img src='img/linux.svg'><img src='img/ios.svg'><img src='img/android.svg'></div></div></div><div class='legend l29'><p class='trans'>　</p><div class='hint w l a m i'><p><span class='mono'>&amp;trans</span>transparent; send the keycode of the next active layer</p><div><img src='img/windows.svg'><img src='img/macos.svg'><img src='img/linux.svg'><img src='img/ios.svg'><img src='img/android.svg'></div></div></div></div>";
       _new_right.innerHTML = "<div class='col c6'><div class='legend l4'><p class='trans'>　</p><div class='hint w l a m i'><p><span class='mono'>&amp;trans</span>transparent; send the keycode of the next active layer</p><div><img src='img/windows.svg'><img src='img/macos.svg'><img src='img/linux.svg'><img src='img/ios.svg'><img src='img/android.svg'></div></div></div><div class='legend l14'><p class='trans'>　</p><div class='hint w l a m i'><p><span class='mono'>&amp;trans</span>transparent; send the keycode of the next active layer</p><div><img src='img/windows.svg'><img src='img/macos.svg'><img src='img/linux.svg'><img src='img/ios.svg'><img src='img/android.svg'></div></div></div></div><div class='col c7'><div class='legend l5'><p class='trans'>　</p><div class='hint w l a m i'><p><span class='mono'>&amp;trans</span>transparent; send the keycode of the next active layer</p><div><img src='img/windows.svg'><img src='img/macos.svg'><img src='img/linux.svg'><img src='img/ios.svg'><img src='img/android.svg'></div></div></div><div class='legend l15'><p class='trans'>　</p><div class='hint w l a m i'><p><span class='mono'>&amp;trans</span>transparent; send the keycode of the next active layer</p><div><img src='img/windows.svg'><img src='img/macos.svg'><img src='img/linux.svg'><img src='img/ios.svg'><img src='img/android.svg'></div></div></div><div class='legend l24'><p class='trans'>　</p><div class='hint w l a m i'><p><span class='mono'>&amp;trans</span>transparent; send the keycode of the next active layer</p><div><img src='img/windows.svg'><img src='img/macos.svg'><img src='img/linux.svg'><img src='img/ios.svg'><img src='img/android.svg'></div></div></div></div><div class='col c8'><div class='legend l6'><p class='trans'>　</p><div class='hint w l a m i'><p><span class='mono'>&amp;trans</span>transparent; send the keycode of the next active layer</p><div><img src='img/windows.svg'><img src='img/macos.svg'><img src='img/linux.svg'><img src='img/ios.svg'><img src='img/android.svg'></div></div></div><div class='legend l16'><p class='trans'>　</p><div class='hint w l a m i'><p><span class='mono'>&amp;trans</span>transparent; send the keycode of the next active layer</p><div><img src='img/windows.svg'><img src='img/macos.svg'><img src='img/linux.svg'><img src='img/ios.svg'><img src='img/android.svg'></div></div></div><div class='legend l25'><p class='trans'>　</p><div class='hint w l a m i'><p><span class='mono'>&amp;trans</span>transparent; send the keycode of the next active layer</p><div><img src='img/windows.svg'><img src='img/macos.svg'><img src='img/linux.svg'><img src='img/ios.svg'><img src='img/android.svg'></div></div></div></div><div class='col c9'><div class='legend l7'><p class='trans'>　</p><div class='hint w l a m i'><p><span class='mono'>&amp;trans</span>transparent; send the keycode of the next active layer</p><div><img src='img/windows.svg'><img src='img/macos.svg'><img src='img/linux.svg'><img src='img/ios.svg'><img src='img/android.svg'></div></div></div><div class='legend l17'><p class='trans'>　</p><div class='hint w l a m i'><p><span class='mono'>&amp;trans</span>transparent; send the keycode of the next active layer</p><div><img src='img/windows.svg'><img src='img/macos.svg'><img src='img/linux.svg'><img src='img/ios.svg'><img src='img/android.svg'></div></div></div><div class='legend l26'><p class='trans'>　</p><div class='hint w l a m i'><p><span class='mono'>&amp;trans</span>transparent; send the keycode of the next active layer</p><div><img src='img/windows.svg'><img src='img/macos.svg'><img src='img/linux.svg'><img src='img/ios.svg'><img src='img/android.svg'></div></div></div></div><div class='col ca'><div class='legend l18'><p class='trans'>　</p><div class='hint w l a m i'><p><span class='mono'>&amp;trans</span>transparent; send the keycode of the next active layer</p><div><img src='img/windows.svg'><img src='img/macos.svg'><img src='img/linux.svg'><img src='img/ios.svg'><img src='img/android.svg'></div></div></div><div class='legend l27'><p class='trans'>　</p><div class='hint w l a m i'><p><span class='mono'>&amp;trans</span>transparent; send the keycode of the next active layer</p><div><img src='img/windows.svg'><img src='img/macos.svg'><img src='img/linux.svg'><img src='img/ios.svg'><img src='img/android.svg'></div></div></div></div><div class='col cb'><div class='legend l19'><p class='trans'>　</p><div class='hint w l a m i'><p><span class='mono'>&amp;trans</span>transparent; send the keycode of the next active layer</p><div><img src='img/windows.svg'><img src='img/macos.svg'><img src='img/linux.svg'><img src='img/ios.svg'><img src='img/android.svg'></div></div></div></div><div class='row r1'><div class='legend l30'><p class='trans'>　</p><div class='hint w l a m i'><p><span class='mono'>&amp;trans</span>transparent; send the keycode of the next active layer</p><div><img src='img/windows.svg'><img src='img/macos.svg'><img src='img/linux.svg'><img src='img/ios.svg'><img src='img/android.svg'></div></div></div><div class='legend l31'><p class='trans'>　</p><div class='hint w l a m i'><p><span class='mono'>&amp;trans</span>transparent; send the keycode of the next active layer</p><div><img src='img/windows.svg'><img src='img/macos.svg'><img src='img/linux.svg'><img src='img/ios.svg'><img src='img/android.svg'></div></div></div></div>";
       _layers.append(_new_layer);
@@ -280,8 +327,10 @@ window.addEventListener("DOMContentLoaded", () => { // 読み込みを待って�
       show(_new_layer);
    }
 
-   function removeLayer() {
-      if(!window.confirm('Are you sure to erase this layer?')) return;
+   function removeLayer(ignore) {
+      if(ignore != true){
+         if(!window.confirm('Are you sure to erase this layer?')) return;
+      }
       const _editing = document.querySelector(".layer.editing");
       const i = [].slice.call(_layer).indexOf(_editing);
       show(_layer[Math.abs(i-1)]); // layer[0]を消そうとしてるときはlayer[1]に相続する
@@ -289,6 +338,13 @@ window.addEventListener("DOMContentLoaded", () => { // 読み込みを待って�
       _editing.remove();
       _left_layer[i].remove();
       _right_layer[i].remove();
+      for(let si=i; si<_layer.length; si++){
+         if(si==0){
+            _layer[si].firstChild.remove();
+         }else{
+            _layer[si].firstChild.innerHTML = si + ".";
+         }
+      }
       updateLayerCodes(_layer.length-1);
    }
 
@@ -314,8 +370,10 @@ window.addEventListener("DOMContentLoaded", () => { // 読み込みを待って�
       moveComboHint();
    }
 
-   function removeCombo() {
-      if(!window.confirm('Are you sure to erase this combo?')) return;
+   function removeCombo(ignore) {
+      if(ignore != true){
+         if(!window.confirm('Are you sure to erase this combo?')) return;
+      }
       const _editing = document.querySelector(".combo.editing");
       const i = [].slice.call(_combo).indexOf(_editing);
       if(_combo.length > 1){ // まだcomboが1つ以上残る場合
@@ -379,9 +437,14 @@ window.addEventListener("DOMContentLoaded", () => { // 読み込みを待って�
       _save.classList.remove("weak");
       _grabbing.remove();
       _grabbing = null;
+      if(_swap){
+         _swap.classList.remove("weak");
+         _swap = null;
+         _swap_key = null;
+      }
    }
 
-   function show(target){ // 編集中のlayer/comboを切り替える
+   function show(target, ignore){ // 編集中のlayer/comboを切り替える
       if(editingLayer){
          document.querySelector(".layer.editing").classList.remove("editing");
          document.querySelector(".left_layer.editing").classList.remove("editing");
@@ -433,6 +496,7 @@ window.addEventListener("DOMContentLoaded", () => { // 読み込みを待って�
          }
          editingLayer = false;
       }
+      if(!ignore) _last_shown = target;
    }
 
    function updateLayerCodes(layerCount){
@@ -485,7 +549,7 @@ window.addEventListener("DOMContentLoaded", () => { // 読み込みを待って�
    function saveClick(){
       let t = '// キーに入力を割り当てる\n// 視覚的に編集できるツールは https://o24.works/fish/editor から\n\n\n// 定義を呼んでくる\n#include <behaviors.dtsi>\n#include <dt-bindings/zmk/keys.h>\n#include <dt-bindings/zmk/mouse.h>\n#include <dt-bindings/zmk/bt.h>\n#include <dt-bindings/zmk/outputs.h>\n\n\n// 複合キーの挙動を調整できる\n\n&mt {\n    flavor = "tap-preferred";\n    tapping-term-ms = <200>;\n    quick-tap-ms = <200>;\n};\n\n&lt {\n    flavor = "balanced";\n    tapping-term-ms = <200>;\n    quick-tap-ms = <200>;\n};\n\n&sk {\n    release-after-ms = <1000>;\n};\n\n&sl {\n    release-after-ms = <1000>;\n};\n\n\n/ {\n    // 独自の入力を定義できる（上級者向け）\n\n    behaviors {\n    };\n\n    macros {\n    };\n\n\n    // 複数キーの同時押しに特別の入力を設定できる\n    // キー番号早見表：\n    //       0  1  2  3     4  5  6  7\n    // 8  9 10 11 12 13    14 15 16 17 18 19\n    //   20 21 22 23          24 25 26 27\n    //            28 29    30 31\n\n    combos {\n        compatible = "zmk,combos";\n        timeout-ms = <100>;';
       for(let i=0; i<_combo.length; i++){
-         show(_combo[i]);
+         show(_combo[i], true);
          let pos = "";
          for(let ki=0; ki<32; ki++){
             if(document.querySelector(".editing .l"+ki).classList.contains("combo_pos")){
@@ -496,7 +560,7 @@ window.addEventListener("DOMContentLoaded", () => { // 読み込みを待って�
       }
       t += '\n    };\n    \n\n    // キーを割り当てる\n    // 型（&...）は https://zmk.dev/docs/behaviors/... を参照\n    // キーコードは https://zmk.dev/docs/codes/... を参照\n\n    keymap {\n        compatible = "zmk,keymap";';
       for(let i=0; i<_layer.length; i++){
-         show(_layer[i]);
+         show(_layer[i], true);
          t += "\n\n        layer_" + _layer[i].firstChild.value + " {\n            bindings = <\n                        ";
          let debt = 0;
          for(let ki=0; ki<32; ki++){
@@ -528,12 +592,20 @@ window.addEventListener("DOMContentLoaded", () => { // 読み込みを待って�
       t += "\n    };\n};";
       _save.firstChild.href = window.URL.createObjectURL(new Blob([t], {type: 'text/plain'}));
       _save.firstChild.click();
-      console.log(t);
+      show(_last_shown);
    }
 
    async function loadInputChange(e){
       let file = e.currentTarget.files[0];
       if (!file) return;
+      for(let i=_layer.length-1; i>0; i--){
+         show(_layer[i]);
+         removeLayer(true);
+      }
+      for(let i=_combo.length-1; i>=0; i--){
+         show(_combo[i]);
+         removeCombo(true);
+      }
       let tx = await fetchAsText(file);
       while(tx.includes("//")){ // コメントを削除
          let start = tx.indexOf("//");
@@ -545,7 +617,7 @@ window.addEventListener("DOMContentLoaded", () => { // 読み込みを待って�
       for(let i=0; i<999; i++){ // レイヤー
          if(i > 0) addLayer();
          const name = t.substring(s, t.indexOf("{", s));
-         _layer[i].firstChild.value = name.substring(0, 6)=="layer_" ? name.substring(6) : name ;
+         _layer[i].lastChild.value = name.substring(0, 6)=="layer_" ? name.substring(6) : name ;
          let ks = t.indexOf("&", s) + 1;
          let ke = t.indexOf("&", ks);
          for(let ki=0; ki<32; ki++){ // キー
@@ -560,7 +632,7 @@ window.addEventListener("DOMContentLoaded", () => { // 読み込みを待って�
       }
       if(t.includes("combos{")){ // コンボ
          s = t.indexOf("combos{") + 7;
-         sx = tx.indexOf("combos");
+         sx = tx.indexOf("zmk,combos"); // 空白文字を抜いてない方のインデックス
          for(let i=0; i<999; i++){
             let ss = t.indexOf("{", s);
             if(t.indexOf("}", s) < ss || ss == -1) break; // １個もなくても大丈夫
@@ -568,7 +640,7 @@ window.addEventListener("DOMContentLoaded", () => { // 読み込みを待って�
             const name = t.substring(t.lastIndexOf(";", ss) + 1, ss);
             _combo[i].firstChild.value = name.substring(0, 6)=="combo_" ? name.substring(6) : name ;
             // bindings
-            const bs = t.indexOf("<", (t.indexOf("bindings", ss)))+2;
+            const bs = t.indexOf("<", (t.indexOf("bindings", ss))) + 2;
             const code = t.substring(bs, t.indexOf(">", bs));
             const _temp = document.createElement("div");
             _temp.innerHTML = _code[0].innerHTML;
@@ -589,7 +661,7 @@ window.addEventListener("DOMContentLoaded", () => { // 読み込みを待って�
             _temp.remove();
             moveComboHint();
             s = t.indexOf("};", ss) + 2;
-            sx = tx.indexOf("}", sx);
+            sx = tx.indexOf("}", sx) + 1;
          }
       }
       updateOS();
@@ -607,8 +679,8 @@ window.addEventListener("DOMContentLoaded", () => { // 読み込みを待って�
    };
 
    function loadKey(code, _legend){
-      if(code.substring(0,2) == "mt"){
-         let holdP, holdCode, _tap;
+      if(code.substring(0,2) == "mt"){ // mod-tap
+         let holdP, holdCode;
          if(code.substring(2,7)=="LSHFT" || code.substring(2,8)=="LSHIFT" || code.substring(2,12)=="LEFT_SHIFT"){
             holdP = "Shift";
             holdCode = "LSHFT";
@@ -634,44 +706,72 @@ window.addEventListener("DOMContentLoaded", () => { // 読み込みを待って�
             holdP = 'R<span class="os w">Win</span><span class="os l a">GUI</span><span class="os m i">Cmd</span>';
             holdCode = "RGUI";
          }
-         const tapCode = "kp" + code.substring(holdCode.length + 2);
-         for(let ci=0; ci<_code.length; ci++){
-            const names = _code[ci].dataset.names.split(" ");
-            for(let ni=0; ni<names.length; ni++){
-               if(names[ni] == tapCode){
-                  _tap = _code[ci];
-                  makeHoldTap(holdP, holdCode, _tap, _legend);
-                  return;
-               }
-            }
+         const match = findKey("kp" + code.substring(holdCode.length + 2));
+         if(match){
+            makeHoldTap(holdP, holdCode, match, _legend);
+            return;
          }
-      }else if(code.substring(0,2) == "lt"){
+      }else if(code.substring(0,2) == "lt"){ // layer-tap
          const holdCode = code.substring(2,code.search(/[A-Z]/));
-         const tapCode = "kp" + code.substring(code.search(/[A-Z]/));
-         let _tap;
-         for(let ci=0; ci<_code.length; ci++){
-            const names = _code[ci].dataset.names.split(" ");
-            for(let ni=0; ni<names.length; ni++){
-               if(names[ni] == tapCode){
-                  _tap = _code[ci];
-                  makeHoldTap("L"+holdCode, holdCode, _tap, _legend);
-                  return;
-               }
+         const match = findKey("kp" + code.substring(code.search(/[A-Z]/)));
+         if(match){
+            makeHoldTap("L"+holdCode, holdCode, match, _legend);
+            return;
+         }
+      }else if(code.includes("(")){ // moded kp
+         code = code.substring(0, code.search(/[A-Z]/)) + " " + code.substring(code.search(/[A-Z]/));
+         let dt = "";
+         let lt = "";
+         for(let i=0; i<code.match(/\(/g).length; i++){
+            if(code.charAt(3*i+3) == "R") dt += "R";
+            switch(code.charAt(3*i+4)){
+               case "S":
+                  dt += "Shift+";
+                  lt += "⇧";
+                  break;
+               case "C":
+                  dt += "Ctrl+";
+                  lt += "⌃";
+                  break;
+               case "G":
+                  dt += '<span class="os w">Win</span><span class="os l a">GUI</span><span class="os m i">Cmd</span>+';
+                  lt += "⌘";
+                  break;
+               case "A":
+                  dt += '<span class="os w l a">Alt</span><span class="os m i">Opt</span>+';
+                  lt += "⌥";
+                  break;
             }
          }
-      }else if(code.includes("(")){
-         _legend.innerHTML = '<p>'+code+'</p><div class="hint"><p><span class="mono">&amp;'+code+'</span>unlisted keycode</p></div>';
-      }else{
-         for(let ci=0; ci<_code.length; ci++){
-            const names = _code[ci].dataset.names.split(" ");
-            for(let ni=0; ni<names.length; ni++){
-               if(names[ni] == code){
-                  _legend.innerHTML = _code[ci].innerHTML;
-                  return;
-               }
+         const match = findKey("kp" + code.substring(code.lastIndexOf("(")+1, code.indexOf(")")));
+         if(match){
+            const ml = match.firstChild.innerHTML;
+            _legend.innerHTML = match.innerHTML;
+            _legend.firstChild.innerHTML = lt + ml;
+            _legend.firstChild.classList.remove("big");
+            _legend.querySelector(".hint p").innerHTML = '<span class="mono">&amp;' + code + '</span>' + dt + ml;
+            return;
+         }
+      }else{ // single key
+         const match = findKey(code);
+         if(match){
+            _legend.innerHTML = match.innerHTML;
+            return;
+         }
+      } // unlisted
+      code = code.substring(0, code.search(/[A-Z]/)) + " " + code.substring(code.search(/[A-Z]/));
+      _legend.innerHTML = '<p>'+code+'</p><div class="hint"><p><span class="mono">&amp;'+code+'</span>unlisted keycode</p></div>';
+   }
+
+   function findKey(code){
+      for(let ci=0; ci<_code.length; ci++){
+         const names = _code[ci].dataset.names.split(" ");
+         for(let ni=0; ni<names.length; ni++){
+            if(names[ni] == code){
+               return _code[ci];
             }
          }
-         _legend.innerHTML = '<p>'+code+'</p><div class="hint"><p><span class="mono">&amp;'+code+'</span>unlisted keycode</p></div>';
       }
+      return null;
    }
 });

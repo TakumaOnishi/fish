@@ -15,76 +15,94 @@
    <meta name="viewport" content="width=device-width,initial-scale=1"/>
    <link rel="icon" type="image/png" href="../favicon.png">
    <link rel="stylesheet" href="style.css?1">
+   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,250..400,0,0"/>
    <script src="script.js?1"></script>
 </head>
 
 <body>
-   <h1>ユーザーガイド</h1>
-   <a href="../index.html">トップページ</a>
-   <a href="../editor/index.html">キーマップ書き換えツール</a>
-   <div id="example">
-      <h2>電源を入れる</h2>
-      <p>〈画像〉<br>
-      二匹を向かい合うように置き、それぞれの下アゴの陰にある灰色の電源スイッチを上に切り替えます。<br>
-      〈画像〉<br>
-      接続したいPCなどでBluetooth管理画面を開き、「Fish Keyboard」が表示されたら接続します。<br>
-      適当なキーを押し、PCに入力が通じているのを確認してください。</p>
-
-      <p>ℹ️接続できないときは<br>
-         以下のような原因が考えられます。<br>
-         ・バッテリーの残量が少ない場合<br>
-         次節の手順で各機を充電してください。<br>
-         ・ファームウェアに問題がある場合<br>
-         次々節の手順で両機のファームウェアを修正・更新してください。<br>
-         ・接続機器の登録数がいっぱいの場合<br>
-         &bt BT_CLEARが割り当てられたキーを押下し、不要なペアリングを解放してください。<br>
-         ・PC側に問題がある場合<br>
-         他のBluetooth機器にも接続できないことを確認し、調査・対処してください。<br>
-         ・いずれの可能性も排除された場合<br>
-         接触不良かもしれません。状況や試したことまとめてDiscordに投稿してください。</p>
-
-
-      <h2>充電する</h2>
-
-      <p>〈画像〉<br>
-      USB Type-C端子のケーブル（別売り）を用意し、電源スイッチを入れた状態のおさかなをPCと有線接続してください。<br>
-      〈画像〉<br>
-      充電中は、USB差し込み口付近に黄緑色のLEDが点ります。<br>
-<br>
-      USB接続と電源スイッチのオン／オフによって、おさかなは以下のように動作します。<br>
-      ・USB接続がなく、電源スイッチがオフの場合<br>
-      動作しません。長時間使用しないときはこの状態にしてください。<br>
-      ・USB接続がなく、電源スイッチがオンの場合<br>
-      バッテリー電源で動作し、Bluetoothで入力します。通常はこの状態で使用してください。<br>
-      ・USB接続があり、電源スイッチがオフの場合<br>
-      PC電源で動作します。USBを通して入力しますが、&out類のキーで切り替えることもできます。充電はされません。<br>
-      ・USB接続があり、電源スイッチがオンの場合<br>
-      バッテリーを充電しながら動作します。USBを通して入力しますが、&out類のキーで切り替えることもできます。<br>
-      なお、子機はいかなる場合でも親機にBluetoothで入力を発信します。</p>
-
-      <p>ℹ️親機と子機
-      〈画像〉<br>
-      おさかなキーボードには親機と子機があり、まず子機が親機に入力を伝え、それを合わせた入力を親機がPCに伝えます。<br>
-      このため、親機のみ電源を入れて使うことはできますが、逆はできません。左手デヴァイスとしての使用に配慮し、出荷時は左手側を親機に設定しています。<br>
-      また、同じ理由から、子機の充電は親機の４倍ほど長持ちします。<br>
-      〈画像〉<br>
-      一部のPCから確認できる充電残量は親機のもので、子機の充電残量を確認する方法はありません。勘で充電してください。</p>
-
-
-      <h2>キーマップを変える</h2>
-      <p>購入時のキーマップは以下のようになっています。<br>
-<br>
-      これは、以下の手順で自由に書き換えることができます。<br>
-      1. Githubのアカウントを用意する。<br>
-      2. <a href="https://github.com/TakumaOnishi/zmk-config-fish" target="_blank">リポジトリ</a>をフォークする。<br>
-      3. <a href="../editor/index.html">キーマップ書き換えツール</a>でfish.keymapを生成するか、テキストエディタで直接編集する<br>
-      4. リポジトリのファイルと差し替えて、actionsからfirmwareをダウンロードする。<br>
-      5. おさかなの両機の電源を切った状態で、片方だけをPCとUSB接続し、リセットボタンを素早く２回押す。<br>
-      6. XIAOが外部ストレージとして表示されるので、左手機ならleft.uf2、右手機ならright.uf2をドラッグ＆ドロップする。<br>
-      7. 読み込まれたら自動で消えるので、反対側も同様に行う。<br>
-      </p>
+   <div id="outdex">
+      <a href="../index.html">sales</a>
+      <div>guide</div>
+      <a href="../editor/index.html">editor</a>
+      <a href="../tester/index.html">tester</a>
    </div>
-   
+   <div id="content">
+      <h1>ユーザーガイド</h1>
+
+         <h2 id="power">電源を入れる</h2>
+         <img src="img/sample.webp">
+         <p>二匹を向かい合うように置き、それぞれの下アゴの陰にある灰色の電源スイッチを上に切り替えます。</p>
+         <img src="img/sample.webp">
+         <p>接続したいPCなどでBluetooth管理画面を開き、「Fish Keyboard」が表示されたら接続します。適当なキーを押して、入力が通っているか確認してください。</p>
+
+         <div class="info">
+            <h3><span class="material-symbols-rounded" style="font-size: 1.5rem;">info</span>接続できないときは</h3>
+            <p>以下のような原因が考えられます。<br>
+               ・ほかのホストに接続中のとき<br>
+               BT_SEL（空いているプロファイル番号）が割り当てられたキーを押下し、新しいプロファイルとのペアリングモードに入れてください。プロファイルがいっぱいの場合は、BT_CLEARが割り当てられたキーを押下し、不要なペアリングを解放してください。<br>
+               ・バッテリーの残量が少ないとき<br>
+               <a href="#charge">充電する</a>の手順で各機を充電してください。<br>
+               ・ファームウェアに問題がある場合<br>
+               <a href="#remap">キーマップを変える</a>の手順で両機のファームウェアを修正・更新してください。<br>
+               ・PC側に問題がある場合<br>
+               他のBluetooth機器にも接続できないことを確認し、調査・対処してください。<br>
+               ・いずれの可能性も排除された場合<br>
+               接触不良かもしれません。状況や試したことまとめてDiscordに投稿してください。</p>
+         </div>
+
+         <h2 id="charge">充電する</h2>
+         <img src="img/sample.webp">
+         <p>USB Type-C端子のケーブル（別売り）を用意し、電源スイッチを入れたおさかなとPCを有線接続してください。</p>
+         <img src="img/sample.webp">
+         <p>うまく充電できていれば、口の横が緑色に光ります。<br>
+            ちなみに、USB接続と電源スイッチのオン／オフによって、おさかなは以下のように動作します。</p>
+         <table>
+            <tr>
+               <td class="noborder"></td>
+               <td>USB接続あり</td>
+               <td>USB接続なし</td>
+            </tr>
+            <tr>
+               <td>電源<br>オン</td>
+               <td>USBから取電し、バッテリーを充電しながら動作します。親機ならUSBで入力を送信しますが、&outキーでBlueTooth発信にも切り替えられます。</td>
+               <td>バッテリー電源で動作し、Bluetoothで入力を発信します。通常はこの状態で使用してください。</td>
+            </tr>
+            <tr>
+               <td>電源<br>オフ</td>
+               <td>USB電源で動作し、入力もUSBで送信します。ただし、子機はいかなる場合でもBluetoothで親機に入力を発信します。</td>
+               <td>動作しません。長時間使用しないときはこの状態にしてください。</td>
+            </tr>
+         </table>
+         <p></p>
+
+         <div class="info">
+            <h3><span class="material-symbols-rounded" style="font-size: 1.5rem;">info</span>親機と子機</h3>
+            <img src="img/sample.webp">
+            <p>おさかなキーボードには親機と子機があり、まず子機が親機に入力を伝え、それを合わせた入力を親機がPCに伝えます。<br>
+               このため、親機のみ電源を入れて使うことはできますが、逆はできません。左手デヴァイスとしての使用に配慮し、出荷時は左手側を親機に設定しています。<br>
+               また同じ理由から、子機は親機の４倍ほど充電が長持ちします。</p>
+            <img src="img/sample.webp">
+            <p>一部のPCから確認できる充電残量は親機のもので、子機の充電残量を確認する方法はありません。勘で充電してください。</p>
+         </div>
+
+
+         <h2 id="remap">キーマップを変える</h2>
+         <p>購入時のキーマップは以下のようになっています。</p>
+            <img src="img/sample.webp">
+         <p>これは、以下の手順で自由に書き換えることができます。<br>
+            1. Githubのアカウントを用意する。<br>
+            2. <a href="https://github.com/TakumaOnishi/zmk-config-fish" target="_blank">リポジトリ</a>をフォークする。<br>
+            3. <a href="../editor/index.html">キーマップエディター</a>でfish.keymapを生成するか、テキストエディターで直接編集する<br>
+            4. リポジトリのファイルと差し替えて、actionsからfirmwareをダウンロードする。<br>
+            5. おさかなの両機の電源を切った状態で、片方だけをPCとUSB接続し、リセットボタンを素早く２回押す。<br>
+            6. XIAOが外部ストレージとして表示されるので、左手機ならleft.uf2、右手機ならright.uf2をドラッグ＆ドロップする。<br>
+            7. 読み込まれたら自動で消えるので、反対側も同様に行う。</p>
+   </div>
+   <div id="index">
+      <a href="#power">電源を入れる</a>
+      <a href="#charge">充電する</a>
+      <a href="#remap">キーマップを変える</a>
+   </div>
 </body>
 
 </html>

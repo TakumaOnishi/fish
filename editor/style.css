@@ -164,6 +164,17 @@ body{
    animation: blink .6s ease-in-out infinite alternate;
 }
 
+.grabbing .hint{
+   display: none;
+}
+
+.grabbing.swap{
+   border-radius: 50%;
+   background-color: var(--tx);
+   color: var(--bgdark);
+   border: none;
+}
+
 @keyframes blink{
    0% {opacity: 0.4;}
    100% {opacity: 1;}
@@ -513,6 +524,7 @@ body{
 }
 
 .layer, .combo{
+   position: relative;
    width: 6rem;
    padding: 0 .3rem .2rem;
    height: 1.4rem;
@@ -556,6 +568,13 @@ body{
 .layer.editing input, .combo.editing input{
    pointer-events: all;
    cursor: text;
+}
+
+.layer_index{
+   position: absolute;
+   left: .4rem;
+   top: .1rem;
+   height: 100%;
 }
 
 #lower_offset{
