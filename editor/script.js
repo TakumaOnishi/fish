@@ -2,12 +2,14 @@
 window.addEventListener("DOMContentLoaded", () => { // 読み込みを待って処理を始める
 
    const _body = document.body;
+   const _upper = document.getElementById("upper");
+   const _lower = document.getElementById("lower");
    const _filter = document.getElementById("filter");
    const _select_os = document.getElementById("select_os"); // HTML要素を取得する
    const _os = document.getElementsByClassName("os");
    const _tag = document.getElementsByClassName("tag");
    const _code = document.getElementsByClassName("code");
-   const _add_custom = document.getElementById("add_custom");
+   const _make_custom = document.getElementById("make_custom");
    const _help = document.getElementById("help");
    const _conf = document.getElementById("conf");
    const _key = document.getElementsByClassName("key");
@@ -29,6 +31,8 @@ window.addEventListener("DOMContentLoaded", () => { // 読み込みを待って�
    const _save = document.getElementById("save");
    const _combo_hints = document.getElementById("combo_hints");
    const _combo_hint = _combo_hints.children;
+   const _custom_input = document.getElementById("custom_input");
+   const _grab_custom = document.getElementById("grab_custom");
 
    let editingLayer = true;
    let _grabbing = null
@@ -36,54 +40,58 @@ window.addEventListener("DOMContentLoaded", () => { // 読み込みを待って�
    let _swap_key = null;
    let _last_shown = null;
 
-   _body.addEventListener("click", bodyClick);
-   _body.addEventListener("mousemove", bodyMove);
-   _select_os.addEventListener("change", updateOS);
-   for (let i = 0; i < _code.length; i++) {
-      _code[i].addEventListener("click", codeClick);
-   }
-   _add_custom.addEventListener("click", addCustom);
-   for (let i = 0; i < _key.length; i++) {
-      _key[i].addEventListener("click", keyClick);
-      _key[i].addEventListener("mouseenter", keyEnter);
-      _key[i].addEventListener("mouseleave", keyLeave);
-   }
-   for (let i = 0; i < _layer.length; i++) {
-      _layer[i].addEventListener("click", layerClick);
-   }
-   for (let i = 0; i < _combo.length; i++) {
-      _combo[i].addEventListener("click", comboClick);
-   }
-   _remove_layer.addEventListener("click", removeLayer);
-   document.getElementById("add_layer").addEventListener("click", addLayer);
-   _remove_combo.addEventListener("click", removeCombo);
-   document.getElementById("add_combo").addEventListener("click", addCombo);
-   _help.addEventListener("click", helpClick);
-   _conf.addEventListener("click", confClick);
-   _load.addEventListener("click", ()=>{_load_input.click();});
-   _load_input.addEventListener("change", loadInputChange);
-   _save.addEventListener("click", saveClick);
-   window.addEventListener('beforeunload', (e) => {
-      const message = 'Are you sure to discard changes and close this tab?';
-      e.preventDefault();
-      e.returnValue = message;
-      return message;
-   })
+   initialize();
 
-   const ua = window.navigator.userAgent.toLowerCase();
-   if (ua.includes("windows nt")) {
-      _select_os.value = "w";
-   } else if (ua.includes("android")) {
-      _select_os.value = "a";
-   } else if (ua.includes("iphone") || ua.includes("ipad")) {
-      _select_os.value = "i";
-   } else if (ua.includes("mac os x")) {
-      _select_os.value = "m";
-   } else {
-      _select_os.value = "l";
-   }
 
-   updateOS();
+   function initialize(){
+      const ua = window.navigator.userAgent.toLowerCase();
+      if (ua.includes("windows nt")) {
+         _select_os.value = "w";
+      } else if (ua.includes("android")) {
+         _select_os.value = "a";
+      } else if (ua.includes("iphone") || ua.includes("ipad")) {
+         _select_os.value = "i";
+      } else if (ua.includes("mac os x")) {
+         _select_os.value = "m";
+      } else {
+         _select_os.value = "l";
+      }
+      _body.addEventListener("click", bodyClick);
+      _body.addEventListener("mousemove", bodyMove);
+      _select_os.addEventListener("change", updateOS);
+      for (let i = 0; i < _code.length; i++) {
+         _code[i].addEventListener("click", codeClick);
+      }
+      _make_custom.addEventListener("click", makeCustom);
+      _grab_custom.addEventListener("click", grabCustom);
+      for (let i = 0; i < _key.length; i++) {
+         _key[i].addEventListener("click", keyClick);
+         _key[i].addEventListener("mouseenter", keyEnter);
+         _key[i].addEventListener("mouseleave", keyLeave);
+      }
+      for (let i = 0; i < _layer.length; i++) {
+         _layer[i].addEventListener("click", layerClick);
+      }
+      for (let i = 0; i < _combo.length; i++) {
+         _combo[i].addEventListener("click", comboClick);
+      }
+      _remove_layer.addEventListener("click", removeLayer);
+      document.getElementById("add_layer").addEventListener("click", addLayer);
+      _remove_combo.addEventListener("click", removeCombo);
+      document.getElementById("add_combo").addEventListener("click", addCombo);
+      _help.addEventListener("click", helpClick);
+      _conf.addEventListener("click", confClick);
+      _load.addEventListener("click", ()=>{_load_input.click();});
+      _load_input.addEventListener("change", loadInputChange);
+      _save.addEventListener("click", saveClick);
+      window.addEventListener('beforeunload', (e) => {
+         const message = 'Are you sure to discard changes and close this tab?';
+         e.preventDefault();
+         e.returnValue = message;
+         return message;
+      });
+      updateOS();
+   }
 
    function updateOS() {
       let s = _select_os.value;
@@ -141,8 +149,15 @@ window.addEventListener("DOMContentLoaded", () => { // 読み込みを待って�
    }
 
    function bodyClick(e) { // つかみ中に関係ないとこクリックしたらキャンセル
+      if(!_custom_input.classList.contains("disabled") && !e.target.closest("#make_custom, #custom_input")){
+         _custom_input.classList.add("disabled");
+         _upper.classList.remove("weak");
+         _lower.classList.remove("weak");
+         _help.classList.remove("weak");
+         _conf.classList.remove("weak");
+      }
       if (!_grabbing) return;
-      if (e.target.closest(".code, .key, #map")) return;
+      if (e.target.closest(".code, .key, #map, #grab_custom")) return;
       grabbingEnd();
    }
 
@@ -176,8 +191,35 @@ window.addEventListener("DOMContentLoaded", () => { // 読み込みを待って�
       }
    }
 
-   function addCustom(){
-      alert("開発中：リストされていないカスタムキーコードを入力できる。");
+   function makeCustom(){
+      _upper.classList.add("weak");
+      _lower.classList.add("weak");
+      _help.classList.add("weak");
+      _conf.classList.add("weak");
+      _custom_input.classList.remove("disabled");
+      _custom_input.firstElementChild.focus();
+   }
+
+   function grabCustom(e){
+      const code = _custom_input.firstElementChild.value;
+      if(code == ""){
+         alert("keycode is requied");
+         return;
+      }
+      _grabbing = document.createElement("div");
+      _grabbing.classList.add("grabbing");
+      _grabbing.innerHTML = '<p>'+code.replace("&","").toLowerCase()+'</p><div class="hint"><p><span class="mono">'+code+'</span>custom keycode</p></div>';
+      const box = e.target.getBoundingClientRect();
+      _grabbing.style.top = (box.y - e.clientY) + "px";
+      _grabbing.style.left = (box.x - e.clientX) + "px";
+      _grabbing.style.transform = 'translate(' + e.clientX + 'px, ' + e.clientY + 'px)';
+      _body.append(_grabbing);
+      grabbingStart();
+      _custom_input.classList.add("disabled");
+      _upper.classList.remove("weak");
+      _lower.classList.remove("weak");
+      _help.classList.remove("weak");
+      _conf.classList.remove("weak");
    }
 
    function keyClick(e) {
@@ -411,7 +453,7 @@ window.addEventListener("DOMContentLoaded", () => { // 読み込みを待って�
             _code[i].classList.add("weak");
          }
       }
-      _add_custom.classList.add("weak");
+      _make_custom.classList.add("weak");
       _help.classList.add("weak");
       _conf.classList.add("weak");
       _header[0].classList.add("weak");
@@ -428,7 +470,7 @@ window.addEventListener("DOMContentLoaded", () => { // 読み込みを待って�
       for(let i=0; i<_code.length; i++){
          _code[i].classList.remove("weak");
       }
-      _add_custom.classList.remove("weak");
+      _make_custom.classList.remove("weak");
       _help.classList.remove("weak");
       _conf.classList.remove("weak");
       _header[0].classList.remove("weak");
@@ -760,7 +802,7 @@ window.addEventListener("DOMContentLoaded", () => { // 読み込みを待って�
          }
       } // unlisted
       code = code.substring(0, code.search(/[A-Z]/)) + " " + code.substring(code.search(/[A-Z]/));
-      _legend.innerHTML = '<p>'+code+'</p><div class="hint"><p><span class="mono">&amp;'+code+'</span>unlisted keycode</p></div>';
+      _legend.innerHTML = '<p>'+code+'</p><div class="hint"><p><span class="mono">&amp;'+code+'</span>custom keycode</p></div>';
    }
 
    function findKey(code){

@@ -11,10 +11,5 @@ window.addEventListener('DOMContentLoaded', () => { // 読み込みを待って�
    });
 
    function updateTextColor(){ // CSSの内容を書き換える
-      if(textIsWhite){
-         _example.style.color = "#ffffff"
-      }else{
-         _example.style.color = "#000000"
-      }
    }
 });

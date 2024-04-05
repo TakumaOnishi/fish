@@ -254,7 +254,7 @@ body{
    text-shadow: .1rem .2rem .2rem #0004;
 }
 
-#add_custom{
+#make_custom{
    width: 2.6rem;
    height: 2.6rem;
    margin: .2rem;
@@ -272,7 +272,7 @@ body{
    transition: opacity .2s ease;
 }
 
-#add_custom:hover > div, .hint.hover{
+#make_custom:hover > div, .hint.hover{
    opacity: 1;
    pointer-events: none;
 }
@@ -503,12 +503,12 @@ body{
    transition: opacity .2s ease;
 }
 
-.header_button.disabled{
+.disabled{
    opacity: 0;
    pointer-events: none;
 }
 
-.header_button:not(.innactive):hover, .header > a:hover{
+.header_button:not(.disabled):hover, .header > a:hover{
    background-color: white;
 }
 
@@ -615,6 +615,10 @@ button input{
    display: none;
 }
 
+button .material-symbols-rounded{
+   font-size: 1.5rem;
+}
+
 #load{
    width: 7rem;
    left: 1rem;
@@ -637,6 +641,51 @@ button input{
    width: 3rem;
    right: 1rem;
    bottom: 14rem;
+}
+
+#custom_input{
+   width: 24rem;
+   height: 4rem;
+   border-radius: 2rem;
+   border: .1rem solid var(--tx);
+   background-color: var(--bg);
+   position: absolute;
+   transform: translate(-50%, -50%);
+   top: calc(50vh - 9rem);
+   left: 50%;
+   display: flex;
+   flex-flow: column;
+   justify-content: center;
+   align-items: center;
+   z-index: 4;
+   box-shadow: .1rem .2rem .3rem #0004;
+   transition: opacity .2s ease;
+}
+
+#custom_input input{
+   height: 100%;
+   width: 100%;
+   padding-left: 1.5rem;
+   appearance: none;
+   outline: none;
+   background-color: transparent;
+   border: none;
+   color: var(--tx);
+   font-size: 1.5rem;
+   font-family: 'DM Mono', monospace;
+}
+
+#custom_input ::placeholder{
+   color: var(--txweak);
+}
+
+#custom_input button{
+   width: 3rem;
+   height: 3rem;
+   border-radius: 1.5rem;
+   right: .5rem;
+   font-size: 1.3rem;
+   font-weight: 400;
 }
 
 

@@ -479,15 +479,15 @@
       <div class="code" data-names="outOUT_TOG"><p>Out<br>Toggle</p><div class="hint w l a m i"><p><span class="mono">&amp;out OUT_TOG</span>toggle outputs between USB and BLE</p><div><img src="img/windows.svg"><img src="img/macos.svg"><img src="img/linux.svg"><img src="img/ios.svg"><img src="img/android.svg"></div></div></div>
 
       <div class="tag"><a href="https://zmk.dev/docs" target="_blank">custom</a></div>
-      <div id="add_custom"><p>＋</p><div class="hint"><p>add a custom keycode</p></div></div>
+      <div id="make_custom"><p>＋</p><div class="hint"><p>create a key that not listed above or you defined</p></div></div>
 
       <div id="upper_fade">
          <div></div>
          <div></div>
       </div>
    </div>
-   <button id="help"><span class="material-symbols-rounded" style="font-size: 1.5rem;">info</span></button>
-   <button id="conf"><span class="material-symbols-rounded" style="font-size: 1.5rem;">tune</span></button>
+   <button id="help"><span class="material-symbols-rounded">info</span></button>
+   <button id="conf"><span class="material-symbols-rounded">tune</span></button>
    <div id="lower">
       <div id="left">
          <svg id="left_keys" fill="#eeeeee" width="100%" height="100%" viewBox="0 0 338 251" version="1.1"
@@ -654,13 +654,14 @@
             </div>
          </div>
       </div>
-      <button id="load"><span class="material-symbols-rounded" style="font-size: 1.5rem;">upload</span><p>load</p><input type='file' accept=".keymap"/></button>
-      <button id="save"><a download='fish.keymap'></a><span class="material-symbols-rounded" style="font-size: 1.5rem;">download</span><p>save</p></a></button>
+      <button id="load"><span class="material-symbols-rounded">upload</span><p>load</p><input type='file' accept=".keymap"/></button>
+      <button id="save"><a download='fish.keymap'></a><span class="material-symbols-rounded">download</span><p>save</p></a></button>
    </div>
    <div id="combo_hints">
    </div>
-   <div id="custom">
-
+   <div id="custom_input" class="disabled">
+      <input type="text" placeholder="&amp;type KEY_CODE"/>
+      <button id="grab_custom">＋</button>
    </div>
 </body>
 
