@@ -666,40 +666,49 @@
    <div id="help" class="disabled">
       <div class="modal">
          <h1>使いかた</h1>
-         <p>このページでは、<a href="../index.html" target="_blank">『おさかなキーボード』</a>のためのキーマップを検討したり、編集結果から.keymapファイルを生成・保存することができます。<br>
-            保存したキーマップからファームウェアを作っておさかなに食べさせる方法は、<a href="../guide/index.html" target="_blank">ユーザーガイド</a>からご確認ください。</p>
+         <p>このページでは、<a href="../index.html" target="_blank">『おさかなキーボード』</a>のためのキーマップを視覚的に検討したり、編集結果から.keymapファイルを生成・保存することができます。<br>
+            保存したキーマップからファームウェアを作っておさかなに食べさせる方法は、<a href="../guide/index.html" target="_blank">ユーザーガイド</a>からご確認ください。
+         </p>
          <h2>コードをキーに割り当てる</h2>
          <p>上のコード一覧から割り当てたいものをクリックし、下の図の割り当てたいキーの上でもう一度クリックします。<br><br>
-            ２つのキーを順にクリックすることで、割り当てられたキーの位置を交換することもできます。</p>
+            ２つのキーを順にクリックすることで、割り当てられたキーの位置を交換することもできます。
+         </p>
          <h2><a href="https://zmk.dev/docs/behaviors/hold-tap" target="_blank">Hold-Tapキー</a>を作る</h2>
          <p>普通のコードをクリックしたあと、モディファイヤーまたはモーメンタリーレイヤーのコードをクリックします。<br>
             例えば<span class="code_sample">⏘</span>→<span class="code_sample round">Shift</span>の順でクリックすると<span class="code_sample">⏘<br><span class="small" style="display: block;">(Shift)</span></span>が作れます。<br>
             これは短押しでスペース、長押し中はシフトを入れるキー（SandS）です。<br>
             あるいは<span class="code_sample"><span class="material-symbols-rounded">subdirectory_arrow_left</span></span>→<span class="code_sample round">L1</span>の順でクリックすると<span class="code_sample"><span class="material-symbols-rounded">subdirectory_arrow_left</span><br><span class="small" style="display: block;">(L1)</span></span>が作れます。<br>
-            これは短押しでエンター、長押し中はレイヤー１を入れるキーです。</p>
+            これは短押しでエンター、長押し中はレイヤー１を入れるキーです。
+         </p>
          <h2><a href="https://zmk.dev/docs/codes/modifiers#modifier-functions" target="_blank">修飾されたキー</a>を作る</h2>
          <p>モディファイヤーのコードをクリックしたあと、普通のコードをクリックします。<br>
             例えば<span class="code_sample round">Shift</span>→<span class="code_sample round"><span class="os w">Win</span><span class="os l a">GUI</span><span class="os m i">Cmd</span></span>→<span class="code_sample big">5</span>の順でクリックすると<span class="code_sample">⇧⌘5</span>が作れます。<br>
-            これはmacOSにおける画面録画のショートカットです。</p>
+            これはmacOSにおける画面録画のショートカットです。
+         </p>
          <h2>レイヤーを使う</h2>
          <p>レイヤーとは、各キーに新しいコードを割り当てられる “階層” のことです。<br>
             <span class="code_sample round">Shift</span>を押している間は<span class="code_sample big">1</span>が<span class="code_sample big">!</span>になったりするように、<br>
             例えば<span class="code_sample big">,</span>が<span class="code_sample big">.</span>になったりする「レイヤー１」を定義し、<span class="code_sample round">L1</span>を押している間だけ有効化することができます。<br><br>
             レイヤーを削除／新設するには、下部中央の “layer” パネルの左右にある “ー” “＋” ボタンを押します。<br>
             名前を変えるには、表示中のレイヤー名を再度クリックします。<br>
-            レイヤーを有効化／無効化するためのコードは、現在のレイヤーの数に応じて一覧に出現します。</p>
+            レイヤーを有効化／無効化するためのコードは、現在のレイヤーの数に応じて一覧に出現します。
+         </p>
          <h2>コンボを使う</h2>
          <p>コンボとは、複数のキーの “同時押し” のことです。<br>
             例えば<span class="code_sample big">A</span>と<span class="code_sample big">O</span>を0.1秒以内の時間差で押すことに<span class="code_sample">英数</span>という新しいコードを割り当てられます。<br><br>
             設定するには、レイヤーと同様に “＋” で新設してコードを１つ割り当てます。<br>
-            その後、下図のキーをクリックして使用／不使用を切り替え、コンボを構成する２つ以上のキーをハイライトしてください。</p>
-         <h2>保存と読み込み</h2>
-         <p>右下の “save” ボタンを押すと、</p>
+            その後、下図のキーをクリックして使用／不使用を切り替え、コンボを構成する２つ以上のキーをハイライトしてください。
+         </p>
+         <h2>読み込み・保存</h2>
+         <p>左下の “load” ボタンから.keymap形式のローカルファイルを選択すると、内容を読み込んで再現します。<br>
+            ただし、このページで生成したファイル以外の完全な読み込みは保証しません。<br><br>
+            右下の “save” ボタンを押すと、現在の編集内容から生成した.keymapファイルをローカルに保存することができます。<br>
+         </p>
          <h2>困ったときは</h2>
-         <p>このページの使い方についてわからないことがあるときは、<a href="https://discord.gg/EvYvbhHW" target="_blank">おさかなキーボードの公式Discordコミュニティ</a>のサポートチャンネルで質問してください。<br>
-            Discordコミュニティでは他にも、フォーラムで自慢のキーマップを見せ合ったり、他の使用者との情報交換をお楽しみいただけます。<br><br>
-            特定のコードや設定項目の仕様について知りたいときは、<a href="https://zmk.dev/docs" target="_blank">ZMK Firmwareの公式ドキュメント</a>を参照してください。<br>
-            おさかなのシステムは純粋にZMKによって構成されており、すべての仕様はここに一番わかりやすくまとまっています。</p>
+         <p>このページに関する質問・提案やバグ報告は、<a href="https://discord.gg/EvYvbhHW" target="_blank">公式Discordコミュニティ</a>のサポートチャンネルに投稿ください。<br>
+            また、キーマップの計画に行き詰まってヒントが欲しいときは、同コミュニティのキーマップギャラリーもご覧ください。<br><br>
+            特定のコードや設定項目の仕様について知りたいときは、おさかなのシステムを構成している<a href="https://zmk.dev/docs" target="_blank">ZMK Firmwareの公式ドキュメント</a>を参照してください。
+         </p>
       </div>
    </div>
    <div id="conf" class="disabled">
