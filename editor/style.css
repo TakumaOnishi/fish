@@ -1,7 +1,7 @@
 /* おまじない */
 @charset "UTF-8";
 /* フォントを借りてくる */
-@import url('https://fonts.googleapis.com/css2?family=DM+Mono&family=Zen+Maru+Gothic:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400&family=Zen+Maru+Gothic:wght@400;500&display=swap');
 
 /* 各HTML要素を修飾する */
 :root{
@@ -19,6 +19,7 @@
 body{
    padding: 0;
    margin: 0;
+   line-height: 0;
    width: 100vw;
    height: 100vh;
    background-color: var(--bg);
@@ -28,6 +29,10 @@ body{
    font-family: 'Zen Maru Gothic', sans-serif;
    overflow: hidden;
    position: relative;
+}
+
+body div{
+   line-height: normal;
 }
 
 #upper{
@@ -91,9 +96,9 @@ body{
    font-family: 'DM Mono', monospace;
    color: var(--tx);
    position: absolute;
-   right: .5rem;
+   right: 0;
    top: 2rem;
-   transform: translate(-50%, -50%) scale(200%, 100%);
+   transform: translate(-50%, -50%) scale(150%, 80%);
    pointer-events: none;
 }
 
@@ -136,7 +141,7 @@ body{
    pointer-events: none;
 }
 
-.code, .grabbing{
+.code, .grabbing, .code_sample{
    width: 3rem;
    height: 3rem;
    font-size: .9rem;
@@ -194,6 +199,7 @@ body{
 
 .material-symbols-rounded {
    font-variation-settings: 'wght' 340;
+   pointer-events: none;
 }
 
 .hint{
@@ -396,6 +402,10 @@ body{
 
 .key:hover{
    fill: #fff;
+}
+
+.weak .key{
+   pointer-events: none;
 }
 
 .left_layer, .right_layer, .left_combo, .right_combo{
@@ -631,13 +641,13 @@ button .material-symbols-rounded{
    bottom: 1rem;
 }
 
-#help{
+#help_toggle{
    width: 3rem;
    left: 1rem;
    bottom: 14rem;
 }
 
-#conf{
+#conf_toggle{
    width: 3rem;
    right: 1rem;
    bottom: 14rem;
@@ -686,6 +696,97 @@ button .material-symbols-rounded{
    right: .5rem;
    font-size: 1.3rem;
    font-weight: 400;
+}
+
+#help, #conf{
+   width: 100vw;
+   height: 100vh;
+   position: absolute;
+   top: 0;
+   left: 0;
+   overflow-y: scroll;
+   display: flex;
+   flex-flow: column;
+   align-items: center;
+   padding: 2rem;
+   z-index: 4;
+   pointer-events: none;
+   transition: opacity .3s ease;
+}
+
+.modal{
+   width: min(40rem, 80vw);
+   border-radius: 2rem;
+   border: .1rem solid var(--tx);
+   background-color: var(--bg);
+   display: block;
+   padding: 2rem;
+   box-shadow: .1rem .2rem .3rem #0004;
+   text-align: left;
+}
+
+div:not(.disabled) .modal{
+   pointer-events: all;
+}
+
+h1{
+   margin: -.5rem 0 .5rem;
+   font-size: 3rem;
+}
+
+h2{
+   margin: 2.5rem 0 .5rem;
+   font-size: 1.7rem;
+}
+
+.modal p{
+   margin: 0;
+   line-height: 1.7rem;
+   overflow-wrap: normal;
+}
+
+.modal a{
+   background-color: var(--glow);
+   padding: 0 .2rem .1rem;
+   margin: 0 .1rem;
+   border-radius: .3rem;
+   text-decoration: none;
+   color: var(--tx);
+}
+
+a:hover{
+   background-color: var(--txweak);
+}
+
+.code_sample{
+   display: inline-flex;
+   margin: .3rem;
+   cursor: text;
+}
+
+.code_sample:not(.round){
+   height: 2.8rem;
+   width: 2.8rem;
+   vertical-align: middle;
+   transform: translate(0, -.15rem);
+}
+
+.code_sample:has(.small){
+   padding-bottom: 1rem;
+}
+
+.code_sample .small{
+   position: absolute;
+   display: flex;
+   top: 1.5rem;
+   left: 0;
+   text-align: center;
+   width: 100%;
+   height: 1rem;
+}
+
+.round{
+   border-radius: 50%;
 }
 
 
@@ -799,4 +900,119 @@ button .material-symbols-rounded{
 
 .r0, .r1{
    top: 12.8rem;
+}
+
+.showcase{
+   width: 100%;
+   gap: .5rem 1rem;
+   display: flex;
+   flex-wrap: wrap;
+   margin-top: .5rem;
+}
+
+.modal > .showcase:last-child{
+   margin-top: 3rem;
+}
+
+.showcase > div{
+   width: calc(50% - .5rem);
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   position: relative;
+}
+
+.showcase > div.wide{
+   width: 100%;
+}
+
+.showcase div input, .showcase div select, .modal textarea{
+   padding: 0 .35rem .2rem;
+   font-size: .8rem;
+   appearance: none;
+   outline: none;
+   border: .1rem solid var(--tx);
+   border-radius: .5rem;
+   color: var(--tx);
+   box-shadow: .1rem .2rem .3rem #0004;
+   background-color: var(--bg);
+   text-align: right;
+   font-family: 'Zen Maru Gothic', sans-serif;
+   font-weight: 400;
+   overflow: hidden;
+   font-size: 1rem;
+   margin: 0;
+   cursor: pointer;
+   transition: background-color .2s ease, box-shadow .2s ease;
+}
+
+.showcase div input:hover, .showcase div select:hover{
+   background-color: var(--glow);
+}
+
+.showcase div input:active, .showcase div input:not([type="checkbox"]):focus, .showcase div select:active{
+   background-color: var(--bg);
+   box-shadow: none;
+   transition: none;
+}
+
+.showcase ::placeholder{
+   color: var(--txweak);
+}
+
+input[type="number"]::-webkit-outer-spin-button, 
+input[type="number"]::-webkit-inner-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+.showcase select{
+   width: fit-content;
+}
+
+.showcase input[type="number"], .showcase input[type="text"]{
+   width: 4.5rem;
+   cursor: text;
+}
+
+.showcase input[type="checkbox"]{
+   width: 1.7rem;
+   height: 1.7rem;
+   border-radius: 50%;
+}
+
+.showcase div input[type="checkbox"]:checked{
+   background: radial-gradient(var(--tx) 48%, transparent 51%);
+}
+
+.showcase > div.wide input{
+   width: calc(50% + 5rem);
+}
+
+.modal textarea{
+   text-align: left;
+   margin-top: 1rem;
+   margin-bottom: -.25rem;
+   font-size: .9rem;
+   width: 100%;
+   height: 13.5rem;
+   resize: none;
+   cursor: unset;
+   overflow-y: scroll;
+   padding: 1rem .3rem;
+   font-family: 'DM Mono', monospace;
+   line-height: 1.4rem;
+   font-weight: 300;
+}
+
+#conf:not(.show_advanced) .advanced{
+   display: none;
+}
+
+.except{
+   display: none;
+}
+
+.show_advanced .showcase:has(.except_toggle:checked) + .except{
+   display: flex;
 }
