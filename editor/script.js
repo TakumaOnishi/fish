@@ -720,7 +720,7 @@ window.addEventListener("DOMContentLoaded", () => { // 読み込みを待って�
       t += document.getElementById("c_cb").value;
       // combo
       t += '\n\n\n    // 複数キーの同時押しに特別の入力を設定できる\n    // キー番号早見表：\n    //       0  1  2  3     4  5  6  7\n    // 8  9 10 11 12 13    14 15 16 17 18 19\n    //   20 21 22 23          24 25 26 27\n    //            28 29    30 31\n\n    combos {';
-      if(_combo.length) t += '\n        compatible = "zmk,combos";';
+      t += '\n        compatible = "zmk,combos";';
       if(document.getElementById("c_c_tm").value) t += '\n        timeout-ms = <' + document.getElementById("c_c_tm").value + '>;';
       if(document.getElementById("c_c_rpim").value) t += '\n        require-prior-idle-ms = <' + document.getElementById("c_c_rpim").value + '>;';
       if(document.getElementById("c_c_sr").checked) t += '\n        slow-release;';
@@ -745,7 +745,7 @@ window.addEventListener("DOMContentLoaded", () => { // 読み込みを待って�
       t += '\n    };\n    \n\n    // キーを割り当てる\n    // 型（&...）は https://zmk.dev/docs/behaviors/... を参照\n    // キーコードは https://zmk.dev/docs/codes/... を参照\n\n    keymap {\n        compatible = "zmk,keymap";';
       for(let i=0; i<_layer.length; i++){
          show(_layer[i], true);
-         t += "\n\n        layer_" + _layer[i].firstChild.value + " {\n            bindings = <\n                        ";
+         t += "\n\n        layer_" + _layer[i].lastChild.value + " {\n            bindings = <\n                        ";
          let debt = 0;
          for(let ki=0; ki<32; ki++){
             const code = document.querySelector(".editing .l"+ki+" .mono").innerHTML.substring(5);
