@@ -4,24 +4,36 @@
 
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/ fb# website: http://ogp.me/ns/ website#">
   <meta charset="UTF-8">
-  <title>おさかな道場</title>
-  <meta name="description" content="おさかなキーボードを使い始めよう！">
-  <meta property="og:url" content="https://o24.studio/fish/gym"/>
+  <title>おさかなテスター</title>
+  <meta name="description" content="おさかなキーボードの動作を確認しよう！">
+  <meta property="og:url" content="https://o24.studio/fish/tester"/>
   <meta property="og:type" content="website"/>
   <meta property="og:title" content="おさかなユーザーガイド"/>
   <meta property="og:site_name" content="おさかなユーザーガイド"/>
-  <meta property="og:description" content="おさかなキーボードを使い始めよう！"/>
+  <meta property="og:description" content="おさかなキーボードの動作を確認しよう！"/>
   <meta property="og:image" content="https://o24.studio/fish/ogp.png"/>
   <meta name="twitter:card" content="summary"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <link rel="icon" type="image/png" href="../favicon.png">
+  <link rel="stylesheet" href="../style.css?1">
   <link rel="stylesheet" href="style.css?1">
   <script src="script.js?1"></script>
 </head>
 
 <body>
+  <div id="outdex">
+    <a href="../index.html">セールス</a>
+    <a href="../guide/index.html">ユーザーガイド</a>
+     <a href="../editor/index.html" target="_blank">キーマップエディター</a>
+     <div>テスター</div>
+  </div>
+  <div id="log">
+    ---event log---<br>
+    ● = down<br>
+    ○ = up
+  </div>
   <div id="imgbox">
-    <img src="img/onishi.jpeg"/>
+    <img src="img/keys.png"/>
   </div>
   <textarea id="input" placeholder="文字を打ってみよう！" autofocus></textarea>
 </body>

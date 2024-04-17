@@ -10,6 +10,9 @@
    --tx: #eee;
    --txweak: #eee8;
    --glow: #fff2;
+   --help: hsla(0, 47%, 58%, 0.2);
+   --info: hsla(196, 58%, 31%, 0.2);
+   --warn: hsla(54, 52%, 45%, 0.3);
 }
 
 html {
@@ -27,28 +30,63 @@ body{
    line-height: 1.9rem;
    font-weight: 400;
    font-family: 'Zen Maru Gothic', sans-serif;
+   background-size: 200vw 150vh;
+   background-position: top;
+   background-repeat: repeat;
+   background-image:
+   radial-gradient(at 75% 35%, hsla(188,35%,50%,1) 0px, transparent 35%),
+   radial-gradient(at 25% 65%, hsla(188,35%,50%,1) 0px, transparent 35%);
 }
 
 #outdex, #index{
    position: fixed;
+   writing-mode: vertical-lr;
    transform: translate(0, -50%);
    top: 50%;
-   width: calc(10vw + 3.6rem);
-   height: fit-content;
+   width: 2rem;
+   height: 100%;
    display: flex;
-   flex-flow: column;
-   justify-content: center;
-   padding: 1rem;
+   flex-flow: row;
+   justify-content: space-evenly;
+   padding: 0;
    font-size: .9rem;
 }
 
 #outdex{
    left: 0;
    align-items: end;
+   transition: opacity .2s ease;
 }
 
 #index{
    right: 0;
+}
+
+#outdex a, #index a{
+   text-decoration: none;
+   appearance: none;
+   color: var(--txweak);
+   border-radius: 0 .5rem .5rem 0;
+   transition: all .2s ease;
+   flex-grow: 1;
+   flex-basis: auto;
+   text-align: center;
+}
+
+#index a{
+   border-radius: .5rem 0 0 .5rem;
+}
+
+#outdex a:hover, #index a:hover{
+   color: var(--tx);
+   background-color: var(--glow);
+}
+
+#outdex div, #index div{
+   flex-grow: 1;
+   flex-basis: auto;
+   text-align: center;
+   cursor: default;
 }
 
 #content{
@@ -57,45 +95,146 @@ body{
 }
 
 h1{
-   font-size: 3rem;
-   
+   font-size: 4rem;
+   line-height: 5rem;
+   margin: 1rem 0 1.2rem;
+   color: white;
 }
 
 h2{
-   padding-top: 2rem;
-   line-height: 3rem;
-   border-bottom: .1rem solid var(--txweak);
+   margin: .5rem 0 1rem;
+   font-size: 2rem;
+   line-height: 2.5rem;
+   position: relative;
+   color: white;
 }
 
 h3{
-   padding-top: 1rem;
+   margin: 0 0 1rem;
+   color: white;
+}
+
+h4{
+   font-size: 1.2rem;
+   margin: 0;
+   color: white;
+}
+
+p{
+   margin: 0 0 2rem;
+}
+
+p:has(+ .otaku){
+   margin-bottom: 0.5rem;
+}
+
+p:has(+ h4){
+   margin-bottom: 1rem;
+}
+
+.otaku{
+   color: var(--txweak);
+   width: fit-content;
+   position: relative;
+   font-size: .8rem;
+   padding-left: 1.4rem;
+   padding-right: .4rem;
+   cursor: pointer;
+   border-radius: .5rem;
+   margin-left: -.4rem;
+}
+
+.otaku:hover{
+   background-color: var(--glow);
+}
+
+.otaku::after{
+   content: "＞";
+   transform: translate(-50%, -50%) scale(80%, 150%);
+   color: var(--txweak);
+   width: 1.6rem;
+   height: 1.6rem;
+   position: absolute;
+   left: .8rem;
+   top: 50%;
+   font-size: .6rem;
+   line-height: 1.6rem;
+   text-align: center;
+   transition: all .2s ease;
+}
+
+.otaku.show::after{
+   transform: translate(-50%, -50%) rotateZ(90deg) scale(80%, 150%);
+}
+
+.material-symbols-rounded{
+   transform: translate(0, 18%);
+   font-variation-settings: 'wght' 400;
+   margin-right: .2rem;
+}
+
+.otaku + p{
+   padding-left: 1rem;
+   font-size: .8rem;
+   color: var(--txweak);
+   line-height: 1.1rem;
+   display: none;
+   margin-bottom: 0;
+}
+
+.otaku.show + p{
+   display: block;
 }
 
 img{
    width: 100%;
+   margin-top: 2rem;
+   border-radius: .5rem;
 }
 
 a{
    text-decoration: none;
    appearance: none;
-   border-radius: .3rem;
-   background-color: #dff2;
-   color: #fff;
+   color: var(--tx);
    width: fit-content;
-   line-height: 1.5rem;
-   margin: .2rem .0;
-   padding: 0 .2rem;
+   border-radius: .3rem;
 }
 
-a:hover{
+p a{
+   margin: .2rem .1rem;
+   padding: 0 .1rem;
+   background-color: #dff2;
+   color: #fff;
+}
+
+p a:hover{
    background-color: #dff4;
 }
 
-a:active{
+p a:active{
    background-color: transparent;
 }
 
-@media screen and (max-width: 60rem) {
+a.buy{
+   font-size: 1rem;
+   border: .1rem solid var(--tx);
+   margin: 0 0 2rem !important;
+   padding: .8rem 1rem !important;
+   background-color: transparent !important;
+   cursor: pointer;
+   border-radius: .5rem;
+}
+
+a.buy:hover{
+   background-color: var(--glow) !important;
+}
+
+a.buy .material-symbols-rounded{
+   margin-right: 0;
+   margin-left: .2rem;
+}
+
+@media screen and (max-width: 50rem) {
    #outdex, #index{
       display: none;
    }

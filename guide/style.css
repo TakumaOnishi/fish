@@ -5,16 +5,9 @@
 
 /* 各HTML要素を修飾する */
 :root{
-   --bg: hsl(188, 33%, 60%);
-   --bgdark: hsl(188, 35%, 50%);
-   --tx: #eee;
-   --txweak: #eee8;
-   --glow: #fff2;
-   --info: hsl(189, 30%, 55%);
-}
-
-html {
-   scroll-behavior: smooth;
+   --help: hsla(0, 100%, 50%, 0.07);
+   --info: hsla(196, 100%, 18%, 0.1);
+   --warn: hsla(46, 100%, 50%, 0.2);
 }
 
 body{
@@ -30,92 +23,45 @@ body{
    font-family: 'Zen Maru Gothic', sans-serif;
 }
 
-#outdex, #index{
-   position: fixed;
-   transform: translate(0, -50%);
-   top: 50%;
-   width: calc(10vw + 3.6rem);
-   height: fit-content;
-   display: flex;
-   flex-flow: column;
-   justify-content: center;
-   padding: 1rem;
-   font-size: .9rem;
+h2{
+   margin-top: 3rem;
+   font-size: 2rem;
+   line-height: 2.5rem;
+   padding-left: 1.5rem;
+   position: relative;
 }
 
-#outdex{
-   left: 0;
-   align-items: end;
+h2::after{
+   content: "";
+   background-color: var(--txweak);
+   width: 2rem;
+   height: .5rem;
+   position: absolute;
+   left: -1rem;
+   top: calc(50% - .25rem);
 }
 
-#index{
-   right: 0;
-}
-
-#content{
-   width: min(90vw, 40rem);
-   padding: 1rem;
-}
-
-.info{
-   background-color: var(--info);
+.help, .info, .warn{
    border-radius: 1.5rem;
    padding: 1rem;
    font-size: 1rem;
    line-height: 1.8rem;
 }
 
-h1{
-   font-size: 3rem;
-   
+.help{
+   background-color: var(--help);
 }
 
-h2{
-   padding-top: 2rem;
-   line-height: 3rem;
-   border-bottom: .1rem solid var(--txweak);
+.info{
+   background-color: var(--info);
 }
 
-h3{
-   margin: 0 0 1rem;
+.warn{
+   background-color: var(--warn);
 }
 
-p{
-   margin: 0 0 2rem;
-}
-
-.material-symbols-rounded{
-   transform: translate(0, 18%);
-   font-variation-settings: 'wght' 400;
-}
-
-img{
-   width: 100%;
-}
-
-a{
-   text-decoration: none;
-   appearance: none;
-   border-radius: .3rem;
-   background-color: #dff2;
-   color: #fff;
-   width: fit-content;
-   margin: .2rem .1rem;
-   padding: 0 .1rem;
-}
-
-#index a, #outdex a{
-   margin: .2rem 0;
-   padding: 0 .2rem;
-   line-height: 1.5rem;
-}
-
-a:hover{
-   background-color: #dff4;
-}
-
-a:active{
-   background-color: transparent;
+.help p, .info p, .warn p{
+   margin-bottom: 0;
 }
 
 table{
@@ -126,10 +72,4 @@ table{
 td:not(.noborder){
    border: solid .1rem var(--txweak);
    padding: .5rem;
-}
-
-@media screen and (max-width: 60rem) {
-   #outdex, #index{
-      display: none;
-   }
 }
