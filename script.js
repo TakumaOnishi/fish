@@ -7,7 +7,4 @@ window.addEventListener('DOMContentLoaded', () => {
          _otaku[i].classList.toggle("show");
       });
    }
-
-   function updateTextColor(){ // CSSの内容を書き換える
-   }
 });

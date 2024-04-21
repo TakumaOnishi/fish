@@ -50,6 +50,7 @@ body{
    justify-content: space-evenly;
    padding: 0;
    font-size: .9rem;
+   z-index: 1;
 }
 
 #outdex{
@@ -89,9 +90,21 @@ body{
    cursor: default;
 }
 
+body > img{
+   width: 100vw;
+   height: auto;
+   display: block;
+   position: absolute;
+   top: -2vw;
+   left: 0;
+   z-index: 0;
+}
+
 #content{
+   margin-top: 28vw;
    width: min(90vw, 40rem);
    padding: 1rem;
+   z-index: 1;
 }
 
 h1{
@@ -102,7 +115,8 @@ h1{
 }
 
 h2{
-   margin: .5rem 0 1rem;
+   margin: 0 0 1rem;
+   padding-top: .5rem;
    font-size: 2rem;
    line-height: 2.5rem;
    position: relative;
@@ -110,7 +124,7 @@ h2{
 }
 
 h3{
-   margin: 0 0 1rem;
+   margin: 1rem 0 0;
    color: white;
 }
 
@@ -121,10 +135,10 @@ h4{
 }
 
 p{
-   margin: 0 0 2rem;
+   margin: 0 0 1rem;
 }
 
-p:has(+ .otaku){
+p:has(+ .otaku), p:not(.dot1):has(+ .dot1){
    margin-bottom: 0.5rem;
 }
 
@@ -135,6 +149,7 @@ p:has(+ h4){
 .dot1{
    padding-left: 1rem;
    position: relative;
+   margin: 0;
 }
 
 .dot1::before{
@@ -144,6 +159,10 @@ p:has(+ h4){
    top: 0;
    color: var(--txweak);
    transform: scale(50%, 50%);
+}
+
+.dot1:has(+ p:not(.dot1)){
+   margin-bottom: .5rem;
 }
 
 .otaku{
@@ -156,6 +175,11 @@ p:has(+ h4){
    cursor: pointer;
    border-radius: .5rem;
    margin-left: -.4rem;
+   margin-bottom: 2.5rem;
+}
+
+.otaku.show{
+   margin-bottom: 0;
 }
 
 .otaku:hover{
@@ -193,7 +217,7 @@ p:has(+ h4){
    color: var(--txweak);
    line-height: 1.2rem;
    display: none;
-   margin-bottom: 0;
+   margin-bottom: 2.5rem;
 }
 
 .otaku.show + p{
@@ -203,6 +227,7 @@ p:has(+ h4){
 img{
    width: 100%;
    border-radius: .5rem;
+   margin: 1rem 0 .5rem;
 }
 
 a{
@@ -230,16 +255,17 @@ p a:active{
 
 a.buy{
    font-size: 1rem;
+   display: block;
    border: .1rem solid var(--tx);
-   margin: 0 0 2rem !important;
-   padding: .8rem 1rem !important;
-   background-color: transparent !important;
+   margin: 0 0 2.5rem;
+   padding: .8rem 1rem;
+   background-color: transparent;
    cursor: pointer;
    border-radius: .5rem;
 }
 
 a.buy:hover{
-   background-color: var(--glow) !important;
+   background-color: var(--glow);
 }
 
 a.buy .material-symbols-rounded{
