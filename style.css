@@ -95,8 +95,8 @@ body{
 }
 
 h1{
-   font-size: 4rem;
-   line-height: 5rem;
+   font-size: 5rem;
+   line-height: 6rem;
    margin: 1rem 0 1.2rem;
    color: white;
 }
@@ -130,6 +130,20 @@ p:has(+ .otaku){
 
 p:has(+ h4){
    margin-bottom: 1rem;
+}
+
+.dot1{
+   padding-left: 1rem;
+   position: relative;
+}
+
+.dot1::before{
+   position: absolute;
+   content: "●";
+   left: 0;
+   top: 0;
+   color: var(--txweak);
+   transform: scale(50%, 50%);
 }
 
 .otaku{
@@ -177,7 +191,7 @@ p:has(+ h4){
    padding-left: 1rem;
    font-size: .8rem;
    color: var(--txweak);
-   line-height: 1.1rem;
+   line-height: 1.2rem;
    display: none;
    margin-bottom: 0;
 }
@@ -188,7 +202,6 @@ p:has(+ h4){
 
 img{
    width: 100%;
-   margin-top: 2rem;
    border-radius: .5rem;
 }
 

@@ -31,31 +31,30 @@
       <h1>ユーザーガイド</h1>
          <p><a href="../index.html">おさかなキーボード</a>をお買い求めいただき、ありがとうございます。<br>
             使い方を説明させてください。</p>
+         <div class="warn">
+            <h3><span class="material-symbols-rounded" style="font-size: 1.5rem;">warning</span>執筆中</h3>
+            <p>このページは書きかけです。足りない画像や文章はそのうち追加されます。</p>
+         </div>
          <h2 id="power">電源を入れる</h2>
-         <img src="img/power.webp">
          <p>二匹を向かい合うように置き、それぞれの下アゴの陰にある灰色の電源スイッチを上に切り替えます。</p>
-         <img src="img/sample.webp">
-         <p>パソコンの設定からBluetooth機器の管理画面を開き、「Fish Keyboard」が表示されたら接続します。<br><br>
-            適当なキーを押してみて、入力が通れば成功です。<br>
-            キーマップの確認がしやすい<a href="../tester/index.html" target="_blank">テストページ</a>もご活用ください。</p>
+         <img src="img/pairing.webp"/>
+         <p>パソコンの設定からBluetooth機器の管理画面を開き、「Fish Keyboard」が表示されたら接続します。</p>
+         <p>適当なキーを押してみて、入力が通れば成功です。<br>
+            動作確認がしやすい<a href="../tester/index.html" target="_blank">テストページ</a>もご活用ください。</p>
 
-         <div class="help">
-            <h3><span class="material-symbols-rounded" style="font-size: 1.5rem;">help</span>パソコンに接続できない</h3>
-            <p>以下のような原因が考えられます。<br>
-               ・バッテリーの残量が少ない<br>
-               <a href="#charge">充電する</a>の手順で両機を充電してください。<br>
-               ・ほかのホストに接続中である<br>
-               BT_SEL_X（空いているプロファイル番号）が割り当てられたキーを押下し、新しいプロファイルとのペアリングモードに入れてください。または、BT_CLEARまたはBT_CLEAR_ALLを押下して不要なペアリングを解放してください。<br>
-               ・ファームウェアに問題がある<br>
-               <a href="#remap">キーマップを変える</a>の手順で両機のファームウェアを修正・更新してください。デフォルトファームウェアでも動かないか確認してください。<br>
-               ・パソコン側に問題がある<br>
-               おさかなから他のデヴァイス（スマートフォンなど）には接続できる場合、パソコン側のBlueTooth設定を見直してください。<br>
-               ・製品に問題がある<br>
-               いずれの可能性も排除されたときは、<a href="https://discord.gg/VaGEcTQ5tC" target="_blank">Discord</a>のサポートチャンネルで相談してください。</p>
+         <div class="info">
+            <h3><span class="material-symbols-rounded" style="font-size: 1.5rem;">info</span>デフォルトキーマップ</h3>
+            <p>開封時点では以下のようなキーマップが設定されています（購入時期によって若干異なる場合があります）。</p>
+            <img src="img/keymap.webp"/>
+            <p class="dot1">単にキーを押すと、青字の入力になります。英字は<a href="https://o24.works/layout/">大西配列</a>です。</p>
+            <p class="dot1">黄色い丸（BackSpace）を押しながらキーを押すと、黄色字の入力になります。</p>
+            <p class="dot1">赤い丸（Space）を押しながらキーを押すと、赤字の入力になります。</p>
+            <p class="dot1">その両方を押しながらキーを押すと、灰色字の入力になります。</p>
+            <p class="dot1">AとO、TとNを同時に押すとそれぞれ日本語IMEのオフ、オンが入ります。</p>
+            <p>これは、<a href="#remap">キーマップを変える</a>の手順で自由に書き換えることができます。</p>
          </div>
 
          <h2 id="charge">充電する</h2>
-         <img src="img/sample.webp">
          <p>電源スイッチを入れた状態のおさかなを、USB Type-Cケーブル（別売り）でパソコンと有線接続します。<br>
             うまく充電できていれば、口の横が緑色に光ります。<br><br>
             USB接続と電源スイッチのオン／オフによって、おさかなは以下のように動作します。</p>
@@ -80,34 +79,46 @@
 
          <div class="info">
             <h3><span class="material-symbols-rounded" style="font-size: 1.5rem;">info</span>親機と子機</h3>
-            <img src="img/sample.webp">
             <p>おさかなキーボードには親機と子機があり、まず子機が親機に入力を伝え、それを合わせた入力を親機がパソコンに伝えます。<br>
                このため、親機のみ電源を入れて使うことはできますが、逆はできません。左手デヴァイスとしての使用に配慮し、出荷時は左手側を親機に設定しています。<br><br>
                また、同じ理由から、子機は親機の４倍ほど充電が長持ちします。</p>
-            <img src="img/sample.webp">
             <p>一部のOSで確認できる充電残量は親機のもので、子機の充電残量を確認する方法はありませんが、数回に一回親機と一緒に充電してあげれば大丈夫です。
             </p>
          </div>
 
 
          <h2 id="remap">キーマップを変える</h2>
-         <p>購入時のキーマップは上のようなものですが、これは以下の手順で自由に書き換えることができます。</p>
          <h3>ファイル置き場を作る（初回のみ）</h3>
          <p>Githubのアカウントを用意します。<br>
-            おさかなキーボードの<a href="https://github.com/TakumaOnishi/zmk-config-fish" target="_blank">リポジトリ</a>をフォークする。</p>
+            おさかなキーボードの<a href="https://github.com/TakumaOnishi/zmk-config-fish" target="_blank">リポジトリ</a>をフォークします。</p>
          <h3>キーマップを編集する</h3>
-         <p><a href="../editor/index.html">キーマップエディター</a>でfish.keymapを生成するか、テキストエディターで直接編集する<br>
-            リポジトリのファイルと差し替えて、ファイルを変更すると、自動でファームウェアの生成が始まります。actionsからfirmwareをダウンロードする。</p>
+         <p>fish.keymapファイルをテキストエディターで直接編集するか、<a href="../editor/index.html">キーマップエディター</a>で生成します。<br>
+            リポジトリのファイルを変更すると、自動でファームウェアの生成が始まります。約２分後、actionsタブからfirmwareをダウンロードします。</p>
          <h3>ファームウェアを更新する</h3>
-         <p>おさかなの両機の電源を切った状態で、親機（購入時は左側）だけをパソコンとUSB接続し、リセットボタンを素早く２回押します。<br>
-            XIAOが外部ストレージとして表示されるので、左手機ならleft.uf2、右手機ならright.uf2をドラッグ＆ドロップする。<br>
-            読み込まれたら自動で消えるので、反対側も同様に行う。</p>
+         <p>おさかなの両機の電源を切った状態で、親機（開封時は左側）だけをパソコンとUSB接続し、上顎の陰にある白いリセットボタンを素早く２回押します。<br>
+            〈XIAO Sense〉が外部ストレージとして表示されるので、left.uf2をこの中にドラッグ＆ドロップします。<br>
+            読み込まれると自動でキーボードの認識に戻り、キーマップが更新されているはずです。</p>
 
          <div class="warn">
             <h3><span class="material-symbols-rounded" style="font-size: 1.5rem;">warning</span>使用上の注意</h3>
             <p>・直射日光に長く当てないでください。ボディとキーキャップは紫外線で硬化するレジンでできているため、変色・ひび割れを起こすことがあります。<br>
                ・液体をこぼさないでください。ボディの防水性能は高くありません。万一こぼしてしまったときは、すぐに逆さにして電源を切ってください。<br>
                ・日本国外での仕様は違法になるおそれがあります。技適取得済みのBLEモジュール（XIAO nRF52840）を内蔵しているため、</p>
+         </div>
+
+         <div class="help">
+            <h3><span class="material-symbols-rounded" style="font-size: 1.5rem;">help</span>パソコンに接続できない</h3>
+            <p>以下のような原因が考えられます。<br>
+               ・バッテリーの残量が少ない<br>
+               <a href="#charge">充電する</a>の手順で両機を充電してください。<br>
+               ・ペアリングモードに入っていない<br>
+               他のホストに接続中なら、BT_SEL_X（空いているプロファイル番号）が割り当てられたキーを押すか、BT_CLEARまたはBT_CLEAR_ALLを押下して不要なペアリングを解放してください。<br>
+               ・ファームウェアに問題がある<br>
+               <a href="#remap">キーマップを変える</a>の手順で両機のファームウェアを修正・更新してください。デフォルトファームウェアでも動かないか確認してください。<br>
+               ・パソコン側に問題がある<br>
+               おさかなから他のデヴァイス（スマートフォンなど）には接続できる場合、パソコン側のBlueTooth設定を見直してください。<br>
+               ・製品に問題がある<br>
+               いずれの可能性も排除されたときは、<a href="https://discord.gg/VaGEcTQ5tC" target="_blank">Discord</a>のサポートチャンネルで相談してください。</p>
          </div>
    </div>
    <div id="index">
