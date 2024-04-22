@@ -95,8 +95,10 @@ window.addEventListener("DOMContentLoaded", () => { // 読み込みを待って�
       _save.addEventListener("click", saveClick);
       document.getElementById("show_advanced_toggle").addEventListener("change", ()=>{_conf.classList.toggle("show_advanced")});
       updateOS();
-      loadInputChange();
       if(document.getElementById("show_advanced_toggle").checked) _conf.classList.add("show_advanced");
+      fetch("https://raw.githubusercontent.com/TakumaOnishi/zmk-config-fish/master/config/boards/shields/fish/fish.keymap").then(r=>{return r.text()}).then(t=>{
+         loadInputChange(t); // デフォルトキーマップをロードする
+      });
    }
 
    function updateOS() {
@@ -803,9 +805,15 @@ window.addEventListener("DOMContentLoaded", () => { // 読み込みを待って�
       console.log(t);
    }
 
-   async function loadInputChange(){
-      let file = _load_input.files[0];
-      if (!file) return;
+   async function loadInputChange(eventOrText){
+      let tx;
+      if(eventOrText.isTrusted){ // eventの場合
+         let file = _load_input.files[0];
+         if (!file) return;
+         tx = await fetchAsText(file);
+      }else{
+         tx = eventOrText;
+      }
       for(let i=_layer.length-1; i>0; i--){
          show(_layer[i]);
          removeLayer(true);
@@ -814,7 +822,6 @@ window.addEventListener("DOMContentLoaded", () => { // 読み込みを待って�
          show(_combo[i]);
          removeCombo(true);
       }
-      let tx = await fetchAsText(file);
       while(tx.includes("//")){ // コメントの行を削除
          let start = tx.indexOf("//");
          let end = tx.indexOf("\n", start);

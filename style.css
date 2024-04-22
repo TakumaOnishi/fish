@@ -1,7 +1,7 @@
 /* おまじない */
 @charset "UTF-8";
 /* フォントを借りてくる */
-@import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&display=swap');
 
 /* 各HTML要素を修飾する */
 :root{
@@ -29,7 +29,7 @@ body{
    font-size: 1.1rem;
    line-height: 1.9rem;
    font-weight: 400;
-   font-family: 'Zen Maru Gothic', sans-serif;
+   font-family: "Zen Maru Gothic", serif;
    background-size: 200vw 150vh;
    background-position: top;
    background-repeat: repeat;
@@ -51,6 +51,7 @@ body{
    padding: 0;
    font-size: .9rem;
    z-index: 1;
+   overflow: hidden;
 }
 
 #outdex{
@@ -91,27 +92,29 @@ body{
 }
 
 body > img{
-   width: 100vw;
+   width: 90vw;
    height: auto;
    display: block;
    position: absolute;
-   top: -2vw;
-   left: 0;
+   top: 2vw;
+   left: 8vw;
    z-index: 0;
+   pointer-events: none;
 }
 
 #content{
    margin-top: 28vw;
-   width: min(90vw, 40rem);
+   width: min(90vw, 45rem);
    padding: 1rem;
    z-index: 1;
 }
 
 h1{
-   font-size: 5rem;
-   line-height: 6rem;
-   margin: 1rem 0 1.2rem;
+   font-size: min(5rem, 14vw);
+   line-height: 1.2em;
+   margin: .5rem 0 1.5rem;
    color: white;
+   font-weight: 700;
 }
 
 h2{
@@ -121,21 +124,25 @@ h2{
    line-height: 2.5rem;
    position: relative;
    color: white;
+   font-weight: 700;
 }
 
 h3{
-   margin: 1rem 0 0;
+   margin: 1rem 0 .3rem;
    color: white;
+   font-weight: 700;
 }
 
 h4{
    font-size: 1.2rem;
    margin: 0;
    color: white;
+   font-weight: 700;
 }
 
 p{
    margin: 0 0 1rem;
+   font-weight: 400;
 }
 
 p:has(+ .otaku), p:not(.dot1):has(+ .dot1){
@@ -255,6 +262,7 @@ p a:active{
 
 a.buy{
    font-size: 1rem;
+   font-weight: 500;
    display: block;
    border: .1rem solid var(--tx);
    margin: 0 0 2.5rem;
