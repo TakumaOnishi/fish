@@ -30,7 +30,7 @@ body{
    line-height: 1.9rem;
    font-weight: 400;
    font-family: "Zen Maru Gothic", serif;
-   background-size: 200vw 150vh;
+   background-size: 200vw 150vw;
    background-position: top;
    background-repeat: repeat;
    background-image:
@@ -282,7 +282,19 @@ a.buy .material-symbols-rounded{
 }
 
 @media screen and (max-width: 50rem) {
+   
    #outdex, #index{
       display: none;
+   }
+
+   body > img{
+      width: 100vw;
+      height: auto;
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 0;
+      pointer-events: none;
    }
 }
