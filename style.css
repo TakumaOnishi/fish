@@ -99,6 +99,7 @@ body > img{
    top: 2vw;
    left: 8vw;
    z-index: 0;
+   margin: 0;
    pointer-events: none;
 }
 
@@ -125,6 +126,10 @@ h2{
    position: relative;
    color: white;
    font-weight: 700;
+}
+
+:not(img) + h2{
+   margin-top: 2.5rem;
 }
 
 h3{
@@ -182,11 +187,6 @@ p:has(+ h4){
    cursor: pointer;
    border-radius: .5rem;
    margin-left: -.4rem;
-   margin-bottom: 2.5rem;
-}
-
-.otaku.show{
-   margin-bottom: 0;
 }
 
 .otaku:hover{
@@ -224,7 +224,7 @@ p:has(+ h4){
    color: var(--txweak);
    line-height: 1.2rem;
    display: none;
-   margin-bottom: 2.5rem;
+   margin-bottom: 0;
 }
 
 .otaku.show + p{
@@ -234,7 +234,7 @@ p:has(+ h4){
 img{
    width: 100%;
    border-radius: .5rem;
-   margin: 1rem 0 .5rem;
+   margin: 3rem 0 .5rem;
 }
 
 a{
@@ -261,12 +261,11 @@ p a:active{
 }
 
 a.buy{
-   font-size: 1rem;
-   font-weight: 500;
+   font-size: 1.1rem;
    display: block;
    border: .1rem solid var(--tx);
-   margin: 0 0 2.5rem;
-   padding: .8rem 1rem;
+   margin: 2rem 0 2.5rem;
+   padding: 1rem 1.4rem;
    background-color: transparent;
    cursor: pointer;
    border-radius: .5rem;
@@ -281,8 +280,20 @@ a.buy .material-symbols-rounded{
    margin-left: .2rem;
 }
 
+table{
+   table-layout: fixed;
+   border-collapse: collapse;
+   text-align: center;
+   margin-bottom: 2rem;
+}
+
+td:not(.noborder){
+   border: solid .1rem var(--txweak);
+   padding: .5rem;
+}
+
 @media screen and (max-width: 50rem) {
-   
+
    #outdex, #index{
       display: none;
    }

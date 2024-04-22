@@ -64,11 +64,5 @@ h2{
 }
 
 table{
-   table-layout: fixed;
-   border-collapse: collapse;
-}
-
-td:not(.noborder){
-   border: solid .1rem var(--txweak);
-   padding: .5rem;
+   margin-bottom: 0;
 }
