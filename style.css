@@ -266,6 +266,7 @@ a.buy{
    border: .1rem solid var(--tx);
    margin: 2rem 0 2.5rem;
    padding: 1rem 1.4rem;
+   font-weight: 500;
    background-color: transparent;
    cursor: pointer;
    border-radius: .5rem;
