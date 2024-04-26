@@ -1,13 +1,13 @@
 window.addEventListener('DOMContentLoaded', () => {
+
+   const _ham = document.getElementById("ham");
    const _log = document.getElementById("log");
-   //const _outdex = document.getElementById("outdex");
-   let focus = false;
+
+   _ham.addEventListener('click', function(){
+      _ham.classList.toggle("show");
+   });
 
    document.addEventListener("keydown", (e) => {
-      /*if(!focus){
-         _outdex.classList.add("hidden");
-         focus = true;
-      }*/
       let code = e.code;
       if(e.code.substring(0,3)=="Key") code = e.code.substring(3);
       if(e.code.substring(0,5)=="Digit") code = e.code.substring(5);
@@ -19,13 +19,6 @@ window.addEventListener('DOMContentLoaded', () => {
       if(e.code.substring(0,3)=="Key") code = e.code.substring(3);
       if(e.code.substring(0,5)=="Digit") code = e.code.substring(5);
       _log.innerHTML = code + " ○<br>" + overflow(_log.innerHTML);
-   });
-
-   document.addEventListener("mousemove", () => {
-      /*if(focus){
-         _outdex.classList.remove("hidden");
-         focus = false;
-      }*/
    });
 
    document.addEventListener("mousedown", (e) => {

@@ -3,40 +3,59 @@
 <html>
 
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/ fb# website: http://ogp.me/ns/ website#">
-  <meta charset="UTF-8">
-  <title>おさかなテスター</title>
-  <meta name="description" content="おさかなキーボードの動作を確認しよう！">
-  <meta property="og:url" content="https://o24.works/fish/tester"/>
-  <meta property="og:type" content="website"/>
-  <meta property="og:title" content="おさかなユーザーガイド"/>
-  <meta property="og:site_name" content="おさかなユーザーガイド"/>
-  <meta property="og:description" content="おさかなキーボードの動作を確認しよう！"/>
-  <meta property="og:image" content="https://o24.works/fish/tester/ogp.png"/>
-  <meta name="twitter:card" content="summary_large_image"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <link rel="icon" type="image/png" href="../favicon.png">
-  <link rel="stylesheet" href="../style.css?1">
-  <link rel="stylesheet" href="style.css?1">
-  <script src="script.js?1"></script>
+   <meta charset="UTF-8">
+   <title>おさかなテスター</title>
+   <meta name="description" content="おさかなキーボードの動作を確認しよう！">
+   <meta property="og:url" content="https://o24.works/fish/tester" />
+   <meta property="og:type" content="website" />
+   <meta property="og:title" content="おさかなユーザーガイド" />
+   <meta property="og:site_name" content="おさかなユーザーガイド" />
+   <meta property="og:description" content="おさかなキーボードの動作を確認しよう！" />
+   <meta property="og:image" content="https://o24.works/fish/tester/ogp.png" />
+   <meta name="twitter:card" content="summary_large_image" />
+   <meta name="viewport" content="width=device-width,initial-scale=1" />
+   <link rel="icon" type="image/png" href="../favicon.png">
+   <link rel="stylesheet" href="../style.css?1">
+   <link rel="stylesheet" href="style.css?1">
+   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,250..400,0,0"/>
+   <script src="script.js?1"></script>
 </head>
 
 <body>
-  <div id="outdex">
-    <a href="../index.html">セールス</a>
-    <a href="../guide/index.html">ユーザーガイド</a>
-     <a href="../editor/index.html" target="_blank">キーマップエディター</a>
-     <a href="https://discord.gg/VaGEcTQ5tC" target="_blank">コミュニティ</a>
-     <div>テスター</div>
-  </div>
-  <div id="imgbox">
-    <img src="img/keys.webp"/>
-  </div>
-  <div id="log">
-    ---event log---<br>
-    ● = down<br>
-    ○ = up
-  </div>
-  <textarea id="input" placeholder="文字を打ってみよう！" autofocus></textarea>
+   <header>
+      <div id="h_upper">
+         <p>おさかなキーボード</p>
+         <div id="ham">
+            <span></span>
+            <span></span>
+         </div>
+      </div>
+      <div id="h_downer">
+         <a href="../index.html">セールス</a>
+         <a href="https://square.link/u/BDd1fULC" target="_blank">購入<span class="material-symbols-rounded">open_in_new</span></a>
+         <a href="../guide/index.html">ユーザーガイド</a>
+         <a href="../editor/index.html" target="_blank">キーマップエディター<span class="material-symbols-rounded">open_in_new</span></a>
+         <div>テスター</div>
+         <a href="https://discord.gg/VaGEcTQ5tC" target="_blank">コミュニティ<span class="material-symbols-rounded">open_in_new</span></a>
+      </div>
+   </header>
+   <div id="outdex">
+      <a href="../index.html">セールス</a>
+      <a href="https://square.link/u/BDd1fULC" target="_blank">購入<span class="material-symbols-rounded">open_in_new</span></a>
+      <a href="../guide/index.html">ユーザーガイド</a>
+      <a href="../editor/index.html" target="_blank">キーマップエディター<span class="material-symbols-rounded">open_in_new</span></a>
+      <div>テスター</div>
+      <a href="https://discord.gg/VaGEcTQ5tC" target="_blank">コミュニティ<span class="material-symbols-rounded">open_in_new</span></a>
+   </div>
+   <div id="imgbox">
+      <img src="img/keys.webp" />
+   </div>
+   <div id="log">
+      ---event log---<br>
+      ● = down<br>
+      ○ = up
+   </div>
+   <textarea id="input" placeholder="文字を打ってみよう！" autofocus></textarea>
 </body>
 
 </html>

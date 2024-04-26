@@ -21,12 +21,30 @@
 </head>
 
 <body>
+   <header>
+      <div id="h_upper">
+         <p>おさかなキーボード</p>
+         <div id="ham">
+            <span></span>
+            <span></span>
+         </div>
+      </div>
+      <div id="h_downer">
+         <a href="../index.html">セールス</a>
+         <a href="https://square.link/u/BDd1fULC" target="_blank">購入<span class="material-symbols-rounded">open_in_new</span></a>
+         <div>ユーザーガイド</div>
+         <a href="../editor/index.html" target="_blank">キーマップエディター<span class="material-symbols-rounded">open_in_new</span></a>
+         <a href="../tester/index.html">テスター</a>
+         <a href="https://discord.gg/VaGEcTQ5tC" target="_blank">コミュニティ<span class="material-symbols-rounded">open_in_new</span></a>
+      </div>
+   </header>
    <div id="outdex">
       <a href="../index.html">セールス</a>
+      <a href="https://square.link/u/BDd1fULC" target="_blank">購入<span class="material-symbols-rounded">open_in_new</span></a>
       <div>ユーザーガイド</div>
-      <a href="../editor/index.html" target="_blank">キーマップエディター</a>
+      <a href="../editor/index.html" target="_blank">キーマップエディター<span class="material-symbols-rounded">open_in_new</span></a>
       <a href="../tester/index.html">テスター</a>
-      <a href="https://discord.gg/VaGEcTQ5tC" target="_blank">コミュニティ</a>
+      <a href="https://discord.gg/VaGEcTQ5tC" target="_blank">コミュニティ<span class="material-symbols-rounded">open_in_new</span></a>
    </div>
    <div id="content">
       <h1>ユーザーガイド</h1>
@@ -46,12 +64,12 @@
          <h3><span class="material-symbols-rounded" style="font-size: 1.5rem;">info</span>デフォルトキーマップ</h3>
          <p>開封時点では以下のようなキーマップが設定されています（購入時期によって若干異なる場合があります）。</p>
          <img src="img/keymap.webp"/>
-         <p class="dot1">単にキーを押すと、青字の入力になります。英字は<a href="https://o24.works/layout/" target="_blank">大西配列</a>です。</p>
-         <p class="dot1">黄色い丸（BackSpace）を押しながらキーを押すと、黄色字の入力になります。</p>
-         <p class="dot1">赤い丸（Space）を押しながらキーを押すと、赤字の入力になります。</p>
-         <p class="dot1">その両方を押しながらキーを押すと、灰色字の入力になります。</p>
-         <p class="dot1">AとO、TとNを同時に押すとそれぞれ日本語IMEのオフ、オンが入ります。</p>
-         <p class="dot1">ホールドタップ複合キーは、短く押してから長押しすると連続入力が入ります。</p>
+         <p class="dot">単にキーを押すと、青字の入力になります。英字は<a href="https://o24.works/layout/" target="_blank">大西配列</a>です。</p>
+         <p class="dot">長押し中は背景のキーになります。</p>
+         <p class="dot dot2">O・T→Shift、A・N→Option/Alt、I・S→Control、Enter・Tab→Command/Win/Meta</p>
+         <p class="dot dot2">BackSpace→レイヤー１（黄色字）、Space→レイヤー２（赤字）、その両方の長押し→レイヤー３（灰色字）</p>
+         <p class="dot dot2">これらの複合キーは、短く押してから長押しするとタップ側の連続入力になります。</p>
+         <p class="dot">AとO、TとNを同時に押すとそれぞれ日本語IMEのオフ、オンが入ります。</p>
          <p>これらは、<a href="#remap">キーマップを変える</a>の手順で自由に書き換えることができます。</p>
       </div>
 
@@ -114,8 +132,8 @@
          <p>アップロードするとき、同名のファイルは暗黙裡に置き換えられます。<br>
             名前を変えて複数の.keymapファイルを置いておくこともできますが、有効なのはfish.keymapという名前の１つだけです。<br><br>
             また、キーマップは以下のような方法でテキストとして編集することもできます。</p>
-         <p class="dot1">Github上の <span class="material-symbols-rounded">edit</span>ボタンから直接編集し、commitする</p>
-         <p class="dot1">ローカルにcloneしてテキストエディタで編集し、pushする</p>
+         <p class="dot">Github上の <span class="material-symbols-rounded">edit</span>ボタンから直接編集し、commitする</p>
+         <p class="dot">ローカルにcloneしてテキストエディタで編集し、pushする</p>
       </div>
 
       <img src="img/action.webp"/>
@@ -141,16 +159,16 @@
             （参考：<a href="https://zmk.dev/docs/troubleshooting" target="_blank">Troubleshooting｜ZMK Docs</a>）</p>
       </div>
 
-      <h2 id="caution">注意</h2>
-      <p class="dot1">直射日光に長く当てないでください。ボディとキーキャップは紫外線で硬化するレジンでできているため、変色・ひび割れを起こすことがあります。</p>
-      <p class="dot1">液体や粉塵をかけないでください。ボディは思いのほか密閉されていません。万一かかってしまったら電源を切り、内部に侵入しないよう善処してください。</p>
-      <p class="dot1">日本国外での使用は違法になるおそれがあります。無線電波を発する機器には各国で規制があり、日本にはたまたま「使用モジュールが検査済なら最終製品は検査を免れる」という規定があるだけです。</p>
+      <h2 id="caution">使用上の注意</h2>
+      <p class="dot">直射日光に長く当てないでください。ボディとキーキャップは紫外線で硬化するレジンでできているため、変色・ひび割れを起こすことがあります。</p>
+      <p class="dot">液体や粉塵をかけないでください。ボディは思いのほか密閉されていません。万一かかってしまったら電源を切り、内部に侵入しないよう善処してください。</p>
+      <p class="dot">日本国外での使用は違法になるおそれがあります。無線電波を発する機器には各国で規制があり、日本にはたまたま「使用モジュールが検査済なら最終製品は検査を免れる」という規定があるだけです。</p>
 
       <h2 id="trouble">こんなときは</h2>
       <h3>パソコンにBluetooth接続できない</h3>
-      <p class="dot1">USB接続したらBluetoothでも接続できるようになったなら、そのまま充電してください。</p>
-      <p class="dot1">他のホストに接続している可能性があるなら、BT_SEL_X（空いているプロファイル番号）を押すか、BT_CLEARまたはBT_CLEAR_ALLを押して不要なペアリングを解放し、おさかなをペアリングモードに入れてください。</p>
-      <p class="dot1">それでも接続できず、他のホストには接続できるなら、パソコン側の設定を見直してください。</p>
+      <p class="dot">USB接続したらBluetoothでも接続できるようになったなら、そのまま充電してください。</p>
+      <p class="dot">他のホストに接続している可能性があるなら、BT_SEL_X（空いているプロファイル番号）を押すか、BT_CLEARまたはBT_CLEAR_ALLを押して不要なペアリングを解放し、おさかなをペアリングモードに入れてください。</p>
+      <p class="dot">それでも接続できず、他のホストには接続できるなら、パソコン側の設定を見直してください。</p>
    
       <div class="info">
          <h3><span class="material-symbols-rounded" style="font-size: 1.5rem;">info</span>ペアリングの解除</h3>
@@ -161,15 +179,15 @@
       </div>
 
       <h3>子機が親機に接続できない</h3>
-      <p class="dot1">子機をUSB接続したら親機に接続できるようになったなら、そのまま充電してください。</p>
-      <p class="dot1">更新するファームウェアの左右を間違えた、または親機の左右を変えた直後なら、一度リセットファームウェア（settings_reset~.uf2）を読み込ませたあと正しいファームウェアを読み込ませる、という操作を両機に行なってください。<br>
+      <p class="dot">子機をUSB接続したら親機に接続できるようになったなら、そのまま充電してください。</p>
+      <p class="dot">更新するファームウェアの左右を間違えた、または親機の左右を変えた直後なら、一度リセットファームウェア（settings_reset~.uf2）を読み込ませたあと正しいファームウェアを読み込ませる、という操作を両機に行なってください。<br>
          （参考：<a href="https://zmk.dev/docs/troubleshooting#split-keyboard-halves-unable-to-pair" target="_blank">Split Keyboard Halves Unable to Pair｜ZMK Docs</a>）</p>
 
       <h3>充電ができていない</h3>
-      <p class="dot1">電源スイッチを入れた状態でパソコンやACアダプターにUSB接続しても緑の光がつかないなら、<a href="#fix">修理</a>を申請してください。</p>
+      <p class="dot">電源スイッチを入れた状態でパソコンやACアダプターにUSB接続しても緑の光がつかないなら、<a href="#fix">修理</a>を申請してください。</p>
       
       <h3>キーが反応しない・反応が悪い</h3>
-      <p class="dot1">キーコードの割り当てによらず反応しない・反応が悪いキーがあるなら、<a href="#fix">修理</a>を申請してください。</p>
+      <p class="dot">キーコードの割り当てによらず反応しない・反応が悪いキーがあるなら、<a href="#fix">修理</a>を申請してください。</p>
       
       <h2 id="fix">相談と修理</h2>
       <p>キーマップや使用法についての情報交換をしたいときや、不具合の対処に助けが必要なときは、O24 worksの<a href="https://discord.gg/VaGEcTQ5tC" target="_blank">Discordコミュニティ</a>で検索・投稿してください。<br>

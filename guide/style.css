@@ -10,19 +10,6 @@
    --warn: hsla(46, 100%, 50%, 0.2);
 }
 
-body{
-   margin: 0;
-   padding: 0;
-   display: flex;
-   justify-content: center;
-   background-color: var(--bg);
-   color: var(--tx);
-   font-size: 1.1rem;
-   line-height: 1.9rem;
-   font-weight: 400;
-   font-family: 'Zen Maru Gothic', sans-serif;
-}
-
 #content{
    margin-top: 0;
 }
@@ -65,4 +52,10 @@ h2{
 
 table{
    margin-bottom: 0;
+}
+
+@media screen and (max-width: 50rem) {
+   #content{
+      margin-top: 1rem;
+   }
 }

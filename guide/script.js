@@ -1,4 +1,8 @@
-// JSの簡単な例（テキストをクリックすると文字色が白↔︎黒にトグルする）
-window.addEventListener('DOMContentLoaded', () => { // 読み込みを待って処理を始める
+window.addEventListener('DOMContentLoaded', () => {
 
+   const _ham = document.getElementById("ham");
+
+   _ham.addEventListener('click', function(){
+      _ham.classList.toggle("show");
+   });
 });

@@ -1,82 +1,101 @@
 @charset "UTF-8";
 @import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap');
 
-body{
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    width: 100vw;
-    position: relative;
-    overflow: hidden;
+body {
+   margin: 0;
+   padding: 0;
+   height: 100vh;
+   width: 100vw;
+   position: relative;
+   overflow: hidden;
 }
 
-#input{
-    position: absolute;
-    top: 0;
-    left: 2rem;
-    width: calc(100vw - 4rem);
-    height: calc(100vh - 2rem);
-    margin: 0;
-    padding: 1rem;
-    background-color: transparent;
-    border: 0;
-    resize: none;
-    text-align: left;
-    font-size: 3rem;
-    line-height: 4rem;
-    outline: none;
-    overflow: hidden;
-    overflow-anchor: none;
-    box-shadow: none;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-    font-family: 'Zen Maru Gothic', serif;
-    color: var(--tx);
+#input {
+   position: absolute;
+   top: 0;
+   left: 2rem;
+   width: calc(100vw - 4rem);
+   height: calc(100vh - 2rem);
+   margin: 0;
+   padding: 1rem;
+   background-color: transparent;
+   border: 0;
+   resize: none;
+   text-align: left;
+   font-size: 3rem;
+   line-height: 4rem;
+   outline: none;
+   overflow: hidden;
+   overflow-anchor: none;
+   box-shadow: none;
+   backface-visibility: hidden;
+   -webkit-backface-visibility: hidden;
+   font-family: 'Zen Maru Gothic', serif;
+   color: var(--tx);
 }
 
 #input::placeholder {
-    color: var(--tx);
-    margin: 0;
-    opacity: 0.5;
+   color: var(--tx);
+   margin: 0;
+   opacity: 0.5;
 }
 
-#imgbox{
-    position: absolute;
-    top: 0;
-    left: 2rem;
-    width: calc(100vw - 4rem);
-    height: 100vh;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    pointer-events: none;
+#imgbox {
+   position: absolute;
+   top: 0;
+   left: 2rem;
+   width: calc(100vw - 4rem);
+   height: 100vh;
+   margin: 0;
+   padding: 0;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   pointer-events: none;
 }
 
-#imgbox img{
-    position: absolute;
-    width: 100%;
-    opacity: .6;
-    bottom: 0;
-    left: 0;
+#imgbox img {
+   position: absolute;
+   width: 100%;
+   opacity: .6;
+   bottom: 0;
+   left: 0;
 }
 
-#log{
-    position: absolute;
-    top: 0;
-    left: 2rem;
-    width: calc(100vw - 3rem);
-    height: calc(100vh - 1rem);
-    margin: 0;
-    padding: .5rem;
-    text-align: right;
-    color: var(--txweak);
-    font-size: .8rem;
-    line-height: normal;
+#log {
+   position: absolute;
+   top: 0;
+   left: 2rem;
+   width: calc(100vw - 3rem);
+   height: calc(100vh - 1rem);
+   margin: 0;
+   padding: .5rem;
+   text-align: right;
+   color: var(--txweak);
+   font-size: .8rem;
+   line-height: normal;
 }
 
-.hidden{
-    opacity: 0;
-    pointer-events: none;
+.hidden {
+   opacity: 0;
+   pointer-events: none;
+}
+
+@media screen and (max-width: 50rem) {
+   #input {
+      left: 0;
+      width: calc(100vw - 2rem);
+      height: (100vh - 3rem);
+      top: 1rem;
+   }
+
+   #log {
+      height: (100vh - 3rem);
+      top: 2rem;
+   }
+
+   #imgbox{
+      left: 0;
+      width: 100vw;
+   }
 }
