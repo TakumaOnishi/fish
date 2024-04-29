@@ -456,9 +456,7 @@ window.addEventListener("DOMContentLoaded", () => { // 読み込みを待って�
          _left_combo[i].after(_new_left);
          _right_combo[i].after(_new_right);
          _combo_hint[i].after(_new_hint);
-         _exceptions.append(_new_except_toggle);
-         _exceptions.append(_new_except);
-         document.querySelectorAll("#exceptions .showcase.advanced")[i].after(_new_except_toggle, _new_except);
+         document.querySelectorAll("#exceptions .showcase.except")[i].after(_new_except_toggle, _new_except);
       }
       _new_left.innerHTML = "<div class='col c0'><div class='legend l8'></div></div><div class='col c1'><div class='legend l9'></div><div class='legend l20'></div></div><div class='col c2'><div class='legend l0'></div><div class='legend l10'></div><div class='legend l21'></div></div><div class='col c3'><div class='legend l1'></div><div class='legend l11 combo_pos'><p>　</p></div><div class='legend l22'></div></div><div class='col c4'><div class='legend l2'></div><div class='legend l12'></div><div class='legend l23'></div></div><div class='col c5'><div class='legend l3'></div><div class='legend l13'></div></div><div class='row r0'><div class='legend l28'></div><div class='legend l29'></div></div>";
       _new_right.innerHTML = "<div class='col c6'><div class='legend l4'></div><div class='legend l14'></div></div><div class='col c7'><div class='legend l5'></div><div class='legend l15'></div><div class='legend l24'></div></div><div class='col c8'><div class='legend l6'></div><div class='legend l16 combo_pos'><p>　</p></div><div class='legend l25'></div></div><div class='col c9'><div class='legend l7'></div><div class='legend l17'></div><div class='legend l26'></div></div><div class='col ca'><div class='legend l18'></div><div class='legend l27'></div></div><div class='col cb'><div class='legend l19'></div></div><div class='row r1'><div class='legend l30'></div><div class='legend l31'></div></div>";
