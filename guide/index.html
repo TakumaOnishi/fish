@@ -51,11 +51,19 @@
       <p><a href="../index.html">おさかなキーボード</a>をお買い求めいただき、ありがとうございます。<br>
          使い方を説明させてください。</p>
 
+      <div class="warn">
+         <h3><span class="material-symbols-rounded" style="font-size: 1.5rem;">warning</span>使用上の注意</h3>
+         <p class="dot">液体や粉塵をかけないでください。筐体は密閉されていないため、内部に侵入して接触不良やバッテリーの短絡・発火を起こす可能性があります。</p>
+         <p class="dot">直射日光に長く当てないでください。筐体とキーキャップは紫外線で硬化するレジンでできているため、変色・ひび割れを起こす可能性があります。</p>
+         <p class="dot">日本国外で電源を入れないでください。組み込みモジュールの転記で技適認証を省略できる国は日本くらいのため、違法電波となる可能性があります。</p>
+         <div class="imgbox"><img src="img/giteki.webp"/></div>
+      </div>
       <h2 id="start">使い始める</h2>
       <img src="img/power.webp"/>
       <p>二匹を向かい合うように置き、それぞれの下アゴの陰にある灰色の電源スイッチを上に切り替えます。</p>
       <img src="img/pairing.webp"/>
-      <p>パソコンからBluetooth機器の管理画面を開き、「Fish Keyboard」が表示されたら接続します。</p>
+      <p>パソコンからBluetooth機器の管理画面を開き、「Fish Keyboard」が表示されたら接続します。<br>
+         入力方式の指定を求められた場合はANSI（US配列）を選択します。</p>
       <img src="img/test.webp">
       <p>適当なキーを押して、入力が通っているか確かめます。<br>
          動作確認がしやすい<a href="../tester/index.html" target="_blank">テストページ</a>もご活用ください。</p>
@@ -64,12 +72,12 @@
          <h3><span class="material-symbols-rounded" style="font-size: 1.5rem;">info</span>デフォルトキーマップ</h3>
          <p>開封時点では以下のようなキーマップが設定されています（購入時期によって若干異なる場合があります）。</p>
          <img src="img/keymap.webp"/>
-         <p class="dot">単にキーを押すと、青字の入力になります。英字は<a href="https://o24.works/layout/" target="_blank">大西配列</a>です。</p>
+         <p class="dot">単にキーを押すと、青字の入力になります。英字の並びは<a href="https://o24.works/layout/" target="_blank">大西配列</a>です。</p>
          <p class="dot">長押し中は背景のキーになります。</p>
-         <p class="dot dot2">OやTはShift、AやNはOption/Alt、IやSはControl、EnterやTabはCommand/Win/Metaが入ります。</p>
+         <p class="dot dot2">OやTはShift、AやNはAlt/Option、IやSはWindows/Command/Meta、EnterやTabはControlが入ります。</p>
          <p class="dot dot2">BackSpaceはレイヤー１（黄色字）、Spaceはレイヤー２（赤字）、その両方の長押し中はレイヤー３（灰色字）が入ります。</p>
-         <p class="dot dot2">これらの複合キーは、短く押してから長押しするとタップ側の連続入力になります。</p>
-         <p class="dot">AとO、TとNを同時に押すとそれぞれ日本語IMEのオフ、オンが入ります。</p>
+         <p class="dot dot2">これらの複合キーは、短く押してから長押しすると短打側の長押しが入ります。</p>
+         <p class="dot">XとC、MとJを同時に押すとそれぞれ日本語IMEのオフ、オンが入ります。</p>
          <p>これらは、<a href="#remap">キーマップを変える</a>の手順で自由に書き換えることができます。</p>
       </div>
 
@@ -159,14 +167,9 @@
             （参考：<a href="https://zmk.dev/docs/troubleshooting" target="_blank">Troubleshooting｜ZMK Docs</a>）</p>
       </div>
 
-      <h2 id="caution">使用上の注意</h2>
-      <p class="dot">直射日光に長く当てないでください。ボディとキーキャップは紫外線で硬化するレジンでできているため、変色・ひび割れを起こすことがあります。</p>
-      <p class="dot">液体や粉塵をかけないでください。ボディは思いのほか密閉されていません。万一かかってしまったら電源を切り、内部に侵入しないよう善処してください。</p>
-      <p class="dot">日本国外での使用は違法になるおそれがあります。無線電波を発する機器には各国で規制があり、日本にはたまたま「使用モジュールが検査済なら最終製品は検査を免れる」という規定があるだけです。</p>
-
       <h2 id="trouble">こんなときは</h2>
       <h3>パソコンにBluetooth接続できない</h3>
-      <p class="dot">USB接続したらBluetoothでも接続できるようになったなら、そのまま充電してください。</p>
+      <p class="dot">USB接続すればBluetoothでも接続できるようになるなら、そのまま充電してください。</p>
       <p class="dot">他のホストに接続している可能性があるなら、BT Sel 1~5（空いているプロファイル番号）を押すか、BT ClearまたはBT Clear Allで不要なペアリングを解放し、おさかなをペアリングモードに入れてください。</p>
       <p class="dot">それでも接続できず、他のホストには接続できるなら、パソコン側の設定を見直してください。</p>
    
@@ -178,7 +181,7 @@
       </div>
 
       <h3>子機が親機に接続できない</h3>
-      <p class="dot">子機をUSB接続したら親機に接続できるようになったなら、そのまま充電してください。</p>
+      <p class="dot">子機をUSB接続すれば親機に接続できるようになるなら、そのまま充電してください。</p>
       <p class="dot">更新するファームウェアの左右を間違えた、または親機の左右を変えた直後なら、一度リセットファームウェア（settings_reset~.uf2）を読み込ませたあと正しいファームウェアを読み込ませる、という操作を両機に行なってください。<br>
          （参考：<a href="https://zmk.dev/docs/troubleshooting#split-keyboard-halves-unable-to-pair" target="_blank">Split Keyboard Halves Unable to Pair｜ZMK Docs</a>）</p>
 
@@ -188,7 +191,7 @@
       <h3>キーが反応しない・反応が悪い</h3>
       <p class="dot">キーコードの割り当てによらず反応しない・反応が悪いキーがあるなら、<a href="#fix">修理</a>を申請してください。</p>
       
-      <h2 id="fix">相談と修理</h2>
+      <h2 id="fix">サポートと修理</h2>
       <p>キーマップや使用法についての情報交換をしたいときや、不具合の対処に助けが必要なときは、O24 worksの<a href="https://discord.gg/VaGEcTQ5tC" target="_blank">Discordコミュニティ</a>で検索・投稿してください。<br>
          修理を申請したいときは、Discordで大西拓磨（takuma_onishi）にDMするか、support@o24.worksにメールしてください。</p>
 
@@ -197,9 +200,8 @@
       <a href="#start">使い始める</a>
       <a href="#charge">充電する</a>
       <a href="#remap">キーマップを変える</a>
-      <a href="#caution">注意</a>
       <a href="#trouble">こんなときは</a>
-      <a href="#fix">相談と修理</a>
+      <a href="#fix">サポートと修理</a>
    </div>
 </body>
 
