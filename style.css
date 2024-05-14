@@ -199,10 +199,6 @@ p:has(+ h4){
    transform: scale(50%, 50%);
 }
 
-.dot:has(+ p:not(.dot)){
-   margin-bottom: .5rem;
-}
-
 .otaku{
    color: var(--txweak);
    width: fit-content;
