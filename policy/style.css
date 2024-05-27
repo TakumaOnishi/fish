@@ -1,0 +1,12 @@
+/* おまじない */
+@charset "UTF-8";
+
+#content{
+   margin-top: 1rem;
+}
+
+@media screen and (max-width: 50rem) {
+   #content{
+      margin-top: 2rem;
+   }
+}
