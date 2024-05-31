@@ -5,7 +5,6 @@
 
 /* 各HTML要素を修飾する */
 :root{
-   --help: hsla(0, 100%, 50%, 0.07);
    --info: hsla(196, 100%, 18%, 0.1);
    --warn: hsla(46, 100%, 50%, 0.2);
 }
@@ -21,17 +20,13 @@ h2{
    position: relative;
 }
 
-.help, .info, .warn{
+.info, .warn{
    border-radius: 1.5rem;
    padding: 1rem;
    font-size: 1rem;
    line-height: 1.8rem;
    margin-top: 1.5rem;
    margin-bottom: 1.5rem;
-}
-
-.help{
-   background-color: var(--help);
 }
 
 .info{
@@ -42,11 +37,11 @@ h2{
    background-color: var(--warn);
 }
 
-.help p, .info p, .warn p{
+.info p, .warn p{
    margin-bottom: 0;
 }
 
-.help h3, .info h3, .warn h3{
+.info h3, .warn h3{
    margin-top: 0;
 }
 

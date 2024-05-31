@@ -5,8 +5,8 @@
 
 /* 各HTML要素を修飾する */
 :root{
-   --bg: hsl(188, 33%, 60%);
-   --bgdark: hsl(188, 35%, 50%);
+   --bg: hsl(190, 50%, 55%);
+   --bgdark: hsl(190, 60%, 45%);
    --tx: #eee;
    --txweak: #eee8;
    --glow: #fff2;

@@ -5,14 +5,11 @@
 
 /* 各HTML要素を修飾する */
 :root{
-   --bg: hsl(188, 33%, 60%);
-   --bgdark: hsl(188, 35%, 50%);
+   --bg: hsl(188, 70%, 55%);
+   --bgdark: hsl(192, 80%, 40%);
    --tx: #eee;
    --txweak: #eee8;
    --glow: #fff2;
-   --help: hsla(0, 47%, 58%, 0.2);
-   --info: hsla(196, 58%, 31%, 0.2);
-   --warn: hsla(54, 52%, 45%, 0.3);
 }
 
 html {
@@ -32,11 +29,11 @@ body{
    font-weight: 400;
    font-family: "Zen Maru Gothic", serif;
    background-size: 200vw 150vw;
-   background-position: top;
+   background-position: center 56.25vw;
    background-repeat: repeat;
    background-image:
-   radial-gradient(at 75% 35%, hsla(188,35%,50%,1) 0px, transparent 35%),
-   radial-gradient(at 25% 65%, hsla(188,35%,50%,1) 0px, transparent 35%);
+   radial-gradient(at 75% 35%, var(--bgdark) 0px, transparent 35%),
+   radial-gradient(at 25% 65%, var(--bgdark) 0px, transparent 35%);
 }
 
 header{
@@ -104,15 +101,14 @@ header{
 }
 
 body > img{
-   width: 90vw;
+   width: 100vw;
    height: auto;
    display: block;
    position: absolute;
-   top: 2vw;
-   left: 8vw;
    z-index: 0;
-   margin: 0;
+   margin: -7vw 0 0;
    pointer-events: none;
+   border-radius: 0;
 }
 
 .imgbox{
@@ -134,9 +130,9 @@ body > img{
 }
 
 h1{
-   font-size: min(5rem, 14vw);
+   font-size: 5rem;
    line-height: 1.2em;
-   margin: .5rem 0 1.5rem;
+   margin: .5rem -.3rem 1rem;
    color: white;
    font-weight: 700;
 }
@@ -290,17 +286,23 @@ p a:active{
 a.buy{
    font-size: 1.1rem;
    display: block;
-   border: .1rem solid var(--tx);
    margin: 2rem 0 2.5rem;
    padding: 1rem 1.4rem;
    font-weight: 500;
-   background-color: transparent;
+   background-color: var(--tx);
+   color: var(--bg);
    cursor: pointer;
    border-radius: 1rem;
+   box-shadow: .1rem .2rem .3rem #0002;
+   transition: opacity .2s ease;
 }
 
 a.buy:hover{
-   background-color: var(--glow);
+   opacity: .8;
+}
+
+a.buy:active{
+   box-shadow: none;
 }
 
 a.buy .material-symbols-rounded{
@@ -432,16 +434,17 @@ h6{
    }
 
    body > img{
-      height: 90vw;
-      width: 100vw;
+      width: 200vw;
       object-fit: cover;
-      object-position: top 0 right 8%;
-      top: 2rem;
-      left: 0;
+      left: -10vw;
       overflow: hidden;
    }
 
    #content{
-      margin-top: calc(50vw + 2rem);
+      margin-top: calc(60vw + 2rem);
+   }
+
+   h1{
+      font-size: 13vw;
    }
 }
