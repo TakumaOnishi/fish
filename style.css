@@ -6,6 +6,7 @@
 /* 各HTML要素を修飾する */
 :root{
    --bg: hsl(188, 70%, 55%);
+   --bgmid: hsl(190, 75%, 48%);
    --bgdark: hsl(192, 80%, 40%);
    --tx: #eee;
    --txweak: #eee8;
@@ -127,6 +128,7 @@ body > img{
    width: min(90vw, 45rem);
    padding: 1rem;
    z-index: 1;
+   text-align: center;
 }
 
 h1{
@@ -135,6 +137,7 @@ h1{
    margin: 28vw -.3rem 1rem;
    color: white;
    font-weight: 700;
+   text-align: left;
 }
 
 h2{
@@ -168,6 +171,10 @@ p{
    font-weight: 400;
 }
 
+h1 + p{
+   text-align: left;
+}
+
 p:has(+ .otaku), p:not(.dot):has(+ .dot){
    margin-bottom: 0.5rem;
 }
@@ -196,16 +203,17 @@ p:has(+ h4){
 }
 
 .otaku{
+   text-align: center;
    color: var(--txweak);
-   width: fit-content;
+   width: 7rem;
    position: relative;
    font-size: .8rem;
    padding-left: 1.4rem;
    padding-right: .4rem;
    cursor: pointer;
    border-radius: .5rem;
-   margin-left: -.4rem;
    margin-bottom: 2.5rem;
+   margin-left: calc(50% - 4.5rem);
 }
 
 .otaku:hover{
@@ -283,46 +291,66 @@ p a:active{
    background-color: transparent;
 }
 
-.gallery {
-   width: 100vw;
-   overflow: auto;
-   white-space: nowrap;
-   -ms-overflow-style: none;
-   scrollbar-width: none;
+#gallery{
+   width: 100%;
+   height: calc((min(90vw, 45rem) - 2rem) * 15 / 28);
+   display: flex;
+   flex-flow: column;
+   flex-wrap: wrap;
+   margin-top: 4rem;
 }
 
-.gallery img{
-   width: min(30rem, 80vw);
-   margin: 0 .5rem;
+#gallery img{
+   height: calc(100% / 3);
+   width: unset;
+   margin: 0;
+   padding: .25rem;
+   border-radius: .75rem;
+   box-sizing: border-box;
 }
 
-.gallery::-webkit-scrollbar{
-   display:none;
+#gallery img:first-child{
+   height: 100%;
+   width: unset;
+   margin: 0;
 }
 
-a.buy{
-   font-size: 1.1rem;
+#buy{
+   width: 100%;
+   display: flex;
+   flex-flow: column;
+   justify-content: center;
+   align-items: center;
+   margin: 1rem 0 5rem;
+}
+
+#buy h3, #buy p{
+   margin: 0;
+}
+
+#buy a{
+   font-size: 1rem;
    display: block;
-   margin: 2rem 0 2.5rem;
-   padding: 1rem 1.4rem;
+   padding: .4rem .8rem;
    font-weight: 500;
+   margin-top: .5rem;
    background-color: var(--tx);
-   color: var(--bg);
+   color: var(--bgmid);
    cursor: pointer;
    border-radius: 1rem;
    box-shadow: .1rem .2rem .3rem #0002;
    transition: opacity .2s ease;
 }
 
-a.buy:hover{
+#buy a:hover{
    opacity: .8;
 }
 
-a.buy:active{
+#buy a:active{
    box-shadow: none;
 }
 
-a.buy .material-symbols-rounded{
+#buy a .material-symbols-rounded{
    margin-right: 0;
    margin-left: .2rem;
 }
@@ -466,5 +494,22 @@ h6{
 
    #outdex, #index{
       display: none;
+   }
+   
+   #gallery{
+      height: unset;
+      width: 100%;
+      flex-flow: row;
+      flex-wrap: wrap;
+   }
+
+   #gallery img{
+      height: unset;
+      width: calc(100% / 3);
+   }
+
+   #gallery img:first-child{
+      height: unset;
+      width: 100%;
    }
 }
