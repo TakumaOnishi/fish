@@ -21,7 +21,8 @@ body{
    padding: 0;
    width: 100vw;
    display: flex;
-   justify-content: center;
+   flex-flow: column;
+   align-items: center;
    background-color: var(--bg);
    color: var(--tx);
    font-size: 1.1rem;
@@ -122,8 +123,7 @@ body > img{
    object-fit: contain;
 }
 
-#content{
-   margin-top: 28vw;
+.content{
    width: min(90vw, 45rem);
    padding: 1rem;
    z-index: 1;
@@ -132,7 +132,7 @@ body > img{
 h1{
    font-size: 5rem;
    line-height: 1.2em;
-   margin: .5rem -.3rem 1rem;
+   margin: 28vw -.3rem 1rem;
    color: white;
    font-weight: 700;
 }
@@ -283,6 +283,23 @@ p a:active{
    background-color: transparent;
 }
 
+.gallery {
+   width: 100vw;
+   overflow: auto;
+   white-space: nowrap;
+   -ms-overflow-style: none;
+   scrollbar-width: none;
+}
+
+.gallery img{
+   width: min(30rem, 80vw);
+   margin: 0 .5rem;
+}
+
+.gallery::-webkit-scrollbar{
+   display:none;
+}
+
 a.buy{
    font-size: 1.1rem;
    display: block;
@@ -366,12 +383,9 @@ h6{
       margin: 0;
    }
 
-   #content{
-      margin-top: calc(60vw + 2rem);
-   }
-
    h1{
-      font-size: 13vw;
+      margin-top: calc(60vw + 2rem);
+      font-size: max(2rem, 13vw);
    }
 
    #h_upper{
