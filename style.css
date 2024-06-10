@@ -51,7 +51,7 @@ header{
    flex-flow: row;
    justify-content: space-evenly;
    padding: 0;
-   font-size: min(.9rem, 2.2vh);
+   font-size: min(.9rem, 2vh);
    z-index: 1;
    overflow: hidden;
 }
@@ -410,8 +410,9 @@ h6{
    }
 
    h1{
+      -webkit-text-size-adjust: 100%;
       margin-top: calc(60vw + 2rem);
-      font-size: max(2rem, 13vw);
+      font-size: max(2rem, 15.5vw);
    }
 
    #h_upper{
