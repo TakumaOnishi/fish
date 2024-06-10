@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html lang="ja">
 <html>
 
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/ fb# website: http://ogp.me/ns/ website#">
@@ -16,6 +17,9 @@
    <link rel="icon" type="image/png" href="favicon.ico">
    <link rel="stylesheet" href="style.css?6">
    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,250..400,0,0"/>
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
    <script src="script.js?2"></script>
 </head>
 
@@ -45,7 +49,7 @@
       <a href="tester/index.html">テスター</a>
       <a href="https://discord.gg/VaGEcTQ5tC" target="_blank">コミュニティ<span class="material-symbols-rounded">open_in_new</span></a>
    </div>
-   <img src="img/both.webp">
+   <img src="img/both.webp" loading="eager" fetchpriorityh="high">
    <div class="content">
       <h1>タイピングを<br>諦めないで。</h1>
       <p>かわいい見た目とは裏腹に、これは実用的なキーボードです。
@@ -67,14 +71,14 @@
          <a href="https://square.link/u/BDd1fULC" target="_blank">今すぐ購入<span class="material-symbols-rounded" style="font-size: 1.1rem;">open_in_new</span></a>
       </div>
 
-      <img src="img/split.webp">
+      <img src="img/split.webp" loading="lazy">
       <h2 id="split">胸を張って使おう。</h2>
       <p>おさかなキーボードは左右分割タイプ。
          両腕を好きなだけ開いて、肩や手首に負担のない自然な姿勢で作業できます。</p>
       <div class="otaku">オタク特有の早口</div>
       <p>Let's SplitやCorne、Moonlanderに代表される左右分割は自作キーボード文化の象徴的なアイキャッチとなって、作家やエンジニアを中心に愛好者を増やしてきました。医学的な裏付けはまだ不足していますが、合間にメモや飲み物を置きながらパワーポーズで作業できる優雅さは、多くの使用者が口を揃える魅力です。</p>
       
-      <img src="guide/img/keymap.webp">
+      <img src="guide/img/keymap.webp" loading="lazy">
       <h2 id="layout">見る１打より、見ない２打。</h2>
       <p>おさかなキーボードには、左右合わせて32キーしかありません。
          でもレイヤー機能を使えば、普通のキーボードにある全ての、あるいはそれ以上のキーが入るんです。
@@ -82,7 +86,7 @@
       <div class="otaku">オタク特有の早口</div>
       <p>自作キーボードでは当たり前になったレイヤー・ホールドタップ・コンボによる物理キー数の削減も、国内では40~50キーを実用的な下限とする向きがあります。しかし、100種あまりの一般的なコードを入れるのに２つのMOキーを用いた４レイヤー構成が必要になるのは30キーでも50キーでも同じことであり、小指・親指キーを自然な可動域から溢れさせながらエルゴを標榜するのは無理があります。26のアルファベットに2つのパンクチュエーション、4つのホワイトスペース。32キーこそ、キーボードのゴッズナンバーです。</p>
       
-      <img src="img/shape.webp">
+      <img src="img/shape.webp" loading="lazy">
       <h2 id="shape">手が惚れる曲面。</h2>
       <p>なめらかに窪んだキー配列に、垂直な親指キー。
          統合設計された鞍型キーキャップに、日本人好みのキー間隔。
@@ -90,15 +94,15 @@
       <div class="otaku">オタク特有の早口</div>
       <p>自作キーボードのジャーゴンをご存じで？話が早い。これはロープロファイルなメカニカルスイッチを用いた左右分割30%キーボードで、テント・ティルトしたコンケイヴでカラムスタッガードなキーウェルに仄かなスプレイとステップ・スカルプチャーを潜ませました。DygmaのShortcutを蘇生するフィンガーグリッドの脱構築に、Colosseumを振り切るサムクラスターの倒立。それでいてパームレストを前提にしないタイトなパッキングや指列間のシームレスさからは、Dactylと袂を分かつ認知負荷への配慮が垣間見えます。大胆さと神経質さ、ロマンとモダンが調和した、立体キーボードのひとつのバランスポイントです。</p>
       
-      <img src="img/remap.webp">
+      <img src="img/remap.webp" loading="lazy">
       <h2 id="remap">あなただけの配列で。</h2>
       <p>すべてのキーは完全にプログラマブル。
          専用のエディターを使えば、誰でも視覚的にキーマップを編集できます。
          デフォルトの<a href="https://o24.works/layout/" target="_blank">大西配列</a>をはじめとする選択的配列や、複雑なショートカットも自由自在。</p>
       <div class="otaku">オタク特有の早口</div>
-      <p>QMK FirmwareにおけるRemapやVIAは、プログラマブルキーボードのうまみを一般に普及するための重要なインフラになっています。後発のZMKはリアルタイムリマップを「計画段階」としており簡便なアプリケーションが存在しないのが現状ですが、キーマップの記述だけでもGUIで完結させることで非エンジニアの障壁を可能な限り下げました。互換OSのフィルターを備えた一覧性の高いコードリストや、SVGを用いた非矩形のキーシェイプの再現など、専用ツールだからこそのUIへのこだわりも感じてください。</p>
+      <p>QMK FirmwareにおけるRemapやVIAは、プログラマブルキーボードのうまみを一般に普及するための重要なインフラになっています。後発のZMKはリアルタイムリマップを計画段階としており、簡便なアプリケーションが存在しないのが現状ですが、キーマップの記述だけでもGUIで完結させることで非エンジニアの障壁を可能な限り下げました。互換OSのフィルターを備えた一覧性の高いコードリストや、SVGを用いた非矩形のキーシェイプの再現など、専用ツールだからこそのUIへのこだわりも感じてください。</p>
       
-      <img src="img/box.webp">
+      <img src="img/box.webp" loading="lazy">
       <h2 id="travel">スイスイ、どこへでも。</h2>
       <p>手のひらサイズの筐体は、限られたデスクの面積を奪いません。
          完全無線接続だから、煩わしいケーブルも不要。
@@ -108,7 +112,7 @@
       <div class="otaku">オタク特有の早口</div>
       <p>自作キーボードの文脈では、そもそも組み立て不要の完成品販売であることを明言しなければいけないかもしれません。はんだごてや別売りの部品は不要。箱から出して電源スイッチを入れるだけで、すぐに使い始められます。美しさと強度を兼ね備えた貼り箱のパッケージは、佐賀県有田の町工場・一新堂の特製です。</p>
          
-      <img src="img/zmk.webp">
+      <img src="img/zmk.webp" loading="lazy">
       <h2 id="firmware">最強の心臓。</h2>
       <p>おさかなを駆動するのは、次世代のキーボードファームウェア・ZMK。
          Bluetoothで最大５機器とペアリングでき、そのスピードは無線であることを忘れるほど。
@@ -117,7 +121,7 @@
       <div class="otaku">オタク特有の早口</div>
       <p>自作キーボードの主流であるQMK Firmwareが有線接続を前提にしているのに対し、ZMKは無線接続を第一にローレヴェルから最適化されたオープンソースな新興ファームウェアです。<a href="https://youtu.be/jWL4nU-vtWs" target="_blank">第三者の計測</a>によれば、ZMKの無線の通信速度は一般的な有線キーボードに引けを取らず、ポーリングレート1000Hzの有線接続では一般的なゲーミングキーボードを凌駕するほどです。</p>
          
-      <img src="img/switch.webp">
+      <img src="img/switch.webp" loading="lazy">
       <h2 id="switches">推しの押し心地で。</h2>
       <p>キースイッチは、感触の異なる３種類から選べます。</p>
          <h4>ライトリニア</h4>
@@ -129,7 +133,7 @@
       <div class="otaku">オタク特有の早口</div>
       <p>上品な打鍵感と高い信頼性に定評のあるGateron社製のLow-plofile 2.0スイッチをベースに、気鋭のカジュアルキーボードスタジオNuphyがチューンした2023年のコレクションから<a href="https://nuphy.com/collections/switches/products/nuphy-aloe-l37-low-profile-switches" target="_blank">Aloe</a>、<a href="https://nuphy.com/collections/switches/products/nuphy-cowberry-l45-low-profile-switches" target="_blank">Cowberry</a>、<a href="https://nuphy.com/collections/switches/products/nuphy-wisteria-t55-low-profile-switches" target="_blank">Wisteria</a>を採用。互換性が低く自作キーボードではあまり使われないスイッチですが、ロープロファイルとは思えない打鍵感・打鍵音の心地よさはクチコミが物語っています。個体差の大きいラインでもありますが、組み立て時に音や重さを比べて最良の位置に嵌めています。</p>
 
-      <img src="img/size.webp">
+      <img src="img/size.webp" loading="lazy">
       <h2 id="qa">Q & A</h2>
       <h3>キーに印字はないの？</h3>
       <p>ありません。視覚に頼らずに打鍵されること、人や時期によって異なる配列で使われることを前提にしているからです。</p>
@@ -144,7 +148,7 @@
       <p>構造上、ホットスワップには対応していません。Gateron社は5000万回以上の打鍵耐久性を謳っており、修理対応もいたしますのでご安心ください。</p>
 
       <h3>なんでこんなに高いの？</h3>
-      <p>原価が高いからです。筐体・キーキャップはフル3Dプリントで、ボトムプレートは真鍮削り出し、組み立ては一つひとつ手作業で行われています。</p>
+      <p>原価が高いからです。筐体・キーキャップは3Dプリント、ボトムプレートは真鍮から削り出し、一つひとつ手作業で組み立てられています。</p>
 
       <h3>キーの役割を重ねたら誤爆しない？</h3>
       <p>ホールド／タップは押下の時間差・離すまでの時間や順番・第三打との関係などを総合的にみて分別され、またその閾を繊細にカスタマイズできます。うまく設定すれば、ふつうに使っていて誤爆することはまずありません。</p>
@@ -183,7 +187,7 @@
          </tr>
          <tr>
             <td>技適認証</td>
-            <td><div class="imgbox"><img src="guide/img/giteki.webp"></div></td>
+            <td><div class="imgbox"><img src="guide/img/giteki.webp" loading="lazy"></div></td>
          </tr>
       </table>
 

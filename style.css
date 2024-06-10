@@ -1,7 +1,5 @@
 /* おまじない */
 @charset "UTF-8";
-/* フォントを借りてくる */
-@import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&display=swap');
 
 /* 各HTML要素を修飾する */
 :root{
