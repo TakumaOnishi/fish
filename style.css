@@ -412,7 +412,7 @@ h6{
    h1{
       -webkit-text-size-adjust: 100%;
       margin-top: calc(60vw + 2rem);
-      font-size: max(2rem, 15.5vw);
+      font-size: max(2rem, calc((100vw - 1.8rem) / 6));
    }
 
    #h_upper{
