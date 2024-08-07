@@ -14,8 +14,8 @@
    <meta name="twitter:card" content="summary_large_image"/>
    <meta name="viewport" content="width=device-width,initial-scale=1"/>
    <link rel="icon" type="image/png" href="../favicon.ico">
-   <link rel="stylesheet" href="../style.css?1">
-   <link rel="stylesheet" href="style.css?1">
+   <link rel="stylesheet" href="../style.css?2">
+   <link rel="stylesheet" href="style.css?2">
    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,250..400,0,0"/>
    <script src="script.js?1"></script>
 </head>
@@ -46,7 +46,7 @@
       <a href="../tester/index.html">テスター</a>
       <a href="https://discord.gg/VaGEcTQ5tC" target="_blank">コミュニティ<span class="material-symbols-rounded">open_in_new</span></a>
    </div>
-   <div id="content">
+   <div class="content">
       <h1>ユーザーガイド</h1>
       <p><a href="../index.html">おさかなキーボード</a>をお買い求めいただき、ありがとうございます。<br>
          使い方を説明させてください。</p>
@@ -55,7 +55,7 @@
          <h3><span class="material-symbols-rounded" style="font-size: 1.5rem;">warning</span>使用上の注意</h3>
          <p class="dot">液体や粉塵をかけないでください。筐体は密閉されていないため、内部に侵入して接触不良やショート・バッテリーの発火を起こす可能性があります。</p>
          <p class="dot">直射日光に長期間当てないでください。筐体とキーキャップは紫外線で硬化するレジンでできているため、変色・ひび割れを起こす可能性があります。</p>
-         <p class="dot">日本国外で電源を入れないでください。組み込みモジュールの転記で技適認証を省略できる国は日本くらいのため、違法電波となる可能性があります。</p>
+         <p class="dot">日本国外で電源を入れないでください。組み込みモジュールの転記で技適認証を省略できる国は日本くらいなので、違法電波となる可能性があります。</p>
          <div class="imgbox"><img src="img/giteki.webp"/></div>
       </div>
       <h2 id="start">使い始める</h2>
@@ -66,23 +66,24 @@
          入力方式の指定を求められた場合はANSI（US配列）を選択します。</p>
       <img src="img/test.webp">
       <p>適当なキーを押して、入力が通っているか確かめます。<br>
-         動作確認がしやすい<a href="../tester/index.html" target="_blank">テストページ</a>もご活用ください。</p>
+         動作確認がしやすい<a href="../tester/index.html" target="_blank">テスター</a>ページもご活用ください。</p>
 
       <div class="info">
          <h3><span class="material-symbols-rounded" style="font-size: 1.5rem;">info</span>デフォルトキーマップ</h3>
          <p>開封時点では以下のようなキーマップが設定されています（購入時期によって若干異なる場合があります）。</p>
-         <img src="img/keymap.webp"/>
-         <p class="dot">短くキーを押すと青字が入ります。英字の並びは<a href="https://o24.works/layout/" target="_blank">大西配列</a>です。</p>
+         <img src="img/win.webp"/>
+         <p class="dot">普通にキーを押すと青字が入ります。英字の並びは<a href="https://o24.works/layout/" target="_blank">大西配列</a>です。</p>
+         <p class="dot">XとC、MとJを同時に押すとそれぞれ日本語IMEのオフ、オンが入ります。</p>
          <p class="dot">長押しすると背景の修飾キーが入ります。</p>
-         <p class="dot dot2">OやTはShift、AやNはOption/Alt、IやSはCommand/Windows/Meta、EnterやTabはControlが入ります。</p>
-         <p class="dot dot2">BackSpaceは黄色レイヤー、Spaceは赤レイヤー、その両方の長押し中は灰色レイヤーが有効化します。</p>
-         <p class="dot dot2">これらの複合キーは、短く押した直後に長押しすれば短打側の長押しに入ります。</p>
+         <p class="dot dot2">OやTを長押しするとShiftが、AやNを長押しするとAlt/Optionが、IやSを長押しするとWindows/Command/Metaが、EnterやTabを長押しするとControlが入ります。</p>
+         <p class="dot dot2">BackSpaceを長押しするとレイヤー１（黄色字）が、Spaceを長押しするとレイヤー２（赤字）が、その両方の長押し中はレイヤー３（灰色字）が有効化します。</p>
+         <p class="dot dot2">これらの複合キーは、短く押した直後に長押しすれば短打側の長押しが入ります。</p>
          <p class="dot">灰色レイヤーにはいくつか特殊なキーがあります。</p>
          <p class="dot dot2">BT Sel 0~4は、その番号に登録された（なければ新規）機器とBluetooth接続を試みます。</p>
          <p class="dot dot2">BT Clearは現在接続中の、BT Clear Allはすべての機器とのペアリング情報を削除します。</p>
          <p class="dot dot2">USB↔︎BTは、親機充電中に出力先をUSBからBluetoothに切り替え、再度押すと戻します。これはACアダプターなど、接続したい機器以外から給電している場合に便利です。</p>
-         <p class="dot dot2">Mac↔︎Winは、Windows向けのキーマップを有効化し、再度押すか電源が切れると戻します。具体的には、Command/Windows/MetaとControlの位置を入れ替え、<span class="material-symbols-rounded" style="font-size: 1.2rem;">photo_camera</span>の中身を⇧⌘3からPrintScreenに変えます。</p>
-         <p class="dot">XとC、MとJを同時に押すとそれぞれ日本語IMEのオフ、オンが入ります。</p>
+         <p class="dot dot2">Win↔︎Macは、macOS向けのキーマップを有効化し、再度押すか電源が切れると戻します。具体的には、Command/Windows/MetaとControlの位置を入れ替え、<span class="material-symbols-rounded" style="font-size: 1.2rem;">photo_camera</span>の中身をPrintScreenから⇧⌘3に変えます：</p>
+         <img src="img/mac.webp"/>
          <br>
          <p>これらは、<a href="#remap">キーマップを変える</a>の手順で自由に書き換えることができます。</p>
       </div>
@@ -100,7 +101,7 @@
          </tr>
          <tr>
             <td>電源<br>オン</td>
-            <td>バッテリーを充電しながら動作します。親機ならUSBに入力しますが、OUT_XXXキーでBlueTooth入力にも切り替えられます。</td>
+            <td>バッテリーを充電しながら動作します。親機ならUSBに入力しますが、USB↔︎BTキーでBlueTooth入力にも切り替えられます。</td>
             <td>バッテリー電源で動作し、Bluetoothで入力します。通常はこの状態で使用してください。</td>
          </tr>
          <tr>
@@ -110,7 +111,7 @@
          </tr>
       </table>
 
-      <div class="info">
+      <div class="info" id="centered">
          <h3><span class="material-symbols-rounded" style="font-size: 1.5rem;">info</span>親機と子機</h3>
          <img src="img/send.webp"/>
          <p>おさかなキーボードには親機と子機があります。<br>
@@ -118,53 +119,19 @@
             このため、親機のみ電源を入れて使うことはできますが、逆はできません。<br>
             左手デヴァイスとしての使用を考え、出荷時は左手を親機に設定しています。<br><br>
             また同様の理由から、子機は親機の４倍ほど充電が長持ちします。<br>
-            一部のOSで確認できる充電残量は親機のもので、子機の充電残量を確認する方法はありませんが、親機のついで程度に充電してあげてください。
+            一部のOSで確認できる充電残量は親機のもので、子機の充電残量を確認する方法はありませんが、親機のついでに充電してあげてください。
          </p>
       </div>
 
       <h2 id="remap">キーマップを変える</h2>
-      <p>おさかなキーボードを構成する<a href="https://zmk.dev/docs">ZMK Firmware</a>の一般的なリマップ手順に準じ、以下のように作業してください。</p>
 
-      <h3>ファイル置き場を作る（初回のみ）</h3>
-      <img src="img/fork.webp"/>
-      <p><a href="https://github.com/">Github</a>のアカウントを用意し、おさかなキーボードの<a href="https://github.com/TakumaOnishi/zmk-config-fish" target="_blank">設定リポジトリ</a>をフォークします。</p>
-
-      <div class="info">
-         <h3><span class="material-symbols-rounded" style="font-size: 1.5rem;">info</span>Githubとは</h3>
-         <p>Githubは世界最大のソースコード共有ツールで、リポジトリはプロジェクトみたいなこと、フォークは自分用に複製することです。<br>
-            詳しい手順は数多ある解説記事に譲ります。</p>
-      </div>
-      
-      <h3>ファイルを更新する</h3>
       <img src="img/remap.webp"/>
-      <p><a href="../editor/index.html" target="_blank">キーマップエディター</a>でキーマップを作成し、saveボタンからfish.keymapファイルをパソコンに保存します。</p>
-      <img src="img/upload.webp"/>
-      <p>作成したGithubリポジトリのconfig > boards/shields/fishを開き、新しいfish.keymapをドラッグ＆ドロップ、またはAdd fileボタンからアップロードしてcommitします。</p>
-
-      <div class="info">
-         <h3><span class="material-symbols-rounded" style="font-size: 1.5rem;">info</span>ファイルの置き方</h3>
-         <p>アップロードするとき、同名のファイルは暗黙裡に置き換えられます。<br>
-            名前を変えて複数の.keymapファイルを置いておくこともできますが、有効なのはfish.keymapという名前の１つだけです。<br><br>
-            また、キーマップは以下のような方法でテキストとして編集することもできます。</p>
-         <p class="dot">Github上の <span class="material-symbols-rounded">edit</span>ボタンから直接編集し、commitする</p>
-         <p class="dot">ローカルにcloneしてテキストエディタで編集し、pushする</p>
-      </div>
-
-      <img src="img/action.webp"/>
-      <p>リポジトリの内容を更新すると、Githubが自動的にファームウェアの生成を始めます。<br>
-         ２分待ってactionsタブを開き、firmware.zipをダウンロードして解凍します。</p>
-
-      <div class="info">
-         <h3><span class="material-symbols-rounded" style="font-size: 1.5rem;">info</span>簡略化の計画</h3>
-         <p>将来的には、キーマップエディターでビルドまでできるようになるかもしれません。<br>
-            おさかなキーボードの売れ行き次第です。</p>
-      </div>
+      <p><a href="../editor/index.html" target="_blank">キーマップエディター</a>でキーマップを作成し、右下のボタンからファームウェアを生成・ダウンロードします。</p>
       
-      <h3>ファームウェアを更新する</h3>
       <img src="img/flash.webp"/>
       <p>おさかなの両機の電源を切った状態で、親機（既定では左手側）だけをパソコンとUSB接続し、上顎の陰にある白いリセットボタンを素早く２回押します。<br>
-         すると、パソコンに〈XIAO-SENSE〉という外部ストレージが出現するので、親機側のファームウェア（左手ならfish_left~.uf2）をその中に配置します。<br>
-         読み込まれると自動でキーボードの認識に戻り、新しいキーマップで動作するはずです。
+         パソコン側にXIAO-SENSEという名前の外部記憶ディスクが出現したら、親機側のファームウェア（左手ならleft.uf2）をその中にコピーします。<br>
+         完了してディスクが消えたら、新しいキーマップで動作することを<a href="../tester/index.html" target="_blank">テスター</a>などで確認してください。
       </p>
 
       <div class="info">
@@ -172,6 +139,18 @@
          <p>ファームウェアを更新するとき、ファイルの転送やディスクの取り出しに関するエラーが出ることがありますが、通常は無視して大丈夫です。<br>
             （参考：<a href="https://zmk.dev/docs/troubleshooting" target="_blank">Troubleshooting｜ZMK Docs</a>）</p>
       </div>
+
+      <h3>（参考）ファームウェアを自作する</h3>
+      <p>おさかなキーボードを構成する<a href="https://zmk.dev/docs">ZMK Firmware</a>の一般的な手順でファームウェアを作ることもできます。</p>
+      <img src="img/fork.webp"/>
+      <p><a href="https://github.com/">Github</a>のアカウントを用意し、おさかなキーボードの<a href="https://github.com/TakumaOnishi/zmk-config-fish" target="_blank">設定リポジトリ</a>をフォークします。</p>
+      <img src="img/upload.webp"/>
+      <p>作成したリポジトリのconfig > boards/shields/fishを開き、fish.keymap（より深く編集したい場合はfish.confやKconfig.defconfigも）を編集してcommitします。<br>
+         名前を変えて複数の.keymapファイルを置いておくこともできますが、有効なのはfish.keymapという名前の１つだけです。<br>
+      </p>
+      <img src="img/action.webp"/>
+      <p>リポジトリの内容を更新すると、Githubが自動的にファームウェアの生成を始めます。<br>
+         actionsタブを開いて２分ほど待ち、firmware.zipをダウンロードして解凍します。</p>
 
       <h2 id="trouble">こんなときは</h2>
       <h3>パソコンにBluetooth接続できない</h3>
@@ -186,9 +165,9 @@
             その後、パソコンのBluetooth設定からもおさかなの登録を削除します。</p>
       </div>
 
-      <h3>子機が親機に接続できない</h3>
+      <h3 id="settings_reset">子機が反応しない</h3>
       <p class="dot">子機をUSB接続すれば親機に接続できるようになるなら、そのまま充電してください。</p>
-      <p class="dot">更新するファームウェアの左右を間違えた、または親機の左右を変えた直後なら、一度リセットファームウェア（settings_reset~.uf2）を読み込ませたあと正しいファームウェアを読み込ませる、という操作を両機に行なってください。<br>
+      <p class="dot">更新するファームウェアの左右を間違えた、または親機の左右を変えた直後なら、一度<a href="settings_reset.uf2" download="settings_reset.uf2">リセットファームウェア</a>を読み込ませたあと正しいファームウェアを読み込ませる、という操作を両機に行なってください。<br>
          （参考：<a href="https://zmk.dev/docs/troubleshooting#split-keyboard-halves-unable-to-pair" target="_blank">Split Keyboard Halves Unable to Pair｜ZMK Docs</a>）</p>
 
       <h3>充電ができていない</h3>
@@ -198,8 +177,9 @@
       <p class="dot">キーコードの割り当てによらず反応しない・反応が悪いキーがあるなら、<a href="#fix">修理</a>を申請してください。</p>
       
       <h2 id="fix">サポートと修理</h2>
-      <p>キーマップや使用法についての情報交換をしたいときや、不具合の対処に助けが必要なときは、O24 worksの<a href="https://discord.gg/VaGEcTQ5tC" target="_blank">Discordコミュニティ</a>で検索・投稿してください。<br>
-         修理を申請したいときは、Discordで大西拓磨（takuma_onishi）にDMするか、support@o24.worksにメールしてください。</p>
+      <p>キーマップや使用法についての情報交換をしたいときや、不具合の対処に助けが必要なときは、<a href="https://discord.gg/VaGEcTQ5tC" target="_blank">公式Discordコミュニティ</a>のサポートフォーラムで検索・投稿してください。<br><br>
+         修理を申請したいときは、Discordで大西拓磨（takuma_onishi）にDMするか、support@o24.worksにメールしてください。<br><br>
+         このサイトやデフォルトファームウェアに問題を見つけたときは、それぞれのGitHubリポジトリ（<a href="https://github.com/TakumaOnishi/fish/tree/main">サイト</a>／<a href="https://github.com/TakumaOnishi/zmk-config-fish">ファームウェア</a>）にプルリクエストを送るか、Discordで共有してください。</p>
 
    </div>
    <div id="index">

@@ -592,18 +592,35 @@ body div{
    height: 2rem;
 }
 
-button{
+#save, #load{
    position: absolute;
+   width: 10.7rem;
+   gap: .7rem;
+   display: flex;
+   flex-flow: row;
+   justify-content: space-between;
+}
+
+#load{
+   left: 1rem;
+   bottom: 1rem;
+}
+
+#save{
+   right: 1rem;
+   bottom: 1rem;
+}
+
+button{
    height: 3rem;
+   display: flex;
+   align-items: center;
+   padding: 0 .75rem;
    border-radius: 1.5rem;
    color: var(--tx);
    background-color: var(--bg);
    box-shadow: -.1rem -.2rem .3rem #cff4, .1rem .2rem .3rem #0004;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   font-size: 1.2rem;
-   font-weight: 500;
+   overflow: hidden;
    transition: box-shadow .2s ease, opacity .2s ease;
    pointer-events: all;
    cursor: pointer;
@@ -629,28 +646,98 @@ button .material-symbols-rounded{
    font-size: 1.5rem;
 }
 
-#load{
-   width: 7rem;
-   left: 1rem;
-   bottom: 1rem;
+button p{
+   margin: 0;
+   transition: opacity .2s ease;
+   text-align: left;
+   font-size: 1rem;
+   line-height: 1rem;
+   font-weight: 500;
+   letter-spacing: 0;
+   text-align: center;
+   flex: 1;
+   font-family: 'Zen Maru Gothic', sans-serif;
 }
 
-#save{
+#l_keymap, #s_keymap{
+   width: 3rem;
+   transition: width .2s ease;
+}
+
+#l_keymap p, #s_keymap p{
+   opacity: 0;
+}
+
+#l_keymap:hover, #s_keymap:hover{
    width: 7rem;
-   right: 1rem;
-   bottom: 1rem;
+}
+
+#l_keymap:hover p, #s_keymap:hover p{
+   opacity: 1;
+}
+
+#preset_toggle, #s_firmware{
+   flex: 1;
+}
+
+#s_keymap:hover + #s_firmware p, #preset_toggle:has(+ #l_keymap:hover) p{
+   opacity: 0;
+}
+
+#b_cancel, #b_progress, #b_bar{
+   display: none;
+}
+
+#s_firmware > div{
+   display: flex;
+   flex-flow: column;
+   flex: 1;
+}
+
+#s_firmware.building{
+   #b_firmware{
+      display: none;
+   }
+   #b_progress, #b_bar{
+      display: block;
+   }
+}
+
+#s_firmware.building:hover #b_cancel{
+   display: block;
+}
+
+#s_firmware.building:hover #b_progress{
+   display: none;
+}
+
+#b_bar{
+   margin: .3rem 5% 0 5%;
+   width: 90%;
+   height: .2rem;
+   border-radius: .1rem;
+   background-color: var(--txweak);
+}
+
+#b_bar_inner{
+   border-radius: .1rem;
+   width: 0%;
+   height: 100%;
+   background-color: var(--tx);
+}
+
+#help_toggle, #conf_toggle{
+   position: absolute;
+   bottom: 14rem;
+   width: 3rem;
 }
 
 #help_toggle{
-   width: 3rem;
    left: 1rem;
-   bottom: 14rem;
 }
 
 #conf_toggle{
-   width: 3rem;
    right: 1rem;
-   bottom: 14rem;
 }
 
 #custom_input{
@@ -698,7 +785,7 @@ button .material-symbols-rounded{
    font-weight: 400;
 }
 
-#help, #conf{
+#help, #conf, #preset{
    width: 100vw;
    height: 100vh;
    position: absolute;
@@ -783,6 +870,21 @@ a:hover{
    text-align: center;
    width: 100%;
    height: 1rem;
+}
+
+.button_sample{
+   display: inline-flex;
+   align-items: center;
+   width: fit-content;
+   height: 2rem;
+   padding: .2rem .5rem;
+   margin: 0 .2rem;
+   border-radius: 1rem;
+   box-shadow: -.05rem -.1rem .15rem #cff4, .05rem .1rem .15rem #0004;
+   .material-symbols-rounded{
+      font-size: 1.2rem;
+      line-height: 1.2rem;
+   }
 }
 
 .round{
@@ -1015,4 +1117,51 @@ input[type="number"]::-webkit-inner-spin-button {
 
 .show_advanced .showcase:has(.except_toggle:checked) + .except{
    display: flex;
+}
+
+#preset .modal{
+   display: flex;
+   flex-flow: column;
+   align-items: center;
+   button{
+      width: 7rem;
+      margin-top: 1rem;
+   }
+}
+
+.disabled button{
+   pointer-events: none;
+}
+
+.segment{
+   margin-bottom: 1rem;
+   display: flex;
+   flex-flow: row;
+   border: solid .1rem var(--txweak);
+   border-radius: .7rem;
+   position: relative;
+   padding: .2rem;
+   input{
+      display: none;
+   }
+   label{
+      width: 8rem;
+      height: 1.8rem;
+      border-radius: .5rem;
+      text-align: center;
+      color: var(--txweak);
+      cursor: pointer;
+      transition: all .2s ease;
+   }
+   input:checked + label{
+      background-color: var(--tx);
+      font-weight: 500;
+      color: var(--bgdark);
+      box-shadow: .1rem .2rem .3rem #0004;
+      cursor: default;
+   }
+   input:not(:checked) + label:hover{
+      background-color: var(--glow);
+      color: var(--tx);
+   }
 }

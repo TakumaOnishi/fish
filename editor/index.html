@@ -15,9 +15,9 @@
    <meta name="viewport" content="width=device-width,initial-scale=1"/>
    <meta name="google" value="notranslate"/>
    <link rel="icon" type="image/png" href="../favicon.ico">
-   <link rel="stylesheet" href="style.css?1">
+   <link rel="stylesheet" href="style.css?2">
    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,250..400,0,0"/>
-   <script src="script.js?2"></script>
+   <script src="script.js?3"></script>
 </head>
 
 <body>
@@ -654,8 +654,14 @@
             </div>
          </div>
       </div>
-      <button id="load"><span class="material-symbols-rounded">upload</span><p>load</p><input type='file' accept=".keymap"/></button>
-      <button id="save"><a download='fish.keymap' style="display: none;"></a><span class="material-symbols-rounded">download</span><p>save</p></a></button>
+      <div id="load">
+         <button id="preset_toggle"><span class="material-symbols-rounded">upload</span><p>preset</p></button>
+         <button id="l_keymap"><span class="material-symbols-rounded">upload</span><p>keymap</p><input type='file' accept=".keymap"/></button>
+      </div>
+      <div id="save">
+         <button id="s_keymap"><span class="material-symbols-rounded">download</span><p>keymap</p></button>
+         <button id="s_firmware"><span class="material-symbols-rounded">download</span><div><p id="b_firmware">firmware</p><p id="b_cancel">cancel</p><p id="b_progress">0%</p><div id="b_bar"><div id="b_bar_inner"></div></div></div></button>
+      </div>
    </div>
    <div id="combo_hints">
    </div>
@@ -666,11 +672,11 @@
    <div id="help" class="disabled">
       <div class="modal">
          <h1>使いかた</h1>
-         <p>このページでは、<a href="../index.html" target="_blank">『おさかなキーボード』</a>のためのキーマップを視覚的に検討したり、編集結果から.keymapファイルを生成・保存することができます。<br>
-            保存したキーマップからファームウェアを作っておさかなに食べさせる方法は<a href="../guide/index.html" target="_blank">ユーザーガイド</a>から、おさかなが今どんなキーを割り当てられているかは<a href="../tester/index.html" target="_blank">テスター</a>からご確認ください。
+         <p>このページでは、<a href="../index.html" target="_blank">『おさかなキーボード』</a>のためのキーマップを視覚的に検討したり、編集結果からファームウェアを生成することができます。<br><br>
+            保存したファームウェアをおさかなに食べさせる方法は<a href="../guide/index.html" target="_blank">ユーザーガイド</a>から、各キーに現在割り当てられているコードは<a href="../tester/index.html" target="_blank">テスター</a>からご確認ください。
          </p>
          <h2>コードをキーに割り当てる</h2>
-         <p>上のコード一覧から割り当てたいものをクリックし、下の図の割り当てたいキーの上でもう一度クリックします。<br><br>
+         <p>ページ上部のキーコード一覧から割り当てたいものをクリックし、下部の割り当てたいキーの上でもう一度クリックします。<br><br>
             ２つのキーを順にクリックすることで、割り当てられたキーの位置を交換することもできます。
          </p>
          <h2><a href="https://zmk.dev/docs/behaviors/hold-tap" target="_blank">Hold-Tapキー</a>を作る</h2>
@@ -688,25 +694,30 @@
          <h2>レイヤーを使う</h2>
          <p>レイヤーとは、各キーに新しいコードを割り当てられる “階層” のことです。<br>
             <span class="code_sample round">Shift</span>を押している間は<span class="code_sample big">1</span>が<span class="code_sample big">!</span>になったりするように、<br>
-            例えば<span class="code_sample big">A</span>が<span class="code_sample big">2</span>になったりする「レイヤー１」を定義し、<span class="code_sample round">L1</span>を押している間だけ有効化することができます。<br><br>
-            レイヤーを新設／削除するには、下部中央の “layer” パネルの左右にある “＋” “ー” ボタンを押します。<br>
-            名前を変えるには、表示中のレイヤー名を再度クリックします。<br>
+            例えば<span class="code_sample big">L</span>が<span class="code_sample big">1</span>になったりする「レイヤー１」を定義し、<span class="code_sample round">L1</span>を押している間だけ有効化することができます。<br><br>
+            レイヤーを新設／削除するには、下部中央のlayerパネルの左右にある＋／ーボタンを押します。<br>
+            レイヤーの名前を変えるには、表示中のレイヤー名を再度クリックします。<br>
             レイヤーを有効化／無効化するためのコードは、現在のレイヤーの数に応じて、上のコード一覧に出現します。
          </p>
          <h2>コンボを使う</h2>
          <p>コンボとは、複数のキーの “同時押し” のことです。<br>
-            例えば<span class="code_sample big">A</span>と<span class="code_sample big">O</span>を0.1秒以内の時間差で押すことに<span class="code_sample">英数</span>という新しいコードを割り当てられます。<br><br>
-            設定するには、レイヤーと同様に “＋” で新設して、クリックでコードを１つ割り当てます。<br>
-            その後、下図のキーをクリックして使用／不使用を切り替え、コンボを構成する２つ以上のキーをハイライトしてください。
+            例えば<span class="code_sample big">X</span>と<span class="code_sample big">C</span>を0.1秒以内の時間差で押すことに<span class="code_sample">英数</span>という新しいコードを割り当てられます。<br><br>
+            設定するには、レイヤーと同様に＋ボタンで新設して、クリックでコードを１つ割り当てます。<br>
+            その後、下部のキーをクリックして使用／不使用を切り替え、コンボを構成する２つ以上のキーをハイライトしてください。
          </p>
-         <h2>読み込みと保存</h2>
-         <p>左下の “load” ボタンから.keymap形式のローカルファイルを選択すると、内容を読み込んで再現します。<br>
-            ただし、このページで生成したファイル以外の完全な読み込みは保証しません。<br><br>
-            右下の “save” ボタンを押すと、現在の編集内容から生成した.keymapファイルをローカルに保存できます。<br>
+         <h2>保存</h2>
+         <p>左下の<span class="button_sample"><span class="material-symbols-rounded">download</span>firmware</span>を押して３分ほど待つと、生成されたファームウェア一式をダウンロードできます。<br><br>
+            隣の<span class="button_sample"><span class="material-symbols-rounded">download</span>keymap</span>を押すと、生成された.keymapファイルのみを即座にダウンロードできます。<br>
+         </p>
+         <h2>復元</h2>
+         <p>左下の<span class="button_sample"><span class="material-symbols-rounded">upload</span>preset</span>から文字配列やOSを選ぶと、デフォルトキーマップのヴァリアントを復元できます。<br><br>
+            隣の<span class="button_sample"><span class="material-symbols-rounded">upload</span>keymap</span>から.keymap形式のローカルファイルを選択すると、内容を復元できます。<br>
+            ただし、このページで生成したファイル以外の完全な読み込みは保証しません。
          </p>
          <h2>困ったときは</h2>
-         <p>キーマップの考え方やこのページに関する質問・提案があるときは、O24 worksの<a href="https://discord.gg/VaGEcTQ5tC" target="_blank">Discordコミュニティ</a>内のサポートチャンネルやキーマップギャラリーをご利用ください。<br><br>
-            ただし、特定のコードや設定項目の仕様について知りたいときは、おさかなのシステムを構成しているZMK Firmwareの<a href="https://zmk.dev/docs" target="_blank">公式ドキュメント</a>を読むのが一番です。
+         <p>キーマップの考え方を知りたいときは、<a href="https://discord.gg/VaGEcTQ5tC" target="_blank">公式Discordコミュニティ</a>の雑談チャンネルやキーマップギャラリーをご利用ください。<br><br>
+            特定のキーコードや設定項目の仕様について知りたいときは、おさかなを構成しているZMK Firmwareの<a href="https://zmk.dev/docs" target="_blank">公式ドキュメント</a>をご覧ください。<br><br>
+            このサイトやデフォルトファームウェアに問題を見つけたときは、それぞれのGitHubリポジトリ（<a href="https://github.com/TakumaOnishi/fish/tree/main">サイト</a>／<a href="https://github.com/TakumaOnishi/zmk-config-fish">ファームウェア</a>）にプルリクエストを送るか、Discordで共有してください。
          </p>
       </div>
    </div>
@@ -714,7 +725,8 @@
       <div class="modal">
          <h1>調整</h1>
          <p>このパネルでは、特殊キーの挙動やしきい値を調整できます。<br>
-            誤操作が多発する、扱いにくいと感じるときは、仕様を参照しながら設定を変えてみてください。</p>
+            誤操作が多発する、扱いにくいと感じるときは、仕様を参照しながら設定を変えてみてください。
+         </p>
          <h2><a href="https://zmk.dev/docs/config/behaviors#devicetree-1" target="_blank">Mod-Tap</a></h2>
          <div class="showcase">
             <div>
@@ -794,11 +806,45 @@
          </div>
          <h2 class="advanced">Custom Behaviors</h2>
          <p class="advanced">独自のBehavior（<a href="https://zmk.dev/docs/behaviors/tap-dance" target="_blank">Tap-Dance</a>、<a href="https://zmk.dev/docs/behaviors/mod-morph" target="_blank">Mod-Morph</a>、独自の<a href="https://zmk.dev/docs/behaviors/hold-tap" target="_blank">Hold-Tap</a>など）や、<a href="https://zmk.dev/docs/behaviors/macros" target="_blank">マクロ</a>、<a href="https://zmk.dev/docs/features/conditional-layers" target="_blank">Conditional Layers</a>を定義できます。<br>
-            以下の記述は、fish.keymapのルートノード冒頭に挿入されます。</p>
+            以下の記述は、fish.keymapファイルのルートノード冒頭に挿入されます。</p>
          <textarea class="advanced" id="c_cb">    behaviors {&NewLine;    };&NewLine;    &NewLine;    macros {&NewLine;    };&NewLine;    &NewLine;    conditional_layers {&NewLine;    };</textarea>
+         <h2 class="advanced">Centered Side</h2>
+         <p class="advanced"><a href="../guide/index.html#centered" target="_blank">親機</a>の左右を変えられます。出荷時は左手デヴァイスとしての使用に配慮し、左手側を親機にしています。この設定を変えた後は、<a href="../guide/index.html#settings_reset">ファームウェアリセット</a>が必要になります。この設定はfish.keymapファイルに保存されません。</p>
+         <div class="showcase advanced">
+            <div><p>右手を親機にする</p><input type="checkbox" id="c_rc"/></div>
+         </div>
+         <h2 class="advanced"><a href="https://zmk.dev/docs/config/" target="_blank">Configuration</a></h2>
+         <p class="advanced">fish.confファイルの内容を記述できます。この設定はfish.keymapファイルに保存されません。</p>
+         <textarea class="advanced" id="c_cf"># スリープモードに入れる時間を設定&NewLine;CONFIG_ZMK_SLEEP=y&NewLine;CONFIG_ZMK_IDLE_SLEEP_TIMEOUT=900000</textarea>
          <div class="showcase">
             <div><p>高度な設定を表示</p><input type="checkbox" id="show_advanced_toggle"/></div>
          </div>
+      </div>
+   </div>
+   <div id="preset" class="disabled">
+      <div class="modal">
+         <p>base layout</p>
+         <div class="segment">
+            <input type="radio" id="r_onishi" name="layout" value="onishi" checked/>
+            <label for="r_onishi">大西配列</label>
+            <input type="radio" id="r_qwerty" name="layout" value="qwerty"/>
+            <label for="r_qwerty">QWERTY</label>
+         </div>
+         <p>modifier style</p>
+         <div class="segment">
+            <input type="radio" id="r_win" name="style" value="win" checked/>
+            <label for="r_win">Windows</label>
+            <input type="radio" id="r_mac" name="style" value="mac"/>
+            <label for="r_mac">macOS</label>
+         </div>
+         <p>recognition</p>
+         <div class="segment">
+            <input type="radio" id="r_ansi" name="recognition" value="ansi" checked/>
+            <label for="r_ansi">ANSI (US)</label>
+            <input type="radio" id="r_jis" name="recognition" value="jis"/>
+            <label for="r_jis">JIS</label>
+         </div>
+         <button id="l_preset"><span class="material-symbols-rounded">cloud_download</span><p>load</p></button>
       </div>
    </div>
 </body>

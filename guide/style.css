@@ -9,8 +9,12 @@
    --warn: hsla(46, 100%, 50%, 0.2);
 }
 
-#content{
-   margin-top: 0;
+h1{
+   margin-top: 1rem;
+}
+
+* {
+   text-align: left;
 }
 
 h2{
@@ -20,12 +24,20 @@ h2{
    position: relative;
 }
 
+h3{
+   margin-top: 2.5rem;
+}
+
+p:has(+ .info){
+   margin-bottom: 0;
+}
+
 .info, .warn{
    border-radius: 1.5rem;
    padding: 1rem;
    font-size: 1rem;
    line-height: 1.8rem;
-   margin-top: 1.5rem;
+   margin-top: 1rem;
    margin-bottom: 1.5rem;
 }
 
