@@ -68,7 +68,7 @@ window.addEventListener("DOMContentLoaded", () => { // 読み込みを待って�
       _select_os.value = "l";
     }
     window.addEventListener('beforeunload', (e) => {
-      if(!developing) return;
+      if(developing) return;
       const message = 'Are you sure to discard changes and close this tab?';
       e.preventDefault();
       e.returnValue = message;
@@ -763,7 +763,7 @@ window.addEventListener("DOMContentLoaded", () => { // 読み込みを待って�
     document.getElementById("s_firmware").classList.add("building");
     progress(0);
     controller = new AbortController();
-    const url = 'https://3.230.119.45:8000/build';
+    const url = 'http://3.230.119.45:8000/build';
     const head = {
       'Content-type': 'application/json; charset=UTF-8'
     };
