@@ -809,12 +809,12 @@
             以下の記述は、fish.keymapファイルのルートノード冒頭に挿入されます。</p>
          <textarea class="advanced" id="c_cb">    behaviors {&NewLine;    };&NewLine;    &NewLine;    macros {&NewLine;    };&NewLine;    &NewLine;    conditional_layers {&NewLine;    };</textarea>
          <h2 class="advanced">Centered Side</h2>
-         <p class="advanced"><a href="../guide/index.html#centered" target="_blank">親機</a>の左右を変えられます。出荷時は左手デヴァイスとしての使用に配慮し、左手側を親機にしています。この設定を変えた後は、<a href="../guide/index.html#settings_reset">ファームウェアリセット</a>が必要になります。この設定はfish.keymapファイルに保存されません。</p>
+         <p class="advanced"><a href="../guide/index.html#centered" target="_blank">親機</a>の左右を変えられます。出荷時は左手デヴァイスとしての使用に配慮し、左手側を親機にしています。この設定を変えた後は、<a href="../guide/index.html#settings_reset">リセットファームウェアの読み込み</a>が必要になります。この設定はfish.keymapファイルに含まれません。</p>
          <div class="showcase advanced">
             <div><p>右手を親機にする</p><input type="checkbox" id="c_rc"/></div>
          </div>
          <h2 class="advanced"><a href="https://zmk.dev/docs/config/" target="_blank">Configuration</a></h2>
-         <p class="advanced">fish.confファイルの内容を記述できます。この設定はfish.keymapファイルに保存されません。</p>
+         <p class="advanced">fish.confファイルの内容を記述できます。この設定はfish.keymapファイルに含まれません。</p>
          <textarea class="advanced" id="c_cf"># スリープモードに入れる時間を設定&NewLine;CONFIG_ZMK_SLEEP=y&NewLine;CONFIG_ZMK_IDLE_SLEEP_TIMEOUT=900000</textarea>
          <div class="showcase">
             <div><p>高度な設定を表示</p><input type="checkbox" id="show_advanced_toggle"/></div>
