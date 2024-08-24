@@ -331,9 +331,9 @@ p a:active{
 }
 
 #buy a{
-   font-size: 1rem;
+   font-size: .85rem;
    display: block;
-   padding: .4rem .8rem;
+   padding: .4rem .9rem;
    font-weight: 500;
    margin-top: .5rem;
    background-color: var(--tx);

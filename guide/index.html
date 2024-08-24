@@ -31,7 +31,7 @@
       </div>
       <div id="h_downer">
          <a href="../index.html">セールス</a>
-         <a href="https://square.link/u/BDd1fULC" target="_blank">購入<span class="material-symbols-rounded">open_in_new</span></a>
+         <a href="https://shop.yushakobo.jp/products/9519" target="_blank">購入<span class="material-symbols-rounded">open_in_new</span></a>
          <div>ユーザーガイド</div>
          <a href="../editor/index.html" target="_blank">キーマップエディター<span class="material-symbols-rounded">open_in_new</span></a>
          <a href="../tester/index.html">テスター</a>
@@ -40,7 +40,7 @@
    </header>
    <div id="outdex">
       <a href="../index.html">セールス</a>
-      <a href="https://square.link/u/BDd1fULC" target="_blank">購入<span class="material-symbols-rounded">open_in_new</span></a>
+      <a href="https://shop.yushakobo.jp/products/9519" target="_blank">購入<span class="material-symbols-rounded">open_in_new</span></a>
       <div>ユーザーガイド</div>
       <a href="../editor/index.html" target="_blank">キーマップエディター<span class="material-symbols-rounded">open_in_new</span></a>
       <a href="../tester/index.html">テスター</a>
@@ -78,7 +78,7 @@
          <p class="dot dot2">OやTを長押しするとShiftが、AやNを長押しするとAlt/Optionが、IやSを長押しするとWindows/Command/Metaが、EnterやTabを長押しするとControlが入ります。</p>
          <p class="dot dot2">BackSpaceを長押しするとレイヤー１（黄色字）が、Spaceを長押しするとレイヤー２（赤字）が、その両方の長押し中はレイヤー３（灰色字）が有効化します。</p>
          <p class="dot dot2">これらの複合キーは、短く押した直後に長押しすれば短打側の長押しが入ります。</p>
-         <p class="dot">灰色レイヤーにはいくつか特殊なキーがあります。</p>
+         <p class="dot">レイヤー３（灰色字）にはいくつか特殊なキーがあります。</p>
          <p class="dot dot2">BT Sel 0~4は、その番号に登録された（なければ新規）機器とBluetooth接続を試みます。</p>
          <p class="dot dot2">BT Clearは現在接続中の、BT Clear Allはすべての機器とのペアリング情報を削除します。</p>
          <p class="dot dot2">USB↔︎BTは、親機充電中に出力先をUSBからBluetoothに切り替え、再度押すと戻します。これはACアダプターなど、接続したい機器以外から給電している場合に便利です。</p>
@@ -128,10 +128,14 @@
       <img src="img/remap.webp"/>
       <p><a href="../editor/index.html" target="_blank">キーマップエディター</a>でキーマップを作成し、右下のボタンからファームウェアを生成・ダウンロードします。</p>
       
+      <img src="img/boot.webp"/>
+      <p>おさかなの両機の電源を切り、親機（既定では左手側）だけをパソコンとUSB接続します。<br>
+         その状態で、上顎の陰にある白いリセットボタンを素早く２回押す、もしくはBoot Resetが割り当てられたキーを押します（既定では上顎＋下顎＋しっぽの同時押し）。
+      </p>
+
       <img src="img/flash.webp"/>
-      <p>おさかなの両機の電源を切った状態で、親機（既定では左手側）だけをパソコンとUSB接続し、上顎の陰にある白いリセットボタンを素早く２回押します。<br>
-         パソコン側にXIAO-SENSEという名前の外部記憶ディスクが出現したら、親機側のファームウェア（左手ならleft.uf2）をその中にコピーします。<br>
-         完了してディスクが消えたら、新しいキーマップで動作することを<a href="../tester/index.html" target="_blank">テスター</a>などで確認してください。
+      <p>パソコン側にXIAO-SENSEという名前の外部記憶ディスクが出現したら、親機側のファームウェア（左手ならleft.uf2）をその中にコピーします。<br>
+         完了してディスクが消えたら両機の電源を入れ、新しいキーマップで動作することを<a href="../tester/index.html" target="_blank">テスター</a>などで確認してください。
       </p>
 
       <div class="info">
@@ -140,12 +144,18 @@
             （参考：<a href="https://zmk.dev/docs/troubleshooting" target="_blank">Troubleshooting｜ZMK Docs</a>）</p>
       </div>
 
+      <div class="info">
+         <h3><span class="material-symbols-rounded" style="font-size: 1.5rem;">info</span>親機を変える場合</h3>
+         <p>ファームウェアの設定で親機の左右を変えた場合は、両方のおさかなの完全なリセットが必要です。一度<a href="settings_reset.uf2" download="settings_reset.uf2">リセットファームウェア</a>を読み込ませたあと正しいファームウェアを読み込ませる、という操作を両機に行なってください。<br>
+            （参考：<a href="https://zmk.dev/docs/troubleshooting#split-keyboard-halves-unable-to-pair" target="_blank">Split Keyboard Halves Unable to Pair｜ZMK Docs</a>）</p>
+      </div>
+
       <h3>（参考）ファームウェアを自作する</h3>
-      <p>おさかなキーボードを構成する<a href="https://zmk.dev/docs">ZMK Firmware</a>の一般的な手順でファームウェアを作ることもできます。</p>
+      <p>おさかなキーボードを構成する<a href="https://zmk.dev/docs">ZMK Firmware</a>の一般的な手順でもファームウェアを作ることができます。</p>
       <img src="img/fork.webp"/>
       <p><a href="https://github.com/">Github</a>のアカウントを用意し、おさかなキーボードの<a href="https://github.com/TakumaOnishi/zmk-config-fish" target="_blank">設定リポジトリ</a>をフォークします。</p>
       <img src="img/upload.webp"/>
-      <p>作成したリポジトリのconfig > boards/shields/fishを開き、fish.keymap（より深く編集したい場合はfish.confやKconfig.defconfigも）を編集してcommitします。<br>
+      <p>作成したリポジトリのconfig/boards/shields/fishを開き、fish.keymap（必要ならfish.confやKconfig.defconfigも）を編集してcommitします。<br>
          名前を変えて複数の.keymapファイルを置いておくこともできますが、有効なのはfish.keymapという名前の１つだけです。<br>
       </p>
       <img src="img/action.webp"/>

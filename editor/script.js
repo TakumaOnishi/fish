@@ -421,6 +421,9 @@ window.addEventListener("DOMContentLoaded", () => { // 読み込みを待って�
     for (let si = i + 1; si < _layer.length; si++) {
       _layer[si].firstChild.innerHTML = si + ".";
     }
+    for (let i = 0; i < _key.length; i++) {
+      _key[i].classList.add("weak");
+    }
     updateLayerCodes(_layer.length - 1);
     if (ignore != true) {
       _new_layer.lastElementChild.select();
