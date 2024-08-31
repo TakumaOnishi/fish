@@ -53,7 +53,7 @@
 
       <div class="warn">
          <h3><span class="material-symbols-rounded" style="font-size: 1.5rem;">warning</span>使用上の注意</h3>
-         <p class="dot">液体や粉塵をかけないでください。筐体は密閉されていないため、内部に侵入して接触不良やショート・バッテリーの発火を起こす可能性があります。</p>
+         <p class="dot">液体や粉塵をかけたり、高温になる場所に放置したり、強い力や衝撃を与えないでください。接触不良やバッテリーの発火を起こす可能性があります。</p>
          <p class="dot">直射日光に長期間当てないでください。筐体とキーキャップは紫外線で硬化するレジンでできているため、変色・ひび割れを起こす可能性があります。</p>
          <p class="dot">日本国外で電源を入れないでください。組み込みモジュールの転記で技適認証を省略できる国は日本くらいなので、違法電波となる可能性があります。</p>
          <div class="imgbox"><img src="img/giteki.webp"/></div>
@@ -164,9 +164,8 @@
 
       <h2 id="trouble">こんなときは</h2>
       <h3>パソコンにBluetooth接続できない</h3>
-      <p class="dot">USB接続すればBluetoothでも接続できるようになるなら、そのまま充電してください。</p>
-      <p class="dot">他のホストに接続している可能性があるなら、BT Sel 1~5（空いているプロファイル番号）を押すか、BT ClearまたはBT Clear Allで不要なペアリングを解放し、おさかなをペアリングモードに入れてください。</p>
-      <p class="dot">それでも接続できず、他のホストには接続できるなら、パソコン側の設定を見直してください。</p>
+      <p class="dot">充電切れの可能性があるなら、充電してみてください。</p>
+      <p class="dot">他のホストに接続中の可能性があるなら、BT Sel 1~5（空いているプロファイル番号）を押すか、BT ClearまたはBT Clear Allで現在のペアリングを解放し、おさかなをペアリングモードに入れてください。</p>
    
       <div class="info">
          <h3><span class="material-symbols-rounded" style="font-size: 1.5rem;">info</span>ペアリングの解除</h3>
@@ -175,15 +174,28 @@
             その後、パソコンのBluetooth設定からもおさかなの登録を削除します。</p>
       </div>
 
-      <h3 id="settings_reset">子機が反応しない</h3>
-      <p class="dot">子機をUSB接続すれば親機に接続できるようになるなら、そのまま充電してください。</p>
+      <h3>キーマップと違う記号が入力される</h3>
+      <p class="dot">「:」が「+」になったり「_」が「=」になったりするなら、パソコン側で外部キーボードの入力方式をJISからANSI（US配列）に変更してください。<br>
+      <p class="dot">JIS方式から変えたくない場合は、JIS方式用に翻訳したキーマップを設定してください。デフォルトキーマップのJIS版は<a href="../editor/index.html" target="_blank">エディター</a>のプリセットから選べます。<br>
+         （参考：<a href="https://github.com/eswai/zmk_mable/blob/main/config/boards/shields/mable/keycode_japanese.h" target="_blank">ANSI→JISキーコード対応表</a> by eswaiさん） </p>
+
+      <div class="info">
+         <h3><span class="material-symbols-rounded" style="font-size: 1.5rem;">info</span>記号入力のひみつ</h3>
+         <p>外部キーボードの通信規格には記号を直接入れるコードが存在しないため、たとえばおさかなで「!」を設定したキーを押しても、それは「左Shift + 1」を一瞬で押したことにしているに過ぎません。<br>
+            しかし、一部のキーの有無やシフト変化は入力方式（ANSI/ISO/JIS）によって異なるため、このような不具合が起こります。</p>
+      </div>
+
+      <h3>接続が悪くなるときがある</h3>
+      <p class="dot">キーによらず一時的に入力ができなくなったり、繰り返されたり、遅くなったりするなら、Bluetoothの電波が干渉しているかもしれません。周辺の無線機器の電波を切るか、おさかなを有線接続にしてみてください。</p>
+
+      <h3 id="settings_reset">子機が入力できなくなった</h3>
       <p class="dot">更新するファームウェアの左右を間違えた、または親機の左右を変えた直後なら、一度<a href="settings_reset.uf2" download="settings_reset.uf2">リセットファームウェア</a>を読み込ませたあと正しいファームウェアを読み込ませる、という操作を両機に行なってください。<br>
          （参考：<a href="https://zmk.dev/docs/troubleshooting#split-keyboard-halves-unable-to-pair" target="_blank">Split Keyboard Halves Unable to Pair｜ZMK Docs</a>）</p>
 
-      <h3>充電ができていない</h3>
+      <h3>充電ができない</h3>
       <p class="dot">電源スイッチを入れた状態でパソコンやACアダプターにUSB接続しても緑の光がつかないなら、<a href="#fix">修理</a>を申請してください。</p>
       
-      <h3>キーが反応しない・反応が悪い</h3>
+      <h3>キーが反応しない</h3>
       <p class="dot">キーコードの割り当てによらず反応しない・反応が悪いキーがあるなら、<a href="#fix">修理</a>を申請してください。</p>
       
       <h2 id="fix">サポートと修理</h2>
