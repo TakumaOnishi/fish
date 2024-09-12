@@ -253,7 +253,7 @@ window.addEventListener("DOMContentLoaded", () => { // 読み込みを待って�
     }
     _grabbing = document.createElement("div");
     _grabbing.classList.add("grabbing");
-    _grabbing.innerHTML = '<p>' + code.replace("&", "").toLowerCase() + '</p><div class="hint"><p><span class="mono">' + code + '</span>custom keycode</p></div>';
+    _grabbing.innerHTML = '<p>' + code + '</p><div class="hint"><p><span class="mono">' + code + '</span>custom keycode</p></div>';
     const box = e.target.getBoundingClientRect();
     _grabbing.style.top = (box.y - e.clientY) + "px";
     _grabbing.style.left = (box.x - e.clientX) + "px";
@@ -933,7 +933,7 @@ window.addEventListener("DOMContentLoaded", () => { // 読み込みを待って�
       tx = tx.substring(0, start) + (end == -1 ? "" : tx.substring(end));
     }
     const t = tx.replace(/\s+/g, ""); // スペースを削除
-    let s, e, sx, ex, subt;
+    let s, e, subt;
     // mod-tap
     s = tx.indexOf("\n", tx.search(/&mt\s*\{/));
     if (s != -1) {
@@ -1024,7 +1024,7 @@ window.addEventListener("DOMContentLoaded", () => { // 読み込みを待って�
         s = tx.indexOf("\n", e);
         e = tx.indexOf("\n", tx.indexOf("}", s));
         subt = tx.substring(s, e);
-        const code = loadConf(subt, "bindings").replace("&", "").replaceAll(" ", "");
+        const code = loadConf(subt, "bindings").replace("&", "").trim();
         const _temp = document.createElement("div");
         _temp.innerHTML = _code[0].innerHTML; // &noneのコピー要素から始める
         loadKey(code, _temp);
@@ -1053,22 +1053,23 @@ window.addEventListener("DOMContentLoaded", () => { // 読み込みを待って�
     }
     // keymap
     show(_layer[0]);
-    s = t.lastIndexOf(";", t.indexOf("{", t.indexOf("keymap{") + 7)) + 1;
+    //s = t.lastIndexOf(";", t.indexOf("{", t.indexOf("keymap{") + 7)) + 1;
+    s = tx.lastIndexOf("\n", tx.indexOf("{", tx.search(/keymap\s*\{/)));
     for (let i = 0; i < 999; i++) { // レイヤー
       if (i > 0) addLayer(true);
-      const name = t.substring(s, t.indexOf("{", s));
+      const name = tx.substring(s, tx.indexOf("{", s)).trim();
       _layer[i].lastChild.value = name.substring(0, 6) == "layer_" ? name.substring(6) : name;
-      let ks = t.indexOf("&", s) + 1;
-      let ke = t.indexOf("&", ks);
+      let ks = tx.indexOf("&", s) + 1;
+      let ke = tx.indexOf("&", ks);
       for (let ki = 0; ki < 32; ki++) { // キー
         const _legend = document.querySelector(".editing .l" + ki);
-        const code = t.substring(ks, ke);
+        const code = tx.substring(ks, ke).trim();
         loadKey(code, _legend);
         ks = ke + 1;
-        ke = (ki != 30) ? t.indexOf("&", ks) : t.indexOf(">", ks);
+        ke = (ki != 30) ? tx.indexOf("&", ks) : tx.indexOf(">", ks);
       }
-      s = t.indexOf("};", s) + 2;
-      if (t.charAt(s) == "}") break;
+      s = tx.indexOf("};", s) + 2;
+      if (tx.indexOf("{", s) == -1 || tx.indexOf("}", s) < tx.indexOf("{", s)) break;
     }
     // finish
     updateOS();
@@ -1117,6 +1118,7 @@ window.addEventListener("DOMContentLoaded", () => { // 読み込みを待って�
 
   function loadKey(code, _legend) {
     if (code.substring(0, 2) == "mt") { // mod-tap
+      code = code.replaceAll(" ", "");
       let holdP, holdCode;
       if (code.substring(2, 7) == "LSHFT" || code.substring(2, 8) == "LSHIFT" || code.substring(2, 12) == "LEFT_SHIFT") {
         holdP = "Shift";
@@ -1149,6 +1151,7 @@ window.addEventListener("DOMContentLoaded", () => { // 読み込みを待って�
         return;
       }
     } else if (code.substring(0, 2) == "lt") { // layer-tap
+      code = code.replaceAll(" ", "");
       const holdCode = code.substring(2, code.search(/[A-Z]/));
       const match = findKey("kp" + code.substring(code.search(/[A-Z]/)));
       if (match) {
@@ -1156,7 +1159,6 @@ window.addEventListener("DOMContentLoaded", () => { // 読み込みを待って�
         return;
       }
     } else if (code.includes("(")) { // moded kp
-      code = code.substring(0, code.search(/[A-Z]/)) + " " + code.substring(code.search(/[A-Z]/));
       let dt = "";
       let lt = "";
       for (let i = 0; i < code.match(/\(/g).length; i++) {
@@ -1190,14 +1192,13 @@ window.addEventListener("DOMContentLoaded", () => { // 読み込みを待って�
         return;
       }
     } else { // single key
-      const match = findKey(code);
+      const match = findKey(code.replaceAll(" ", ""));
       if (match) {
         _legend.innerHTML = match.innerHTML;
         return;
       }
     } // unlisted
-    code = code.substring(0, code.search(/[A-Z0-9]/)) + " " + code.substring(code.search(/[A-Z0-9]/));
-    _legend.innerHTML = '<p>' + code + '</p><div class="hint"><p><span class="mono">&amp;' + code + '</span>custom keycode</p></div>';
+    _legend.innerHTML = '<p>&amp;' + code + '</p><div class="hint"><p><span class="mono">&amp;' + code + '</span>custom keycode</p></div>';
   }
 
   function findKey(code) {

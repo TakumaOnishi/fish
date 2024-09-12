@@ -751,7 +751,7 @@ button p{
    top: calc(50vh - 9rem);
    left: 50%;
    display: flex;
-   flex-flow: column;
+   flex-flow: row;
    justify-content: center;
    align-items: center;
    z-index: 4;
@@ -780,6 +780,7 @@ button p{
    width: 3rem;
    height: 3rem;
    border-radius: 1.5rem;
+   position: absolute;
    right: .5rem;
    font-size: 1.3rem;
    font-weight: 400;
