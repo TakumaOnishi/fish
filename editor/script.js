@@ -791,7 +791,7 @@ window.addEventListener("DOMContentLoaded", () => { // 読み込みを待って�
   }
 
   function makeKeymap() {
-    let t = '// キーマップを更新する方法は https://o24.works/fish/guide を参照\n// 視覚的に編集するには https://o24.works/fish/editor を参照\n\n\n// 定義を呼んでくる\n#include <behaviors.dtsi>\n#include <dt-bindings/zmk/keys.h>\n#include <dt-bindings/zmk/mouse.h>\n#include <dt-bindings/zmk/bt.h>\n#include <dt-bindings/zmk/outputs.h>\n\n\n// 特殊入力の挙動を調整できる\n\n&mt {';
+    let t = '// キーマップを更新する方法は https://o24.works/fish/guide を参照\n// 視覚的に編集するには https://o24.works/fish/editor を参照\n\n\n// 定義を呼んでくる\n#include <behaviors.dtsi>\n#include <dt-bindings/zmk/keys.h>\n#include <dt-bindings/zmk/mouse.h>\n#include <dt-bindings/zmk/bt.h>\n#include <dt-bindings/zmk/outputs.h>\n#include <dt-bindings/zmk/pointing.h>\n\n\n// 特殊入力の挙動を調整できる\n\n&mt {';
     // mod tap
     t += '\n    flavor = "' + document.getElementById("c_mt_f").value + '";';
     if (document.getElementById("c_mt_ttm").value) t += '\n    tapping-term-ms = <' + document.getElementById("c_mt_ttm").value + '>;';
